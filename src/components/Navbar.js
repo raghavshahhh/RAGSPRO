@@ -27,9 +27,9 @@ export default function Navbar() {
   return (
     <motion.nav
       animate={{
-        height: scrolled ? 64 : 80,
-        paddingTop: scrolled ? 12 : 20,
-        paddingBottom: scrolled ? 12 : 20,
+        height: scrolled ? 96 : 120,
+        paddingTop: scrolled ? 24 : 32,
+        paddingBottom: scrolled ? 24 : 32,
       }}
       className={`
         fixed top-0 left-0 right-0 z-50
@@ -39,28 +39,28 @@ export default function Navbar() {
           : 'bg-white/10 backdrop-blur-lg border-white/10'
         }
         border-b
-        h-8 sm:h-10 md:h-16 lg:h-20
-        py-1 sm:py-2 md:py-3 lg:py-5
+        h-8 sm:h-10 md:h-24 lg:h-30 xl:h-36
+        py-1 sm:py-2 md:py-6 lg:py-8 xl:py-9
       `}
     >
-      <div className="container mx-auto px-3 sm:px-4 md:px-6 lg:px-8 h-full flex items-center justify-between">
+      <div className="container mx-auto px-3 sm:px-4 md:px-8 lg:px-10 xl:px-12 h-full flex items-center justify-between">
         {/* Logo */}
         <motion.div
           animate={{ scale: scrolled ? 0.9 : 1 }}
           transition={{ duration: 0.3 }}
         >
           <Link href="/" className="flex items-center group">
-            <span className="text-[10px] sm:text-xs md:text-sm lg:text-base xl:text-2xl font-bold text-black group-hover:text-[#21b30b] transition-colors duration-300 cursor-pointer">
+            <span className="text-[10px] sm:text-xs md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-black group-hover:text-[#21b30b] transition-colors duration-300 cursor-pointer">
               RAGSPRO
             </span>
           </Link>
         </motion.div>
         
         {/* Desktop Navigation */}
-        <div className="flex items-center gap-1 sm:gap-2 md:gap-3 xl:gap-6">
+        <div className="flex items-center gap-1 sm:gap-2 md:gap-6 lg:gap-8 xl:gap-12 2xl:gap-14">
           {navLinks.map((link) => (
             <Link key={link.name} href={link.href}>
-              <span className="text-gray-900 font-medium hover:text-[#21b30b] transition-colors cursor-pointer text-[8px] sm:text-[10px] md:text-xs xl:text-sm">
+              <span className="text-gray-900 font-medium hover:text-[#21b30b] transition-colors cursor-pointer text-[8px] sm:text-[10px] md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl">
                 {link.name}
               </span>
             </Link>
@@ -70,7 +70,7 @@ export default function Navbar() {
         {/* CTA Button */}
         <button 
           onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-          className="px-1 sm:px-2 md:px-3 xl:px-6 py-0.5 sm:py-1 md:py-1.5 xl:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-900 transition-colors text-[6px] sm:text-[8px] md:text-[10px] xl:text-sm"
+          className="px-1 sm:px-2 md:px-6 lg:px-8 xl:px-12 2xl:px-14 py-0.5 sm:py-1 md:py-3 lg:py-4 xl:py-5 2xl:py-6 bg-black text-white rounded-full font-medium hover:bg-gray-900 transition-colors text-[6px] sm:text-[8px] md:text-lg lg:text-xl xl:text-2xl 2xl:text-3xl"
         >
           Get Started
         </button>
@@ -80,6 +80,6 @@ export default function Navbar() {
       </div>
       
 
-    </nav>
+    </motion.nav>
   )
 }

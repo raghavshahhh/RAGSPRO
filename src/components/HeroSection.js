@@ -2,12 +2,50 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
+import MetricBadge from './MetricBadge'
 
 const projects = [
-  { id: 1, name: 'Glow', image: '/images/projects/glow.png', url: 'https://glow.ragspro.com' },
-  { id: 2, name: 'HimShakti', image: '/images/projects/himshakti.jpg', url: 'https://himshakti.ragspro.com' },
-  { id: 3, name: 'LawAI', image: '/images/projects/lawai.jpg', url: 'https://lawai.ragspro.com' },
-  { id: 4, name: 'Maid Service', image: '/images/projects/maid.jpg', url: 'https://maid-agency.vercel.app' }
+  { 
+    id: 1, 
+    name: 'Glow', 
+    image: '/images/projects/glow.png', 
+    url: 'https://glow.ragspro.com',
+    metrics: {
+      conversionRate: '4.2%',
+      revenue: '$12k/month',
+      userGrowth: '500+ users'
+    }
+  },
+  { 
+    id: 2, 
+    name: 'HimShakti', 
+    image: '/images/projects/himshakti.jpg', 
+    url: 'https://himshakti.ragspro.com',
+    metrics: {
+      timeSaved: '120+ hrs',
+      conversionRate: '3.8%'
+    }
+  },
+  { 
+    id: 3, 
+    name: 'LawAI', 
+    image: '/images/projects/lawai.jpg', 
+    url: 'https://lawai.ragspro.com',
+    metrics: {
+      userGrowth: '300+ users',
+      revenue: '$8k/month'
+    }
+  },
+  { 
+    id: 4, 
+    name: 'Maid Service', 
+    image: '/images/projects/maid.jpg', 
+    url: 'https://maid-agency.vercel.app',
+    metrics: {
+      conversionRate: '5.1%',
+      timeSaved: '80+ hrs'
+    }
+  }
 ]
 
 export default function HeroSection() {
@@ -77,22 +115,22 @@ export default function HeroSection() {
             {/* Badge */}
             <div className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-2 md:px-3 py-1 sm:py-1 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[10px] md:text-xs mb-3 sm:mb-3 md:mb-6 mt-2 sm:mt-2 md:mt-4">
               <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-green-500 rounded-full"></span>
-              <span className="text-gray-700 font-medium">50+ USERS IN 60 DAYS</span>
+              <span className="text-gray-700 font-medium">50+ STARTUPS LAUNCHED</span>
             </div>
 
             {/* Main Headline */}
             <h1 className="text-[44px] sm:text-[24px] md:text-[32px] lg:text-[48px] xl:text-[68px] font-normal leading-[1.05] tracking-tight mb-3 sm:mb-3 md:mb-6">
-              <span className="text-gray-400">We build your</span>
+              <span className="text-gray-400">Launch Your</span>
               <br />
-              <span className="text-black">startup in 20 days</span>
+              <span className="text-black">Startup in 20 Days</span>
             </h1>
 
             {/* Subheading */}
             <h2 className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-600 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2 font-normal">
-              Launch your SaaS, web & AI apps fast
+              Revenue-focused web apps, funnels & AI automations for founders who need users, not pretty dashboards.
             </h2>
             <p className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-600 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2">
-              <span className="text-black font-semibold">Yes, it's true.</span> RAGSPRO helps startups build SaaS, web, and mobile apps with AI integration & business automation — all within 20 days. End-to-end design, development, and automation by Raghav Shah, your trusted startup tech partner.
+              <span className="text-black font-semibold">Yes, it's true.</span> RAGSPRO helps startup founders build complete revenue-ready products with AI integration & business automation — all within 20 days. End-to-end development by Raghav Shah, your trusted startup growth partner.
             </p>
 
             {/* CTA Button with Avatars */}
@@ -129,7 +167,7 @@ export default function HeroSection() {
                 </div>
               </div>
 
-              <span className="text-white">Get custom SaaS pricing</span>
+              <span className="text-white">Get Your Project Roadmap</span>
             </button>
 
             {/* Social Proof - Compact for mobile */}
@@ -185,7 +223,7 @@ export default function HeroSection() {
                     <span key={i} className="text-black hover:scale-110 transition-transform text-[8px] sm:text-[5px] md:text-[6px] lg:text-[8px]">★</span>
                   ))}
                 </div>
-                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-600 font-medium -mt-8 sm:mt-0">50+ Happy clients</p>
+                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-600 font-medium -mt-8 sm:mt-0">50+ Startup Founders</p>
               </div>
             </div>
 
@@ -271,8 +309,26 @@ export default function HeroSection() {
                       className="object-cover"
                     />
                   </motion.div>
-                  <div className="absolute bottom-0.5 sm:bottom-1 md:bottom-2 lg:bottom-3 left-0.5 sm:left-1 md:left-2 lg:left-3 bg-black/80 backdrop-blur-sm px-0.5 sm:px-1 md:px-2 lg:px-3 py-0.5 sm:py-0.5 md:py-1 lg:py-1.5 rounded-sm sm:rounded-md md:rounded-lg">
-                    <p className="text-white text-[6px] sm:text-[8px] md:text-xs lg:text-sm font-semibold">{project.name}</p>
+                  <div className="absolute bottom-0.5 sm:bottom-1 md:bottom-2 lg:bottom-3 left-0.5 sm:left-1 md:left-2 lg:left-3 right-0.5 sm:right-1 md:right-2 lg:right-3">
+                    <div className="bg-black/80 backdrop-blur-sm px-0.5 sm:px-1 md:px-2 lg:px-3 py-0.5 sm:py-0.5 md:py-1 lg:py-1.5 rounded-sm sm:rounded-md md:rounded-lg">
+                      <p className="text-white text-[6px] sm:text-[8px] md:text-xs lg:text-sm font-semibold mb-1">{project.name}</p>
+                      {project.metrics && (
+                        <div className="flex flex-wrap gap-1">
+                          {project.metrics.conversionRate && (
+                            <MetricBadge value={project.metrics.conversionRate} />
+                          )}
+                          {project.metrics.revenue && (
+                            <MetricBadge value={project.metrics.revenue} />
+                          )}
+                          {project.metrics.timeSaved && (
+                            <MetricBadge value={project.metrics.timeSaved} />
+                          )}
+                          {project.metrics.userGrowth && (
+                            <MetricBadge value={project.metrics.userGrowth} />
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </motion.div>
               )

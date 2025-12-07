@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion'
 import { useState } from 'react'
+import ReviewSubmissionBox from './ReviewSubmissionBox'
 
 const testimonials = [
   {
@@ -141,7 +142,34 @@ export default function TestimonialsSection() {
             </motion.div>
           ))}
         </div>
+
+        {/* Centered Write a Review Button */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="flex justify-center mt-12 md:mt-16"
+        >
+          <a
+            href="#write-review"
+            onClick={(e) => {
+              e.preventDefault()
+              // Scroll to bottom and trigger the floating review button
+              window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' })
+              setTimeout(() => {
+                const reviewButton = document.querySelector('[aria-label="Write a review"]')
+                if (reviewButton) reviewButton.click()
+              }, 500)
+            }}
+            className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 cursor-pointer inline-block"
+          >
+            Write a Review
+          </a>
+        </motion.div>
       </div>
+
+      {/* Review Submission Box - Always rendered for floating button */}
+      <ReviewSubmissionBox />
     </section>
     </>
   )

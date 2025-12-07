@@ -1,9 +1,9 @@
 import Head from 'next/head'
 
 export default function SEOHead({ 
-  title = "RAGSPRO | Build Your Startup App in 20 Days | SaaS & AI Development Agency",
-  description = "Launch your SaaS, web, or mobile app fast. RAGSPRO helps startups with end-to-end development, AI integration, and business automation — delivered in just 20 days.",
-  keywords = "startup app development, SaaS development agency, MVP builder India, AI app development, business automation company, Raghav Shah, Next.js development company Delhi, build MVP fast, AI integration agency",
+  title = "RAGSPRO | Startup MVP Development Agency | Launch in 20 Days | Delhi, India",
+  description = "Build revenue-ready MVPs in 20 days. RAGSPRO helps startup founders with web apps, AI automation, and growth funnels. Leading MVP development agency in Delhi, India.",
+  keywords = "startup MVP development, MVP agency India, startup development Delhi, revenue-focused MVP, AI automation for startups, MVP builder India, 20-day MVP launch, startup growth agency Delhi, founder-focused development, rapid MVP development India",
   ogImage = "https://ragspro.com/images/og-image.jpg",
   url = "https://ragspro.com",
   type = "website"

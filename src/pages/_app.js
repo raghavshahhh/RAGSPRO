@@ -10,6 +10,11 @@ import { initProjectsAnimation } from '../utils/projectsAnimation'
 
 export default function App({ Component, pageProps, router }) {
   useEffect(() => {
+    // Add custom cursor class to body
+    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+      document.body.classList.add('custom-cursor-active')
+    }
+
     // Initialize floating projects animation
     const cleanup = initProjectsAnimation();
     
@@ -33,6 +38,7 @@ export default function App({ Component, pageProps, router }) {
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      document.body.classList.remove('custom-cursor-active')
       cleanup();
     };
   }, []);
@@ -43,11 +49,11 @@ export default function App({ Component, pageProps, router }) {
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
       </Head>
       <SmoothScroll>
+        <CustomCursor />
+        <MobilePerformanceOptimizer />
         <AnimatePresence mode="wait">
-          <CustomCursor />
-          <MobilePerformanceOptimizer />
-          <Layout>
-            <Component {...pageProps} key={router.route} />
+          <Layout key={router.route}>
+            <Component {...pageProps} />
           </Layout>
         </AnimatePresence>
       </SmoothScroll>

@@ -125,7 +125,7 @@ export default function MeetFounder() {
                 <div className="flex flex-wrap gap-4 pt-4">
                   <div className="flex items-center text-gray-400">
                     <FiMail className="text-accent mr-2" size={16} />
-                    <span>raghav@ragspro.com</span>
+                    <span>ragsproai@gmail.com</span>
                   </div>
                   <div className="flex items-center text-gray-400">
                     <span className="text-accent mr-2">📱</span>
@@ -248,7 +248,7 @@ export default function MeetFounder() {
               <h3 className="text-3xl font-bold text-white mb-8">Connect with Raghav</h3>
               <div className="flex justify-center space-x-6">
                 <a 
-                  href="https://github.com/ragspro" 
+                  href="https://github.com/raghavshahhh" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-4 bg-gray-800 rounded-full text-gray-400 hover:text-white hover:bg-accent transition-all"
@@ -257,7 +257,7 @@ export default function MeetFounder() {
                   <FiGithub size={24} />
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/bhupederpratap/" 
+                  href="https://linkedin.com/in/raghavshahhh" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-4 bg-gray-800 rounded-full text-gray-400 hover:text-white hover:bg-accent transition-all"

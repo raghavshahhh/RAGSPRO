@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead'
 import { useRouter } from 'next/router'
+import BlogCTA from '../../components/blog/BlogCTA'
 
 export default function MVPDevelopmentProcess() {
   const router = useRouter()
@@ -73,6 +74,8 @@ export default function MVPDevelopmentProcess() {
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               "Can you really build an MVP in 20 days?" This is the most common question we get. The answer is yes—but only if you have the right process. Here's exactly how we do it at RAGSPRO, with real examples from our successful launches.
             </p>
+
+            <BlogCTA variant="default" />
 
             <h2 className="text-3xl font-bold text-black mt-12 mb-6">The Problem with Traditional MVP Development</h2>
             <p className="text-gray-700 mb-6 leading-relaxed">

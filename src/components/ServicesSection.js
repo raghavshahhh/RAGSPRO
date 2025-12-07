@@ -3,49 +3,60 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FaMobileAlt, FaLaptopCode, FaFileAlt, FaShieldAlt, FaPaintBrush, FaCube, FaPalette, FaWhatsapp, FaLightbulb } from 'react-icons/fa'
 import { useState, useEffect } from 'react'
 import RaghavAvatar from './RaghavAvatar'
+import QualificationForm from './QualificationForm'
+import QualificationResult from './QualificationResult'
+import CalendarIntegration from './CalendarIntegration'
 
 const services = [
-  { title: "Mobile Apps", icon: FaMobileAlt },
-  { title: "Web Apps", icon: FaLaptopCode },
-  { title: "Landing Pages", icon: FaFileAlt },
-  { title: "Data Security", icon: FaShieldAlt },
-  { title: "UX / UI Consultation", icon: FaPaintBrush },
-  { title: "3D Design", icon: FaCube },
-  { title: "Brand Design", icon: FaPalette }
+  { title: "Complete Product Development (Mobile & Web)", icon: FaMobileAlt },
+  { title: "Revenue-Focused Landing Pages", icon: FaLaptopCode },
+  { title: "AI Automation & Integration", icon: FaLightbulb },
+  { title: "Startup UX/UI Consultation", icon: FaPaintBrush },
+  { title: "Growth-Ready Design Systems", icon: FaPalette },
+  { title: "Business Process Automation", icon: FaCube },
+  { title: "Technical Consulting for Founders", icon: FaFileAlt }
 ]
 
 export default function ServicesSection() {
   const [containerHover, setContainerHover] = useState(false)
   const [showButtons, setShowButtons] = useState(false)
   const [showQuoteForm, setShowQuoteForm] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    projectType: '',
-    message: '',
-    budget: ''
-  })
+  const [showResult, setShowResult] = useState(false)
+  const [showCalendar, setShowCalendar] = useState(false)
+  const [qualificationData, setQualificationData] = useState(null)
+
+  const handleQualified = (data) => {
+    // Store qualification data
+    setQualificationData(data)
+    // Hide qualification form
+    setShowQuoteForm(false)
+    // Show result
+    setShowResult(true)
+  }
+
+  const handleBookCall = () => {
+    setShowResult(false)
+    setShowCalendar(true)
+  }
+
+  const handleViewResources = () => {
+    setShowResult(false)
+    // Optionally redirect to resources page
+  }
+
+  const handleCloseAll = () => {
+    setShowQuoteForm(false)
+    setShowResult(false)
+    setShowCalendar(false)
+    setQualificationData(null)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    // Create email content
-    const projectTypeLabel = {
-      'mobile-app': 'Mobile App (iOS/Android)',
-      'web-app': 'Web Application',
-      'website': 'Website',
-      'ai-solution': 'AI Solution',
-      'ui-design': 'UI/UX Design',
-      'ecommerce': 'E-commerce Platform',
-      'saas': 'SaaS Product',
-      'automation': 'Business Automation',
-      'other': 'Other'
-    }[formData.projectType] || formData.projectType
-
+    // This is now handled by QualificationForm
     const emailBody = `
-New Project Request from ${formData.name}
+New Project Request from ${qualificationData?.name || 'Unknown'}
 
 Contact Details:
 - Name: ${formData.name}
@@ -61,7 +72,7 @@ ${formData.message}
     `.trim()
 
     // Create mailto link
-    const mailtoLink = `mailto:raghav@ragspro.com?subject=New Project Request - ${projectTypeLabel}&body=${encodeURIComponent(emailBody)}`
+    const mailtoLink = `mailto:ragsproai@gmail.com?subject=New Project Request - ${projectTypeLabel}&body=${encodeURIComponent(emailBody)}`
 
     // Open email client
     window.location.href = mailtoLink
@@ -123,14 +134,14 @@ ${formData.message}
           {/* LEFT: Heading */}
           <div className="pt-20 sm:pt-0">
             <h2 className="text-3xl sm:text-4xl md:text-6xl font-normal tracking-tight leading-[1.15]">
-              Startup Development Services
+              Startup Growth Services
             </h2>
             <p className="text-lg sm:text-xl md:text-2xl text-gray-600 mt-4">
-              <span className="text-gray-400">Services that</span>
+              <span className="text-gray-400">Everything founders need</span>
               <br />
-              <span className="text-black">you need to start</span>
+              <span className="text-black">to launch revenue-ready</span>
               <br />
-              <span className="text-black">your dream SaaS.</span>
+              <span className="text-black">products in 20 days.</span>
             </p>
           </div>
 
@@ -182,189 +193,38 @@ ${formData.message}
           >
             <FaLightbulb className="text-sm sm:text-base flex-shrink-0 hover:text-white" />
             <span className="font-medium text-sm whitespace-nowrap opacity-100 w-auto md:opacity-0 md:w-0 md:group-hover:opacity-100 md:group-hover:w-auto transition-all duration-300 overflow-hidden hover:text-white">
-              Discuss your MVP idea
+              Discuss your project idea
             </span>
           </button>
         </div>
       </div>
 
-      {/* Quote Form Sidebar */}
-      <AnimatePresence>
-        {showQuoteForm && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setShowQuoteForm(false)}
-              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[9998] sm:z-50"
-            />
+      {/* Qualification Form */}
+      {showQuoteForm && (
+        <QualificationForm
+          onQualified={handleQualified}
+          onClose={handleCloseAll}
+        />
+      )}
 
-            {/* Sidebar Form */}
-            <motion.div
-              initial={{ x: '100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed right-0 top-0 h-full w-full sm:max-w-xs md:max-w-md bg-white shadow-2xl z-[9999] sm:z-50 overflow-y-auto flex items-center justify-center"
-            >
-              <div className="p-4 sm:p-3 md:p-6 w-full max-w-full sm:max-w-xs md:max-w-sm mx-auto relative">
-                {/* Close Button */}
-                <button
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    setShowQuoteForm(false)
-                    setIsSubmitted(false)
-                    setFormData({
-                      name: '',
-                      email: '',
-                      phone: '',
-                      projectType: '',
-                      message: '',
-                      budget: ''
-                    })
-                  }}
-                  className="absolute top-4 right-4 w-10 h-10 sm:w-8 sm:h-8 flex items-center justify-center text-gray-400 hover:text-black hover:bg-gray-100 rounded-full text-xl font-light transition-all duration-200 z-50 cursor-pointer touch-manipulation"
-                >
-                  ×
-                </button>
+      {/* Qualification Result */}
+      {showResult && qualificationData && (
+        <QualificationResult
+          qualification={qualificationData.qualification}
+          leadData={qualificationData}
+          onBookCall={handleBookCall}
+          onViewResources={handleViewResources}
+          onClose={handleCloseAll}
+        />
+      )}
 
-                {/* Header */}
-                <div className="text-center mb-4">
-                  <h2 className="text-2xl font-bold mb-2 leading-tight">
-                    <span className="text-gray-500">Let's build your</span>
-                    <br />
-                    <span className="text-black">startup together</span>
-                  </h2>
-                  <p className="text-gray-600 text-xs">Ready to turn your idea into reality?</p>
-                </div>
-
-                {/* Profile */}
-                <div className="flex items-center gap-2 mb-4 p-3 bg-white/80 backdrop-blur-2xl rounded-xl border border-white/40 shadow-lg mx-auto w-fit">
-                  <RaghavAvatar
-                    size="xs"
-                    variant="square"
-                    priority={true}
-                  />
-                  <div className="flex-1">
-                    <p className="font-bold text-black text-xs">Raghav Shah</p>
-                    <p className="text-gray-600 text-[10px]">CEO, RAGSPRO</p>
-                    <p className="text-gray-500 text-[10px]">raghav@ragspro.com</p>
-                  </div>
-                </div>
-
-                {/* Thank You Message or Form */}
-                {isSubmitted ? (
-                  <div className="text-center py-8">
-                    <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-3">
-                      <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <h3 className="text-lg font-bold text-black mb-1">Thank you!</h3>
-                    <p className="text-gray-600 text-xs">We'll connect with you soon.</p>
-                  </div>
-                ) : (
-                  <form onSubmit={handleSubmit} className="space-y-3">
-                    <div className="grid grid-cols-2 gap-2">
-                      <div>
-                        <label className="block text-xs font-medium text-black mb-1">Name</label>
-                        <input
-                          type="text"
-                          placeholder="Name"
-                          value={formData.name}
-                          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-black"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-xs font-medium text-black mb-1">Phone</label>
-                        <input
-                          type="tel"
-                          placeholder="Phone"
-                          value={formData.phone}
-                          onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                          className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-black"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-black mb-1">Email</label>
-                      <input
-                        type="email"
-                        placeholder="Email"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-black"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-black mb-1">Project Type</label>
-                      <select
-                        value={formData.projectType || ''}
-                        onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-black bg-white"
-                      >
-                        <option value="">Select...</option>
-                        <option value="mobile-app">📱 Mobile App</option>
-                        <option value="web-app">💻 Web App</option>
-                        <option value="website">🌐 Website</option>
-                        <option value="ai-solution">🤖 AI Solution</option>
-                        <option value="ui-design">🎨 UI/UX Design</option>
-                        <option value="ecommerce">🛒 E-commerce</option>
-                        <option value="saas">⚡ SaaS Product</option>
-                        <option value="automation">🔧 Automation</option>
-                        <option value="other">� OtheEr</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-black mb-1">Message</label>
-                      <textarea
-                        placeholder="Describe your project..."
-                        value={formData.message}
-                        onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                        rows={3}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-black resize-none"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-medium text-black mb-1">Budget</label>
-                      <select
-                        value={formData.budget}
-                        onChange={(e) => setFormData({ ...formData, budget: e.target.value })}
-                        className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:border-black bg-white"
-                      >
-                        <option value="">Select...</option>
-                        <option value="5k-10k">₹5K - ₹10K</option>
-                        <option value="10k-25k">₹10K - ₹25K</option>
-                        <option value="25k-50k">₹25K - ₹50K</option>
-                        <option value="50k+">₹50K+</option>
-                      </select>
-                    </div>
-
-                    {/* Submit Button */}
-                    <button
-                      type="submit"
-                      className="w-full bg-black text-white py-2.5 rounded-full font-medium hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg text-sm"
-                    >
-                      Submit Request
-                    </button>
-
-                    <p className="text-[10px] text-gray-500 text-center mt-3">
-                      By submitting, you agree to our <a href="#" className="text-black underline">Privacy Policy</a> and <a href="#" className="text-black underline">Terms</a>.
-                    </p>
-                  </form>
-                )}
-              </div>
-            </motion.div>
-          </>
-        )}
-      </AnimatePresence>
+      {/* Calendar Integration */}
+      {showCalendar && qualificationData && (
+        <CalendarIntegration
+          leadData={qualificationData}
+          onClose={handleCloseAll}
+        />
+      )}
     </section>
   )
 }

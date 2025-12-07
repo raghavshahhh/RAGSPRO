@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead'
 import { useRouter } from 'next/router'
+import BlogCTA from '../../components/blog/BlogCTA'
 
 export default function AIIntegrationStartupIdeas() {
   const router = useRouter()
@@ -73,6 +74,8 @@ export default function AIIntegrationStartupIdeas() {
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               AI isn't just a buzzword anymore—it's a competitive necessity. But most founders struggle with one question: "How do I actually integrate AI into my product?" Here are 10 practical AI integration ideas we've implemented for our clients, with real examples and ROI data.
             </p>
+
+            <BlogCTA variant="default" />
 
             <h2 className="text-3xl font-bold text-black mt-12 mb-6">Why AI Integration Matters Now</h2>
             <p className="text-gray-700 mb-6 leading-relaxed">

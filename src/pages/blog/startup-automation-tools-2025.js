@@ -1,5 +1,6 @@
 import SEOHead from '../../components/SEOHead'
 import { useRouter } from 'next/router'
+import BlogCTA from '../../components/blog/BlogCTA'
 
 export default function StartupAutomationTools2025() {
   const router = useRouter()
@@ -73,6 +74,8 @@ export default function StartupAutomationTools2025() {
             <p className="text-xl text-gray-700 mb-8 leading-relaxed">
               Running a startup means wearing multiple hats. But what if you could automate 80% of your repetitive tasks and focus on what really matters—building your product and growing your business? Here are the 5 automation tools we use at RAGSPRO to run our operations efficiently.
             </p>
+
+            <BlogCTA variant="default" />
 
             <h2 className="text-3xl font-bold text-black mt-12 mb-6">Why Automation Matters for Startups</h2>
             <p className="text-gray-700 mb-6 leading-relaxed">

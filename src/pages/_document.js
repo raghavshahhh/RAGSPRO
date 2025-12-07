@@ -58,23 +58,36 @@ export default function Document() {
               "@context": "https://schema.org",
               "@type": "Organization",
               "name": "RAGSPRO",
+              "alternateName": "RAGSPRO Startup MVP Development Agency",
               "url": "https://ragspro.com",
               "logo": "https://ragspro.com/logo.png",
-              "description": "RAGSPRO helps startups build SaaS, web, and mobile apps with AI integration and business automation in just 20 days.",
+              "description": "RAGSPRO is a startup MVP development agency in Delhi, India. We help founders build revenue-ready MVPs with AI automation in 20 days.",
               "founder": {
                 "@type": "Person",
-                "name": "Raghav Shah"
+                "name": "Raghav Shah",
+                "jobTitle": "Founder & CEO"
               },
               "sameAs": [
-                "https://instagram.com/ragspro.ai",
-                "https://linkedin.com/in/bhupender-pratap",
-                "https://youtube.com/@raghavshahh"
+                "https://instagram.com/raghavshahhh",
+                "https://linkedin.com/in/raghavshahhh",
+                "https://www.youtube.com/@raghavshahh"
               ],
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Delhi",
                 "addressCountry": "India"
-              }
+              },
+              "areaServed": {
+                "@type": "Country",
+                "name": "India"
+              },
+              "knowsAbout": [
+                "MVP Development",
+                "Startup Development",
+                "AI Automation",
+                "Web Application Development",
+                "Mobile App Development"
+              ]
             })
           }}
         />
@@ -86,10 +99,10 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "LocalBusiness",
-              "name": "RAGSPRO Digital Agency",
+              "name": "RAGSPRO Startup MVP Development Agency",
               "image": "https://ragspro.com/images/logo.png",
-              "telephone": "+91-8700048490",
-              "email": "raghav@ragspro.com",
+              "telephone": "+918700048490",
+              "email": "ragsproai@gmail.com",
               "address": {
                 "@type": "PostalAddress",
                 "addressLocality": "Delhi",
@@ -103,7 +116,10 @@ export default function Document() {
               "url": "https://ragspro.com",
               "priceRange": "$$",
               "openingHours": "Mo-Fr 09:00-18:00",
-              "description": "Professional digital agency in Delhi, India. Raghav Shah and team specialize in startup development, web apps, mobile apps, and AI solutions."
+              "description": "Leading startup MVP development agency in Delhi, India. Raghav Shah and team specialize in revenue-ready MVPs, AI automation, and 20-day launches for founders.",
+              "priceRange": "₹₹₹",
+              "paymentAccepted": "Cash, Credit Card, Bank Transfer, UPI",
+              "currenciesAccepted": "INR, USD"
             })
           }}
         />
@@ -115,8 +131,8 @@ export default function Document() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Service",
-              "name": "Startup Development in 20 Days",
-              "description": "Complete startup development service including web apps, mobile apps, AI integration, and business consulting delivered in 20 days by RAGSPRO team led by Raghav Shah.",
+              "name": "Startup MVP Development in 20 Days",
+              "description": "Revenue-ready MVP development including web apps, mobile apps, AI automation, and growth funnels delivered in 20 days by RAGSPRO team led by Raghav Shah.",
               "provider": {
                 "@type": "Organization",
                 "name": "RAGSPRO",

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useState } from 'react'
 import FAQItem from './FAQItem'
 import RaghavAvatar from './RaghavAvatar'
+import ReviewSubmissionBox from './ReviewSubmissionBox'
 
 const teamMembers = [
   {
@@ -15,6 +16,52 @@ const teamMembers = [
 
 export default function TeamSection() {
   const [expandedTestimonial, setExpandedTestimonial] = useState(null)
+  const [showReviewModal, setShowReviewModal] = useState(false)
+  const [userReviews, setUserReviews] = useState([])
+  const [editingReview, setEditingReview] = useState(null)
+
+  const handleNewReview = (reviewData) => {
+    if (editingReview !== null) {
+      // Update existing review
+      setUserReviews(prev => prev.map((review, idx) => 
+        idx === editingReview 
+          ? {
+              quote: reviewData.review,
+              name: reviewData.name,
+              title: reviewData.role && reviewData.company 
+                ? `${reviewData.role} at ${reviewData.company}`
+                : reviewData.role || reviewData.company || 'Customer',
+              avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(reviewData.name)}&background=random&size=150`,
+              isUserReview: true
+            }
+          : review
+      ))
+      setEditingReview(null)
+    } else {
+      // Add new review
+      const newReview = {
+        quote: reviewData.review,
+        name: reviewData.name,
+        title: reviewData.role && reviewData.company 
+          ? `${reviewData.role} at ${reviewData.company}`
+          : reviewData.role || reviewData.company || 'Customer',
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(reviewData.name)}&background=random&size=150`,
+        isUserReview: true
+      }
+      setUserReviews(prev => [newReview, ...prev])
+    }
+  }
+
+  const handleDeleteReview = (index) => {
+    if (window.confirm('Are you sure you want to delete this review?')) {
+      setUserReviews(prev => prev.filter((_, idx) => idx !== index))
+    }
+  }
+
+  const handleEditReview = (index) => {
+    setEditingReview(index)
+    setShowReviewModal(true)
+  }
 
   const testimonials = [
     {
@@ -112,7 +159,7 @@ export default function TeamSection() {
                 </a>
 
                 <a 
-                  href="https://linkedin.com/in/bhupender-pratap" 
+                  href="https://linkedin.com/in/raghavshahhh" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -123,7 +170,18 @@ export default function TeamSection() {
                 </a>
 
                 <a 
-                  href="https://youtube.com/@raghavshahh" 
+                  href="https://github.com/raghavshahhh" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
+                >
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                </a>
+
+                <a 
+                  href="https://www.youtube.com/@raghavshahh" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -181,7 +239,7 @@ export default function TeamSection() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8 max-w-5xl">
-            {[
+            {[...userReviews, 
               {
                 quote: "RAGSPRO's web development team helped us build our startup app in record time. My business was struggling to get online presence, and they really helped me establish digital presence and started generating leads consistently.",
                 name: "Rajesh Kumar",
@@ -211,18 +269,36 @@ export default function TeamSection() {
                 name: "Vikram Mehta",
                 title: "CEO of Business Solutions",
                 avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face"
-              },
-              {
-                quote: "RAGSPRO delivered an exceptional e-commerce platform for my business. Their attention to detail and quick turnaround time exceeded my expectations. Highly professional team!",
-                name: "Ananya Gupta",
-                title: "Founder of StyleHub",
-                avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
               }
             ].map((testimonial, index) => (
               <div
                 key={index}
-                className="bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg border border-white/30 hover:shadow-xl hover:bg-white/85 transition-all max-w-xs"
+                className="bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg border border-white/30 hover:shadow-xl hover:bg-white/85 transition-all max-w-xs relative"
               >
+                {/* Edit/Delete buttons for user reviews */}
+                {testimonial.isUserReview && index < userReviews.length && (
+                  <div className="absolute top-2 right-2 flex gap-1">
+                    <button
+                      onClick={() => handleEditReview(index)}
+                      className="p-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-full transition-colors"
+                      title="Edit review"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </button>
+                    <button
+                      onClick={() => handleDeleteReview(index)}
+                      className="p-1.5 bg-red-500 hover:bg-red-600 text-white rounded-full transition-colors"
+                      title="Delete review"
+                    >
+                      <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                      </svg>
+                    </button>
+                  </div>
+                )}
+
                 {/* Black Stars */}
                 <div className="flex gap-0.5 mb-3">
                   {[...Array(5)].map((_, i) => (
@@ -256,7 +332,28 @@ export default function TeamSection() {
               </div>
             ))}
           </div>
+
+          {/* Write a Review Button - Centered */}
+          <div className="flex justify-center mt-12">
+            <button
+              onClick={() => setShowReviewModal(true)}
+              className="bg-black text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+            >
+              Write a Review
+            </button>
+          </div>
         </div>
+
+        {/* Review Submission Modal */}
+        <ReviewSubmissionBox 
+          isOpen={showReviewModal} 
+          onClose={() => {
+            setShowReviewModal(false)
+            setEditingReview(null)
+          }}
+          onReviewSubmit={handleNewReview}
+          editData={editingReview !== null ? userReviews[editingReview] : null}
+        />
 
         {/* FAQ Section */}
         <div className="mt-72">

@@ -4,6 +4,42 @@ import { useRouter } from 'next/router'
 const blogPosts = [
   {
     id: 1,
+    title: "Best AI Automation Services for Startups in India 2025",
+    excerpt: "Complete guide to AI automation services. ChatGPT integration, workflow automation, and AI-powered features for Indian startups.",
+    date: "2025-02-04",
+    slug: "ai-automation-services-startups-india",
+    category: "AI Services",
+    readTime: "16 min read"
+  },
+  {
+    id: 2,
+    title: "20-Day Startup Launch: Complete Case Study - From Idea to ₹1.5L MRR",
+    excerpt: "Real case study of LAW-AI: How we built and launched a legal tech startup in 20 days with complete timeline and results.",
+    date: "2025-02-03",
+    slug: "20-day-startup-launch-case-study",
+    category: "Case Study",
+    readTime: "18 min read"
+  },
+  {
+    id: 3,
+    title: "How Much Does MVP Development Cost in India? (2025 Pricing Guide)",
+    excerpt: "Complete breakdown of MVP development costs in India. Compare pricing, hidden costs, and get transparent quotes.",
+    date: "2025-02-02",
+    slug: "mvp-cost-india",
+    category: "Pricing",
+    readTime: "12 min read"
+  },
+  {
+    id: 4,
+    title: "Best MVP Development Agency in India 2025 - Complete Comparison",
+    excerpt: "Compare top MVP agencies in India. Pricing, timelines, and real results. Find the best agency for your startup.",
+    date: "2025-02-01",
+    slug: "best-mvp-agency-india",
+    category: "Comparison",
+    readTime: "15 min read"
+  },
+  {
+    id: 5,
     title: "How to Build a SaaS App in 20 Days (Step-by-Step Guide)",
     excerpt: "Learn our proven methodology for rapid SaaS development that helps startups launch faster and cheaper.",
     date: "2025-01-25",
@@ -12,7 +48,7 @@ const blogPosts = [
     readTime: "8 min read"
   },
   {
-    id: 2,
+    id: 6,
     title: "Top 5 Startup Automation Tools in 2025",
     excerpt: "Discover the best automation tools that can streamline your startup operations and boost productivity.",
     date: "2025-01-20",
@@ -21,7 +57,7 @@ const blogPosts = [
     readTime: "6 min read"
   },
   {
-    id: 3,
+    id: 7,
     title: "AI Integration Ideas for Founders in 2025",
     excerpt: "Practical AI integration strategies that can give your startup a competitive edge in the market.",
     date: "2025-01-15",
@@ -30,7 +66,7 @@ const blogPosts = [
     readTime: "10 min read"
   },
   {
-    id: 4,
+    id: 8,
     title: "Our 20-Day MVP Launch Process",
     excerpt: "Behind the scenes look at how RAGSPRO delivers complete MVPs in just 20 days for startups.",
     date: "2025-01-10",

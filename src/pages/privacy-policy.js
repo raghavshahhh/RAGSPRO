@@ -70,8 +70,8 @@ export default function PrivacyPolicy() {
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p className="text-gray-700">
                     <strong>RAGSPRO</strong><br />
-                    Email: raghav@ragspro.com<br />
-                    Phone: +91 8700048490<br />
+                    Email: ragsproai@gmail.com<br />
+                    Phone: +918700048490<br />
                     Address: Delhi, India
                   </p>
                 </div>

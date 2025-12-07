@@ -43,11 +43,11 @@ export default function PricingSection() {
 
   const features = [
     'Custom Development',
-    'UI/UX Design',
-    'Mobile Responsive',
-    'API Integration',
-    'Database Setup',
-    'Deployment & Support'
+    'Professional Design',
+    'Mobile & Web Ready',
+    'AI Integration',
+    'Growth Analytics',
+    '20-Day Launch'
   ]
 
   return (
@@ -62,12 +62,12 @@ export default function PricingSection() {
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
                 <div className="ml-8">
                   <h2 className="text-4xl lg:text-5xl font-medium leading-tight">
-                    Simple Pricing, Clear Costs
+                    Development Packages
                   </h2>
                   <div className="text-2xl lg:text-3xl font-medium leading-tight mt-4">
-                    <div className="text-gray-500">Simple pricing.</div>
+                    <div className="text-gray-500">Transparent pricing.</div>
                     <div className="relative text-black">
-                      Standout SaaS.
+                      Professional solutions.
                       <div className="absolute inset-0 bg-gray-200 -z-10 rounded-lg transform -rotate-1 opacity-60"></div>
                     </div>
                   </div>
@@ -138,7 +138,7 @@ export default function PricingSection() {
                   </div>
                   
                   <div className="relative z-10">
-                    <p className="text-white text-base font-semibold leading-relaxed">Development services for people who move fast.</p>
+                    <p className="text-white text-base font-semibold leading-relaxed">Professional development for businesses that move fast.</p>
                   </div>
                 </div>
 
@@ -150,8 +150,8 @@ export default function PricingSection() {
                 
                 {/* Main Content */}
                 <div>
-                  <h3 className="text-xl font-semibold text-black mb-4">Hire us today</h3>
-                  <p className="text-base text-gray-600 leading-relaxed">Skip the typical agency markup and work directly with a team of experienced developers.</p>
+                  <h3 className="text-xl font-semibold text-black mb-4">Launch Your Project Today</h3>
+                  <p className="text-base text-gray-600 leading-relaxed">Work directly with experienced developers. No agency markup, just results.</p>
                 </div>
               </div>
             </div>
@@ -160,17 +160,17 @@ export default function PricingSection() {
           {/* Right Column - Pricing Card */}
           <div className="space-y-6 mt-28">
             <div className="text-gray-600 text-lg md:text-xl font-medium leading-relaxed -mt-28 ml-0 md:ml-8 text-center md:text-left">
-              <div>Clear costs, no hidden fees.</div>
-              <div>Select from monthly subscriptions or</div>
-              <div>individual project rates.</div>
+              <div>Transparent pricing, no surprises.</div>
+              <div>Launch your professional website</div>
+              <div>in just 20 days.</div>
             </div>
             
             <div className="bg-white rounded-[28px] p-6 shadow-xl border border-gray-100 max-w-md mx-auto mt-16">
             <div className="space-y-6">
               <div className="flex justify-between items-start">
                 <div>
-                  <h3 className="text-2xl font-extrabold text-black">Build Your App</h3>
-                  <p className="text-xs text-gray-500 mt-1">Different apps would have different levels of complexity. Consult us about pricing with your specific requirements.</p>
+                  <h3 className="text-2xl font-extrabold text-black">Professional Development</h3>
+                  <p className="text-xs text-gray-500 mt-1">Custom development solutions with transparent pricing. Get your project to market in 20 days.</p>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-gray-400">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 5v14" stroke="#d1d5db" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -180,7 +180,7 @@ export default function PricingSection() {
               <div className="py-6 border-t border-b border-gray-100">
                 <div className="text-center">
                   <div className="text-3xl lg:text-4xl font-extrabold mb-2">Starting from ₹10K</div>
-                  <div className="text-xs text-gray-500">Different apps would have different levels of complexity.</div>
+                  <div className="text-xs text-gray-500">Transparent pricing based on project complexity and features.</div>
                 </div>
               </div>
 
@@ -197,18 +197,14 @@ export default function PricingSection() {
               </div>
 
               <div>
-                <button
-                  onClick={() => {
-                    const event = new CustomEvent('openQuoteForm')
-                    window.dispatchEvent(event)
-                  }}
+                <a
+                  href="/pricing"
                   onMouseEnter={() => setIsHovered(true)}
                   onMouseLeave={() => setIsHovered(false)}
-                  className="inline-flex items-center gap-3 bg-black text-white px-5 py-2 rounded-full font-semibold text-sm shadow-lg hover:scale-105 transition-transform duration-300"
+                  className="inline-flex items-center gap-3 bg-black text-white px-6 py-3 rounded-full font-semibold text-sm shadow-lg hover:scale-105 transition-transform duration-300"
                 >
-                  <span className="bg-white text-black rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">$</span>
-                  Get Started
-                </button>
+                  View Pricing
+                </a>
               </div>
             </div>
             </div>

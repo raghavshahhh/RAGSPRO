@@ -2,92 +2,113 @@
 import { useEffect, useState, useRef } from 'react'
 
 export default function CustomCursor() {
-  const [dotPosition, setDotPosition] = useState({ x: 0, y: 0 })
+  const [isMobile, setIsMobile] = useState(false)
   const [isHovering, setIsHovering] = useState(false)
   const [isTextHovering, setIsTextHovering] = useState(false)
   const [isProjectHovering, setIsProjectHovering] = useState(false)
   const [isTestimonialHovering, setIsTestimonialHovering] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
-  const animationRef = useRef()
-  const cursorRef = useRef({ x: 0, y: 0 })
+  
+  const dotRef = useRef(null)
+  const positionRef = useRef({ x: 0, y: 0 })
+  const targetRef = useRef({ x: 0, y: 0 })
+  const rafRef = useRef(null)
 
   useEffect(() => {
     // Check if device is mobile
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || 'ontouchstart' in window)
+      const mobile = window.innerWidth < 768 || 'ontouchstart' in window
+      setIsMobile(mobile)
     }
     
     checkMobile()
     window.addEventListener('resize', checkMobile)
 
-    const updateCursor = (e) => {
-      cursorRef.current = { x: e.clientX, y: e.clientY }
+    if (isMobile) {
+      return () => window.removeEventListener('resize', checkMobile)
     }
 
+    const dot = dotRef.current
+    if (!dot) return
+
+    // Update target position on mouse move
+    const handleMouseMove = (e) => {
+      targetRef.current = { x: e.clientX, y: e.clientY }
+    }
+
+    // Smooth animation loop using RAF - slower follow for magnet effect
     const animate = () => {
-      setDotPosition(prev => {
-        const dx = cursorRef.current.x - prev.x
-        const dy = cursorRef.current.y - prev.y
+      const dx = targetRef.current.x - positionRef.current.x
+      const dy = targetRef.current.y - positionRef.current.y
+      
+      // Slower easing for magnet effect (0.15 instead of 0.2)
+      positionRef.current.x += dx * 0.15
+      positionRef.current.y += dy * 0.15
+
+      // Update DOM directly for better performance
+      if (dot) {
+        const size = isHovering ? 24 : isTextHovering ? 12 : 16
+        const offset = size / 2
         
-        return {
-          x: prev.x + dx * 0.15, // Slower follow speed
-          y: prev.y + dy * 0.15
+        dot.style.transform = `translate3d(${positionRef.current.x - offset}px, ${positionRef.current.y - offset}px, 0)`
+      }
+
+      rafRef.current = requestAnimationFrame(animate)
+    }
+
+    // Hover detection with throttling
+    let hoverTimeout
+    const handleMouseOver = (e) => {
+      if (hoverTimeout) clearTimeout(hoverTimeout)
+      
+      hoverTimeout = setTimeout(() => {
+        const target = e.target
+        
+        if (target.closest('.testimonial-area') || target.closest('[data-testimonial]')) {
+          setIsTestimonialHovering(true)
+          setIsProjectHovering(false)
+          setIsHovering(false)
+          setIsTextHovering(false)
+        } else if (target.closest('.project-card') || target.dataset.project || target.closest('.group')) {
+          setIsProjectHovering(true)
+          setIsHovering(false)
+          setIsTextHovering(false)
+          setIsTestimonialHovering(false)
+        } else if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.closest('button') || target.closest('a') || target.closest('input') || target.closest('textarea') || target.closest('select')) {
+          setIsHovering(true)
+          setIsTextHovering(false)
+          setIsProjectHovering(false)
+          setIsTestimonialHovering(false)
+        } else if (target.tagName === 'H1' || target.tagName === 'H2' || target.tagName === 'H3' || target.tagName === 'P' || target.tagName === 'SPAN') {
+          setIsTextHovering(true)
+          setIsHovering(false)
+          setIsProjectHovering(false)
+          setIsTestimonialHovering(false)
+        } else {
+          setIsHovering(false)
+          setIsTextHovering(false)
+          setIsProjectHovering(false)
+          setIsTestimonialHovering(false)
         }
-      })
-      animationRef.current = requestAnimationFrame(animate)
+      }, 10)
     }
+
+    document.addEventListener('mousemove', handleMouseMove, { passive: true })
+    document.addEventListener('mouseover', handleMouseOver, { passive: true })
     
-    animate()
-
-    const handleMouseEnter = (e) => {
-      if (e.target.closest('.testimonial-area') || e.target.closest('[data-testimonial]')) {
-        setIsTestimonialHovering(true)
-        setIsProjectHovering(false)
-        setIsHovering(false)
-        setIsTextHovering(false)
-      } else if (e.target.closest('.project-card') || e.target.dataset.project || e.target.closest('.group')) {
-        setIsProjectHovering(true)
-        setIsHovering(false)
-        setIsTextHovering(false)
-        setIsTestimonialHovering(false)
-      } else if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
-        setIsHovering(true)
-        setIsTextHovering(false)
-        setIsProjectHovering(false)
-        setIsTestimonialHovering(false)
-      } else if (e.target.tagName === 'H1' || e.target.tagName === 'H2' || e.target.tagName === 'H3' || e.target.tagName === 'P' || e.target.tagName === 'SPAN') {
-        setIsTextHovering(true)
-        setIsHovering(false)
-        setIsProjectHovering(false)
-        setIsTestimonialHovering(false)
-      }
-    }
-
-    const handleMouseLeave = (e) => {
-      if (e.target.closest('.testimonial-area') || e.target.closest('[data-testimonial]')) {
-        setIsTestimonialHovering(false)
-      } else if (e.target.closest('.project-card') || e.target.dataset.project || e.target.closest('.group')) {
-        setIsProjectHovering(false)
-      } else if (e.target.tagName === 'BUTTON' || e.target.tagName === 'A' || e.target.closest('button') || e.target.closest('a')) {
-        setIsHovering(false)
-      } else if (e.target.tagName === 'H1' || e.target.tagName === 'H2' || e.target.tagName === 'H3' || e.target.tagName === 'P' || e.target.tagName === 'SPAN') {
-        setIsTextHovering(false)
-      }
-    }
-
-    document.addEventListener('mousemove', updateCursor)
-    document.addEventListener('mouseenter', handleMouseEnter, true)
-    document.addEventListener('mouseleave', handleMouseLeave, true)
+    rafRef.current = requestAnimationFrame(animate)
 
     return () => {
-      document.removeEventListener('mousemove', updateCursor)
-      document.removeEventListener('mouseenter', handleMouseEnter, true)
-      document.removeEventListener('mouseleave', handleMouseLeave, true)
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
+      document.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('mouseover', handleMouseOver)
+      window.removeEventListener('resize', checkMobile)
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+      if (hoverTimeout) {
+        clearTimeout(hoverTimeout)
       }
     }
-  }, [])
+  }, [isMobile, isHovering, isTextHovering, isProjectHovering, isTestimonialHovering])
 
   // Don't render cursor on mobile devices
   if (isMobile) {
@@ -96,33 +117,41 @@ export default function CustomCursor() {
 
   return (
     <>
-      {/* Hide default cursor and show custom cursor */}
+      {/* Show normal cursor + custom dot following it */}
       <style jsx global>{`
+        /* Keep normal cursor visible */
         * {
-          cursor: none !important;
+          cursor: auto !important;
         }
         body {
-          cursor: none !important;
+          cursor: auto !important;
+        }
+        /* Specific cursor types */
+        button, a, [role="button"] {
+          cursor: pointer !important;
+        }
+        input, textarea, select {
+          cursor: text !important;
         }
       `}</style>
       
-      {/* Black dot - piche rakha gaya */}
+      {/* Custom cursor dot - follows normal cursor with delay (magnet effect) */}
       <div
-        id="cursor-dot"
-        className={`fixed pointer-events-none z-[9998] mix-blend-difference ${
+        ref={dotRef}
+        className={`fixed pointer-events-none z-[9999] will-change-transform transition-all duration-200 ease-out ${
           isTestimonialHovering
-            ? 'bg-white/90 backdrop-blur-md text-black px-4 py-2 rounded-full text-sm font-medium flex items-center justify-center whitespace-nowrap'
+            ? 'bg-white/90 backdrop-blur-md text-black px-4 py-2 rounded-full text-sm font-medium flex items-center justify-center whitespace-nowrap shadow-lg'
             : isProjectHovering 
-            ? 'bg-white/90 backdrop-blur-md text-black px-4 py-2 rounded-full text-sm font-medium flex items-center justify-center whitespace-nowrap'
+            ? 'bg-white/90 backdrop-blur-md text-black px-4 py-2 rounded-full text-sm font-medium flex items-center justify-center whitespace-nowrap shadow-lg'
             : isHovering 
-            ? 'w-6 h-6 bg-white rounded-full'
+            ? 'w-6 h-6 bg-black rounded-full'
             : isTextHovering
-            ? 'w-3 h-3 bg-white rounded-full'
-            : 'w-4 h-4 bg-white rounded-full'
+            ? 'w-3 h-3 bg-black rounded-full'
+            : 'w-4 h-4 bg-black rounded-full'
         }`}
         style={{
-          left: isTestimonialHovering ? dotPosition.x - 50 : isProjectHovering ? dotPosition.x - 45 : dotPosition.x - (isHovering ? 12 : isTextHovering ? 6 : 8) + 5, // cursor ke end ke paas
-          top: isTestimonialHovering ? dotPosition.y - 12 : isProjectHovering ? dotPosition.y - 12 : dotPosition.y - (isHovering ? 12 : isTextHovering ? 6 : 8) + 30 // cursor ke end se aur niche
+          left: 0,
+          top: 0
         }}
       >
         {isTestimonialHovering && 'Testimonials'}

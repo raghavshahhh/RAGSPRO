@@ -72,10 +72,10 @@ export default function Footer() {
           <div className="text-left">
             <h3 className="text-[#888888] text-[11px] mb-3 uppercase tracking-wide font-medium">Contact</h3>
             <a
-              href="mailto:raghav@ragspro.com"
+              href="mailto:ragsproai@gmail.com"
               className="text-[#FFFFFF] text-[18px] font-normal hover:text-[#888888] transition-colors duration-300 block"
             >
-              raghav@ragspro.com
+              ragsproai@gmail.com
             </a>
           </div>
 
@@ -147,7 +147,7 @@ export default function Footer() {
 
           {/* LinkedIn */}
           <a
-            href="https://www.linkedin.com/in/bhupederpratap"
+            href="https://linkedin.com/in/raghavshahhh"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-[#888888] transition-colors duration-300"
