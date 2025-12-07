@@ -126,10 +126,10 @@ export default function HeroSection() {
             </h1>
 
             {/* Subheading */}
-            <h2 className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-600 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2 font-normal">
+            <h2 className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2 font-normal">
               Revenue-focused web apps, funnels & AI automations for founders who need users, not pretty dashboards.
             </h2>
-            <p className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-600 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2">
+            <p className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2">
               <span className="text-black font-semibold">Yes, it's true.</span> RAGSPRO helps startup founders build complete revenue-ready products with AI integration & business automation — all within 20 days. End-to-end development by Raghav Shah, your trusted startup growth partner.
             </p>
 
@@ -146,18 +146,24 @@ export default function HeroSection() {
                 {/* User 1 Circle */}
                 <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="User 1"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="32"
+                    height="32"
                   />
                 </div>
 
                 {/* User 2 Circle */}
                 <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="User 2"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="32"
+                    height="32"
                   />
                 </div>
 
@@ -175,37 +181,52 @@ export default function HeroSection() {
               <div className="flex -space-x-0.5">
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 1"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="20"
+                    height="20"
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 2"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="20"
+                    height="20"
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 3"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="20"
+                    height="20"
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 4"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="20"
+                    height="20"
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face"
+                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 5"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    width="20"
+                    height="20"
                   />
                 </div>
               </div>
@@ -223,7 +244,7 @@ export default function HeroSection() {
                     <span key={i} className="text-black hover:scale-110 transition-transform text-[8px] sm:text-[5px] md:text-[6px] lg:text-[8px]">★</span>
                   ))}
                 </div>
-                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-600 font-medium -mt-8 sm:mt-0">50+ Startup Founders</p>
+                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-700 font-medium -mt-8 sm:mt-0">50+ Startup Founders</p>
               </div>
             </div>
 
@@ -307,6 +328,9 @@ export default function HeroSection() {
                       alt={`${project.name} - SaaS built by RAGSPRO`}
                       fill
                       className="object-cover"
+                      priority={index < 2}
+                      quality={75}
+                      sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, (max-width: 1024px) 280px, 450px"
                     />
                   </motion.div>
                   <div className="absolute bottom-0.5 sm:bottom-1 md:bottom-2 lg:bottom-3 left-0.5 sm:left-1 md:left-2 lg:left-3 right-0.5 sm:right-1 md:right-2 lg:right-3">
@@ -353,7 +377,7 @@ export default function HeroSection() {
           }}
         >
           {/* Tech logos */}
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" />
           <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" />
@@ -422,6 +446,9 @@ export default function HeroSection() {
                 src={project.image}
                 alt={project.name}
                 className="w-full h-full object-cover group-active:scale-110 transition-transform duration-200"
+                loading="lazy"
+                width="200"
+                height="112"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
                 <p className="text-white text-xs font-semibold truncate">{project.name}</p>

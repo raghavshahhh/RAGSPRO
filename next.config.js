@@ -1,3 +1,5 @@
+const crypto = require('crypto')
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -9,9 +11,10 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    domains: ['images.unsplash.com', 'cdn.jsdelivr.net'],
   },
   
   // Compression
@@ -41,27 +44,56 @@ const nextConfig = {
       // Aggressive chunk splitting
       config.optimization.splitChunks = {
         chunks: 'all',
-        minSize: 10000,
-        maxSize: 100000,
+        minSize: 20000,
+        maxSize: 244000,
         cacheGroups: {
-          vendor: {
-            test: /[\\/]node_modules[\\/]/,
-            name: 'vendors',
+          default: false,
+          vendors: false,
+          framework: {
+            name: 'framework',
             chunks: 'all',
-            priority: 10,
+            test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
+            priority: 40,
+            enforce: true,
           },
-          common: {
-            name: 'common',
+          lib: {
+            test(module) {
+              return module.size() > 160000 && /node_modules[/\\]/.test(module.identifier())
+            },
+            name(module) {
+              const hash = crypto.createHash('sha1')
+              hash.update(module.identifier())
+              return hash.digest('hex').substring(0, 8)
+            },
+            priority: 30,
+            minChunks: 1,
+            reuseExistingChunk: true,
+          },
+          commons: {
+            name: 'commons',
             minChunks: 2,
-            chunks: 'all',
-            priority: 5,
+            priority: 20,
+          },
+          shared: {
+            name(module, chunks) {
+              return crypto
+                .createHash('sha1')
+                .update(chunks.reduce((acc, chunk) => acc + chunk.name, ''))
+                .digest('hex') + (module.type === 'css/mini-extract' ? '_CSS' : '')
+            },
+            priority: 10,
+            minChunks: 2,
+            reuseExistingChunk: true,
           },
         },
+        maxInitialRequests: 25,
+        minSize: 20000,
       };
       
       // Tree shaking optimization
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
+      config.optimization.minimize = true;
     }
     return config;
   },

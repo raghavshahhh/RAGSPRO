@@ -43,15 +43,22 @@ export default function Document() {
         <link rel="prefetch" href="/images/raghav-profile.jpg" />
         <link rel="prefetch" href="/images/projects/glow.png" />
         
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+        {/* Google Analytics - Deferred */}
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-XXXXXXXXXX');
+              window.addEventListener('load', function() {
+                setTimeout(function() {
+                  var script = document.createElement('script');
+                  script.async = true;
+                  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX';
+                  document.head.appendChild(script);
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', 'G-XXXXXXXXXX');
+                }, 3000);
+              });
             `,
           }}
         />
