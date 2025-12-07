@@ -20,8 +20,6 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     scrollRestoration: true,
-    optimizeCss: true,
-    optimizePackageImports: ['react-icons', 'framer-motion'],
   },
   
   // Production optimizations
@@ -71,12 +69,7 @@ const nextConfig = {
   // Compiler options for modern browsers
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
-    reactRemoveProperties: process.env.NODE_ENV === 'production',
-    styledComponents: false,
   },
-  
-  // Output standalone for better performance
-  output: 'standalone',
   
   // SEO and Security Headers with Performance
   async headers() {
