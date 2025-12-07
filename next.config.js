@@ -3,16 +3,30 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
-  // Image optimization
+  // Image optimization - OPTIMIZED FOR PERFORMANCE
   images: {
-    unoptimized: true,
-    formats: ['image/webp', 'image/avif'],
+    unoptimized: false, // Enable Next.js image optimization
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 60,
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
+  
+  // Compression
+  compress: true,
   
   // Performance optimizations
   experimental: {
     scrollRestoration: true,
+    optimizeCss: true,
+    optimizePackageImports: ['react-icons', 'framer-motion'],
   },
+  
+  // Production optimizations
+  productionBrowserSourceMaps: false,
+  poweredByHeader: false,
   
   // Webpack optimizations for performance
   webpack: (config, { dev, isServer }) => {
@@ -57,13 +71,18 @@ const nextConfig = {
   // Compiler options for modern browsers
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
+    reactRemoveProperties: process.env.NODE_ENV === 'production',
+    styledComponents: false,
   },
   
-  // SEO and Security Headers
+  // Output standalone for better performance
+  output: 'standalone',
+  
+  // SEO and Security Headers with Performance
   async headers() {
     return [
       {
-        source: '/(.*)',
+        source: '/:path*',
         headers: [
           {
             key: 'X-Frame-Options',
@@ -84,6 +103,29 @@ const nextConfig = {
           {
             key: 'X-Robots-Tag',
             value: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1',
+          },
+          // Performance headers
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/_next/static/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
           },
         ],
       },

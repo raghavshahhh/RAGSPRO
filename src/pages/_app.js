@@ -1,22 +1,31 @@
 import '../styles/globals.css'
-import { useEffect } from 'react'
+import { useEffect, lazy, Suspense } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import MobilePerformanceOptimizer from '../components/MobilePerformanceOptimizer'
-import CustomCursor from '../components/CustomCursor'
-import SmoothScroll from '../components/SmoothScroll'
+
+// Lazy load heavy components
+const CustomCursor = lazy(() => import('../components/CustomCursor'))
+const SmoothScroll = lazy(() => import('../components/SmoothScroll'))
+
 import { initProjectsAnimation } from '../utils/projectsAnimation'
 
 export default function App({ Component, pageProps, router }) {
   useEffect(() => {
-    // Add custom cursor class to body
-    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-      document.body.classList.add('custom-cursor-active')
-    }
+    // Performance optimization - defer non-critical operations
+    const timeoutId = setTimeout(() => {
+      // Add custom cursor class to body
+      if (typeof window !== 'undefined' && window.innerWidth >= 768) {
+        document.body.classList.add('custom-cursor-active')
+      }
+    }, 100)
 
-    // Initialize floating projects animation
-    const cleanup = initProjectsAnimation();
+    // Initialize floating projects animation - deferred
+    let cleanup
+    const animationTimeout = setTimeout(() => {
+      cleanup = initProjectsAnimation()
+    }, 500);
     
     // Reveal animations on scroll
     const handleScroll = () => {
