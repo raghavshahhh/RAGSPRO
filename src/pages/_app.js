@@ -4,6 +4,8 @@ import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import MobilePerformanceOptimizer from '../components/MobilePerformanceOptimizer'
+import PerformanceOptimizer from '../components/PerformanceOptimizer'
+import AccessibilityOptimizer from '../components/AccessibilityOptimizer'
 import CustomCursor from '../components/CustomCursor'
 import SmoothScroll from '../components/SmoothScroll'
 import { initProjectsAnimation } from '../utils/projectsAnimation'
@@ -48,6 +50,8 @@ export default function App({ Component, pageProps, router }) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
       </Head>
+      <PerformanceOptimizer />
+      <AccessibilityOptimizer />
       <SmoothScroll>
         <CustomCursor />
         <MobilePerformanceOptimizer />
