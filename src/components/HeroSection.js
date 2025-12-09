@@ -253,6 +253,8 @@ export default function HeroSection() {
 
           {/* Right Column - Floating Project Cards - Hidden on Mobile */}
           <div className="relative w-full h-[200px] sm:h-[180px] md:h-[240px] lg:h-[350px] xl:h-[600px] pt-1 sm:pt-2 md:pt-4 hidden md:block" style={{ perspective: '1500px', zIndex: 1000 }}>
+            {/* Placeholder for faster perceived loading */}
+            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl animate-pulse" style={{ zIndex: 1 }}></div>
             {projects.map((project, index) => {
               // Use state-based mobile detection
               const isTablet = typeof window !== 'undefined' && window.innerWidth < 1024
@@ -433,28 +435,33 @@ export default function HeroSection() {
         Our Latest Projects
       </h2>
 
-      {/* Static Project Cards for Mobile */}
+      {/* Static Project Cards for Mobile - Optimized */}
       <div className="block sm:hidden px-4 mt-6">
         <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
           {projects.slice(0, 4).map((project, index) => (
             <div
               key={project.id}
               onClick={() => handleProjectClick(project.url)}
-              className="w-full h-24 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-white relative group active:scale-95 transition-transform duration-200"
+              className="w-full h-24 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200"
             >
+              {/* Placeholder background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse"></div>
+              
+              {/* Optimized image for mobile */}
               <img
-                src={project.image}
+                src={`${project.image}?w=400&q=60&fm=webp&auto=format,compress`}
                 alt={project.name}
-                className="w-full h-full object-cover group-active:scale-110 transition-transform duration-200"
+                className="w-full h-full object-cover group-active:scale-110 transition-transform duration-200 relative z-10"
                 loading="lazy"
+                decoding="async"
                 width="200"
                 height="112"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 z-20">
                 <p className="text-white text-xs font-semibold truncate">{project.name}</p>
               </div>
               {/* Click indicator */}
-              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-active:opacity-100 transition-opacity duration-200">
+              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-active:opacity-100 transition-opacity duration-200 z-20">
                 <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>

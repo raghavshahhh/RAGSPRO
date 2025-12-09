@@ -45,6 +45,28 @@ body {
   overflow-x: hidden;
 }
 
+/* Mobile-first image optimization */
+@media (max-width: 768px) {
+  img {
+    content-visibility: auto;
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+  
+  /* Reduce animations on mobile */
+  * {
+    animation-duration: 0.15s !important;
+    transition-duration: 0.1s !important;
+  }
+  
+  /* Optimize scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+  }
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-weight: 700;
