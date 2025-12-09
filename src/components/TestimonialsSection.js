@@ -101,6 +101,9 @@ export default function TestimonialsSection() {
                     src={testimonial.avatar}
                     alt={testimonial.author}
                     className="w-10 h-10 rounded-full object-cover"
+                    loading="lazy"
+                    width="40"
+                    height="40"
                   />
                   <div>
                     <h4 className="font-semibold text-black text-sm">{testimonial.author}</h4>
@@ -133,6 +136,9 @@ export default function TestimonialsSection() {
                   src={testimonial.avatar}
                   alt={testimonial.author}
                   className="w-12 h-12 rounded-full object-cover"
+                  loading="lazy"
+                  width="48"
+                  height="48"
                 />
                 <div>
                   <h4 className="font-semibold text-black">{testimonial.author}</h4>
