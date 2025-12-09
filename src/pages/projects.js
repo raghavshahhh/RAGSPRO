@@ -90,7 +90,7 @@ export default function AllProjects() {
       image: '/images/projects/raghav-portfolio.jpg',
       description: 'Personal portfolio website showcasing projects, skills and professional experience with modern design.',
       technologies: ['Next.js', 'React', 'TailwindCSS', 'Three.js'],
-      liveLink: 'https://raghav-portfolio.vercel.app',
+      liveLink: 'https://raghav.ragspro.com',
       githubLink: 'https://github.com/raghavshahhh/Raghav'
     },
     {
