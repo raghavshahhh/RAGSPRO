@@ -55,6 +55,36 @@ export default function AllProjects() {
     },
     {
       id: 3,
+      title: 'Subtitle Generator - AI Video Tool',
+      category: ['web', 'ai'],
+      image: '/images/projects/subtitle.jpg',
+      description: 'AI-powered subtitle generation tool for videos with automatic transcription and translation capabilities.',
+      technologies: ['Next.js', 'AI/ML', 'FFmpeg', 'Speech Recognition'],
+      liveLink: 'https://subtitle-generator.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/subtitle'
+    },
+    {
+      id: 4,
+      title: 'Restaurant Website - Modern Design',
+      category: ['web', 'design'],
+      image: '/images/projects/restaurant.jpg',
+      description: 'Beautiful and modern restaurant website with menu showcase, online ordering and reservation system.',
+      technologies: ['Next.js', 'React', 'TailwindCSS', 'Framer Motion'],
+      liveLink: 'https://v0-restaurant.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/v0-restaurant-website-design'
+    },
+    {
+      id: 5,
+      title: 'Raghav Portfolio - Personal Brand',
+      category: ['web', 'design'],
+      image: '/images/projects/raghav-portfolio.jpg',
+      description: 'Personal portfolio website showcasing projects, skills and professional experience with modern design.',
+      technologies: ['Next.js', 'React', 'TailwindCSS', 'Three.js'],
+      liveLink: 'https://raghav-portfolio.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/Raghav'
+    },
+    {
+      id: 6,
       title: 'Maid Agency - Service Booking Platform',
       category: ['web', 'design'],
       image: '/images/projects/maid.jpg',
@@ -64,7 +94,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/raghavshahhh/maidagency'
     },
     {
-      id: 4,
+      id: 7,
       title: 'LAWAI - Legal AI Assistant',
       category: ['web', 'ai'],
       image: '/images/projects/lawai.jpg',
@@ -74,7 +104,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/lawai-legal-assistant'
     },
     {
-      id: 5,
+      id: 8,
       title: 'Main - 3D Portfolio Website',
       category: ['web', 'design'],
       image: '/images/projects/main.jpg',
@@ -84,7 +114,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/main'
     },
     {
-      id: 6,
+      id: 9,
       title: 'GLOW - AI Photo Transformation',
       category: ['ai', 'web'],
       image: '/images/projects/glow.png',
@@ -94,7 +124,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/glow-ai'
     },
     {
-      id: 7,
+      id: 10,
       title: 'SAPD - Coaching Institute Management',
       category: ['web'],
       image: '/images/projects/sapd.jpg',
@@ -104,7 +134,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/SAPD'
     },
     {
-      id: 8,
+      id: 11,
       title: 'Elito - Premium Shoes E-commerce',
       category: ['web', 'design'],
       image: '/images/projects/elito.jpg',
@@ -114,7 +144,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/Elito-premium-shoes-'
     },
     {
-      id: 9,
+      id: 12,
       title: 'Himshakti E-commerce Website',
       category: ['web', 'design'],
       image: '/images/projects/himshakti.jpg',
