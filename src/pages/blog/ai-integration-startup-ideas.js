@@ -302,6 +302,9 @@ export default function AIIntegrationStartupIdeas() {
                   src="/images/raghav-profile.jpg" 
                   alt="Raghav Shah"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  width="80"
+                  height="80"
                 />
               </div>
               <div>
