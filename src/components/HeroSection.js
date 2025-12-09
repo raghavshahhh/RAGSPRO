@@ -149,26 +149,26 @@ export default function HeroSection() {
                 {/* User 1 Circle - Indian Male */}
                 <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150&h=150&fit=crop&crop=entropy&auto=format&q=75&zoom=0.7"
                     alt="Indian Startup Founder"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="32"
                     height="32"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
 
                 {/* User 2 Circle - Indian Female */}
                 <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=entropy&auto=format&q=75&zoom=0.7"
                     alt="Indian Entrepreneur"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="32"
                     height="32"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
 
@@ -186,57 +186,57 @@ export default function HeroSection() {
               <div className="flex -space-x-0.5">
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 1"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="20"
                     height="20"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 2"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="20"
                     height="20"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 3"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="20"
                     height="20"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 4"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="20"
                     height="20"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 5"
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-center"
                     loading="eager"
                     width="20"
                     height="20"
-                    style={{display: 'block'}}
+                    style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
               </div>
@@ -379,7 +379,7 @@ export default function HeroSection() {
           className="flex tech-logos-scroll gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center hover:pause-animation"
           style={{
             width: 'max-content',
-            animation: 'scrollLogos 20s linear infinite'
+            animation: 'scrollLogos 40s linear infinite'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.animationPlayState = 'paused'

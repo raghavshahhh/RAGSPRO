@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import '../styles/mobile-ultra-optimized.css'
+import '../styles/responsive-fixes.css'
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'

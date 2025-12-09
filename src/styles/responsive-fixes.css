@@ -1,0 +1,328 @@
+/**
+ * Responsive Fixes for All Devices
+ * Mobile, Tablet, iPad, Desktop
+ */
+
+/* ========================================
+   1. PREVENT ZOOM/LOAD LAG
+   ======================================== */
+* {
+  /* Prevent layout thrashing */
+  box-sizing: border-box;
+  
+  /* Optimize rendering */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  /* Prevent zoom on input focus (iOS) */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  
+  /* Smooth scrolling */
+  scroll-behavior: smooth;
+  
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+body {
+  /* Prevent horizontal scroll */
+  overflow-x: hidden;
+  max-width: 100vw;
+  
+  /* Optimize scrolling */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: none;
+}
+
+/* Prevent zoom on double tap (iOS) */
+button, a, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* ========================================
+   2. MOBILE OPTIMIZATIONS (320px - 767px)
+   ======================================== */
+@media (max-width: 767px) {
+  /* Prevent text zoom on orientation change */
+  html {
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
+  
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Faster animations */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.15s !important;
+  }
+  
+  /* Prevent layout shift */
+  .main-section {
+    min-height: auto;
+  }
+}
+
+/* ========================================
+   3. TABLET OPTIMIZATIONS (768px - 1024px)
+   ======================================== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Container width */
+  .max-w-7xl {
+    max-width: 90%;
+  }
+  
+  /* Optimize spacing */
+  .px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
+  /* Better touch targets */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* ========================================
+   4. iPAD SPECIFIC (768px - 1024px)
+   ======================================== */
+@media (min-width: 768px) and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+  /* iPad Pro, iPad Air, iPad Mini */
+  
+  /* Optimize hero section */
+  .hero {
+    min-height: 80vh;
+  }
+  
+  /* Better spacing */
+  .section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+  
+  /* Optimize floating projects */
+  .project-card {
+    width: 280px !important;
+    height: 170px !important;
+  }
+}
+
+/* ========================================
+   5. LANDSCAPE MODE FIXES
+   ======================================== */
+@media (orientation: landscape) and (max-height: 600px) {
+  /* Reduce vertical spacing */
+  .hero {
+    min-height: 100vh;
+  }
+  
+  .section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  
+  /* Smaller text */
+  h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+}
+
+/* ========================================
+   6. TECH STACK ANIMATION FIX
+   ======================================== */
+@keyframes scrollLogos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.tech-logos-scroll {
+  animation: scrollLogos 40s linear infinite;
+}
+
+/* Pause on hover */
+.tech-logos-scroll:hover {
+  animation-play-state: paused;
+}
+
+/* Mobile: Slower animation */
+@media (max-width: 767px) {
+  .tech-logos-scroll {
+    animation: scrollLogos 50s linear infinite;
+  }
+}
+
+/* Tablet: Medium speed */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .tech-logos-scroll {
+    animation: scrollLogos 45s linear infinite;
+  }
+}
+
+/* ========================================
+   7. IMAGE ZOOM FIX
+   ======================================== */
+img {
+  /* Prevent over-zoom */
+  object-fit: cover;
+  object-position: center 30%;
+  
+  /* Smooth rendering */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+}
+
+/* Avatar images - proper framing */
+.rounded-full img {
+  object-fit: cover;
+  object-position: center 30%;
+  transform: scale(0.9);
+}
+
+/* ========================================
+   8. PREVENT LAYOUT SHIFT
+   ======================================== */
+/* Reserve space for images */
+img[width][height] {
+  aspect-ratio: attr(width) / attr(height);
+}
+
+/* Prevent CLS */
+.container {
+  contain: layout style paint;
+}
+
+/* ========================================
+   9. PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+/* GPU acceleration */
+.project-card,
+.tech-logos-scroll,
+img {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+/* Optimize repaints */
+* {
+  contain: layout style;
+}
+
+/* ========================================
+   10. TESTIMONIALS FIX
+   ======================================== */
+.testimonial-avatar {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 50%;
+}
+
+@media (max-width: 767px) {
+  .testimonial-avatar {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* ========================================
+   11. LOADING STATES
+   ======================================== */
+/* Prevent flash of unstyled content */
+img:not([src]),
+img[src=""] {
+  background: #f3f4f6;
+  min-height: 40px;
+}
+
+/* Smooth fade-in */
+img {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img.loaded,
+img[complete] {
+  opacity: 1;
+}
+
+/* ========================================
+   12. ACCESSIBILITY
+   ======================================== */
+/* Focus visible */
+*:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   13. PRINT OPTIMIZATION
+   ======================================== */
+@media print {
+  /* Hide non-essential elements */
+  nav,
+  footer,
+  .cta,
+  button,
+  .tech-logos-scroll {
+    display: none !important;
+  }
+  
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}
+
+/* ========================================
+   14. HIGH DPI SCREENS
+   ======================================== */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Retina displays */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* ========================================
+   15. DARK MODE SUPPORT
+   ======================================== */
+@media (prefers-color-scheme: dark) {
+  /* Optimize for OLED */
+  img {
+    opacity: 0.95;
+  }
+}
