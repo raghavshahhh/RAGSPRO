@@ -55,6 +55,16 @@ export default function AllProjects() {
     },
     {
       id: 3,
+      title: 'Maid Agency Premium - Advanced Booking Platform',
+      category: ['web', 'design'],
+      image: '/images/projects/maid-premium.jpg',
+      description: 'Premium maid service platform with advanced features, real-time booking, payment gateway, and admin dashboard. Project Value: ₹30-40k',
+      technologies: ['Next.js', 'React', 'TailwindCSS', 'Payment Integration', 'Admin Panel'],
+      liveLink: 'https://maidagency.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/maidagency'
+    },
+    {
+      id: 4,
       title: 'Subtitle Generator - AI Video Tool',
       category: ['web', 'ai'],
       image: '/images/projects/subtitle.jpg',
@@ -64,7 +74,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/raghavshahhh/subtitle'
     },
     {
-      id: 4,
+      id: 5,
       title: 'Restaurant Website - Modern Design',
       category: ['web', 'design'],
       image: '/images/projects/restaurant.jpg',
@@ -74,7 +84,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/raghavshahhh/v0-restaurant-website-design'
     },
     {
-      id: 5,
+      id: 6,
       title: 'Raghav Portfolio - Personal Brand',
       category: ['web', 'design'],
       image: '/images/projects/raghav-portfolio.jpg',
@@ -84,17 +94,17 @@ export default function AllProjects() {
       githubLink: 'https://github.com/raghavshahhh/Raghav'
     },
     {
-      id: 6,
-      title: 'Maid Agency - Service Booking Platform',
+      id: 7,
+      title: 'Maid Service Basic - Standard Website',
       category: ['web', 'design'],
       image: '/images/projects/maid.jpg',
-      description: 'Professional maid service booking platform with online scheduling, service management and payment integration.',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'Stripe'],
+      description: 'Basic maid service website with essential features, contact forms, and service showcase. Project Value: ₹12-18k',
+      technologies: ['Next.js', 'React', 'TailwindCSS', 'Contact Forms'],
       liveLink: 'https://maid-agency.vercel.app',
-      githubLink: 'https://github.com/raghavshahhh/maidagency'
+      githubLink: 'https://github.com/ragspro/maid-agency'
     },
     {
-      id: 7,
+      id: 8,
       title: 'LAWAI - Legal AI Assistant',
       category: ['web', 'ai'],
       image: '/images/projects/lawai.jpg',
@@ -104,7 +114,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/lawai-legal-assistant'
     },
     {
-      id: 8,
+      id: 9,
       title: 'Main - 3D Portfolio Website',
       category: ['web', 'design'],
       image: '/images/projects/main.jpg',
@@ -114,7 +124,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/main'
     },
     {
-      id: 9,
+      id: 10,
       title: 'GLOW - AI Photo Transformation',
       category: ['ai', 'web'],
       image: '/images/projects/glow.png',
@@ -124,7 +134,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/glow-ai'
     },
     {
-      id: 10,
+      id: 11,
       title: 'SAPD - Coaching Institute Management',
       category: ['web'],
       image: '/images/projects/sapd.jpg',
@@ -134,7 +144,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/SAPD'
     },
     {
-      id: 11,
+      id: 12,
       title: 'Elito - Premium Shoes E-commerce',
       category: ['web', 'design'],
       image: '/images/projects/elito.jpg',
@@ -144,7 +154,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/Elito-premium-shoes-'
     },
     {
-      id: 12,
+      id: 13,
       title: 'Himshakti E-commerce Website',
       category: ['web', 'design'],
       image: '/images/projects/himshakti.jpg',
