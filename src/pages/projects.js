@@ -35,6 +35,36 @@ export default function AllProjects() {
   const projects = [
     {
       id: 1,
+      title: 'RAGS AI - AI-Powered Solutions',
+      category: ['web', 'ai'],
+      image: '/images/projects/rags-ai.jpg',
+      description: 'Advanced AI platform offering intelligent automation and machine learning solutions for businesses.',
+      technologies: ['Next.js', 'AI/ML', 'TailwindCSS', 'OpenAI'],
+      liveLink: 'https://rags-ai.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/RAGS-AI'
+    },
+    {
+      id: 2,
+      title: 'Lead Generator - Marketing Automation',
+      category: ['web'],
+      image: '/images/projects/lead-generator.jpg',
+      description: 'Powerful lead generation and marketing automation platform for businesses to capture and nurture leads.',
+      technologies: ['Next.js', 'React', 'TailwindCSS', 'API Integration'],
+      liveLink: 'https://lead-generator.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/lead-generater'
+    },
+    {
+      id: 3,
+      title: 'Maid Agency - Service Booking Platform',
+      category: ['web', 'design'],
+      image: '/images/projects/maid.jpg',
+      description: 'Professional maid service booking platform with online scheduling, service management and payment integration.',
+      technologies: ['Next.js', 'React', 'TailwindCSS', 'Stripe'],
+      liveLink: 'https://maid-agency.vercel.app',
+      githubLink: 'https://github.com/raghavshahhh/maidagency'
+    },
+    {
+      id: 4,
       title: 'LAWAI - Legal AI Assistant',
       category: ['web', 'ai'],
       image: '/images/projects/lawai.jpg',
@@ -44,7 +74,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/lawai-legal-assistant'
     },
     {
-      id: 2,
+      id: 5,
       title: 'Main - 3D Portfolio Website',
       category: ['web', 'design'],
       image: '/images/projects/main.jpg',
@@ -54,17 +84,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/main'
     },
     {
-      id: 3,
-      title: 'Maid Service Agency',
-      category: ['web', 'design'],
-      image: '/images/projects/maid.jpg',
-      description: 'Professional maid service booking platform with online scheduling and service management.',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'Stripe API'],
-      liveLink: 'https://maid-agency.vercel.app',
-      githubLink: 'https://github.com/ragspro/maid-agency'
-    },
-    {
-      id: 4,
+      id: 6,
       title: 'GLOW - AI Photo Transformation',
       category: ['ai', 'web'],
       image: '/images/projects/glow.png',
@@ -74,7 +94,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/glow-ai'
     },
     {
-      id: 5,
+      id: 7,
       title: 'SAPD - Coaching Institute Management',
       category: ['web'],
       image: '/images/projects/sapd.jpg',
@@ -84,7 +104,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/SAPD'
     },
     {
-      id: 6,
+      id: 8,
       title: 'Elito - Premium Shoes E-commerce',
       category: ['web', 'design'],
       image: '/images/projects/elito.jpg',
@@ -94,7 +114,7 @@ export default function AllProjects() {
       githubLink: 'https://github.com/ragspro/Elito-premium-shoes-'
     },
     {
-      id: 7,
+      id: 9,
       title: 'Himshakti E-commerce Website',
       category: ['web', 'design'],
       image: '/images/projects/himshakti.jpg',
