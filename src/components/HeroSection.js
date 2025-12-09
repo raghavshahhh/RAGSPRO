@@ -7,43 +7,46 @@ import MetricBadge from './MetricBadge'
 const projects = [
   { 
     id: 1, 
-    name: 'Glow', 
-    image: '/images/projects/glow.png', 
-    url: 'https://glow.ragspro.com',
+    name: 'Lead Generator', 
+    image: '/images/projects/lead-generator.jpg', 
+    url: 'https://lead-0ku8.onrender.com',
     metrics: {
-      conversionRate: '4.2%',
-      revenue: '$12k/month',
-      userGrowth: '500+ users'
+      conversionRate: '6.2%',
+      userGrowth: '400+ leads',
+      timeSaved: '150+ hrs'
     }
   },
   { 
     id: 2, 
-    name: 'HimShakti', 
-    image: '/images/projects/himshakti.jpg', 
-    url: 'https://himshakti.ragspro.com',
-    metrics: {
-      timeSaved: '120+ hrs',
-      conversionRate: '3.8%'
-    }
-  },
-  { 
-    id: 3, 
-    name: 'LawAI', 
+    name: 'LAWAI', 
     image: '/images/projects/lawai.jpg', 
     url: 'https://lawai.ragspro.com',
     metrics: {
       userGrowth: '300+ users',
-      revenue: '$8k/month'
+      revenue: '$8k/month',
+      conversionRate: '4.5%'
+    }
+  },
+  { 
+    id: 3, 
+    name: 'Subtitle Generator', 
+    image: '/images/projects/subtitle.jpg', 
+    url: 'https://subtitle-rho.vercel.app',
+    metrics: {
+      userGrowth: '250+ users',
+      timeSaved: '200+ hrs',
+      conversionRate: '3.9%'
     }
   },
   { 
     id: 4, 
-    name: 'Maid Service', 
-    image: '/images/projects/maid.jpg', 
-    url: 'https://maid-agency.vercel.app',
+    name: 'Maid Agency Premium', 
+    image: '/images/projects/maid-premium.jpg', 
+    url: 'https://www.babysitterdelhi.in',
     metrics: {
-      conversionRate: '5.1%',
-      timeSaved: '80+ hrs'
+      conversionRate: '7.1%',
+      revenue: '₹30-40k',
+      userGrowth: '180+ bookings'
     }
   }
 ]
