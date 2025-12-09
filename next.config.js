@@ -15,9 +15,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     domains: ['images.unsplash.com', 'cdn.jsdelivr.net'],
-    loader: 'default',
-    // Mobile-specific quality settings
-    quality: 75, // Default quality
   },
   
   // Compression
