@@ -152,9 +152,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="User 1"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="32"
                     height="32"
+                    style={{display: 'block'}}
                   />
                 </div>
 
@@ -164,9 +165,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="User 2"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="32"
                     height="32"
+                    style={{display: 'block'}}
                   />
                 </div>
 
@@ -187,9 +189,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 1"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="20"
                     height="20"
+                    style={{display: 'block'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
@@ -197,9 +200,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 2"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="20"
                     height="20"
+                    style={{display: 'block'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
@@ -207,9 +211,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 3"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="20"
                     height="20"
+                    style={{display: 'block'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
@@ -217,9 +222,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 4"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="20"
                     height="20"
+                    style={{display: 'block'}}
                   />
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
@@ -227,9 +233,10 @@ export default function HeroSection() {
                     src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
                     alt="Client 5"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
                     width="20"
                     height="20"
+                    style={{display: 'block'}}
                   />
                 </div>
               </div>
@@ -381,49 +388,49 @@ export default function HeroSection() {
             e.currentTarget.style.animationPlayState = 'running'
           }}
         >
-          {/* Tech logos */}
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg" alt="Netlify" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="lazy" width="24" height="24" />
+          {/* Tech logos - Load immediately for visibility */}
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg" alt="Netlify" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="h-3 sm:h-4 md:h-5 lg:h-6 w-3 sm:w-4 md:w-5 lg:w-6 opacity-100 hover:scale-110 transition-all" loading="eager" width="24" height="24" style={{display: 'block'}} />
 
           {/* Duplicate for seamless loop */}
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg" alt="Netlify" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
-          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="lazy" width="20" height="20" />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="Tailwind CSS" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Vue.js" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angular/angular-original.svg" alt="Angular" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Node.js" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg" alt="Redis" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg" alt="Docker" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Express" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg" alt="Vercel" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/netlify/netlify-original.svg" alt="Netlify" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
+          <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="Figma" className="h-2 sm:h-3 md:h-4 lg:h-5 w-2 sm:w-3 md:w-4 lg:w-5 opacity-100 hover:scale-110 transition-all" loading="eager" width="20" height="20" style={{display: 'block'}} />
         </div>
       </div>
 
