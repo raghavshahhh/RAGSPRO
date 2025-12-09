@@ -1,0 +1,342 @@
+/**
+ * Mobile Ultra Optimization CSS
+ * Perfect level mobile performance
+ */
+
+/* ========================================
+   1. MOBILE-FIRST IMAGE OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) {
+  /* All images */
+  img {
+    /* GPU acceleration */
+    transform: translateZ(0);
+    will-change: transform;
+    backface-visibility: hidden;
+    
+    /* Prevent flickering */
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translateZ(0);
+    
+    /* Content visibility for lazy loading */
+    content-visibility: auto;
+    
+    /* Smooth rendering */
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  /* Placeholder while loading */
+  img:not([src]),
+  img[src=""],
+  img[src*="data:image"] {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+}
+
+/* ========================================
+   2. SMOOTH SCROLLING OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) {
+  html {
+    /* iOS smooth scrolling */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Prevent bounce */
+    overscroll-behavior-y: none;
+    
+    /* Smooth scroll */
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    /* Prevent horizontal scroll */
+    overflow-x: hidden;
+    
+    /* iOS momentum scrolling */
+    -webkit-overflow-scrolling: touch;
+    
+    /* Prevent text size adjustment */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Optimize scroll containers */
+  .scroll-container {
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    will-change: scroll-position;
+  }
+}
+
+/* ========================================
+   3. ANIMATION PERFORMANCE
+   ======================================== */
+@media (max-width: 768px) {
+  /* Faster animations for mobile */
+  * {
+    animation-duration: 0.2s !important;
+    transition-duration: 0.15s !important;
+  }
+  
+  /* GPU-accelerated animations only */
+  *[class*="animate"],
+  *[class*="transition"] {
+    transform: translateZ(0);
+    will-change: transform, opacity;
+  }
+  
+  /* Disable expensive animations */
+  *[class*="blur"],
+  *[class*="shadow-lg"],
+  *[class*="backdrop"] {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* ========================================
+   4. LOW-END DEVICE OPTIMIZATION
+   ======================================== */
+.low-end-device * {
+  /* Minimal animations */
+  animation-duration: 0.05s !important;
+  transition-duration: 0.05s !important;
+  
+  /* Disable shadows */
+  box-shadow: none !important;
+  text-shadow: none !important;
+  
+  /* Disable blur effects */
+  backdrop-filter: none !important;
+  filter: none !important;
+}
+
+/* ========================================
+   5. SLOW NETWORK OPTIMIZATION
+   ======================================== */
+.slow-network img {
+  /* Lower quality placeholders */
+  background: #e5e7eb;
+  
+  /* Disable hover effects */
+  transition: none !important;
+}
+
+.slow-network *[class*="hover"] {
+  /* Disable hover states */
+  pointer-events: none;
+}
+
+/* ========================================
+   6. REDUCED MOTION SUPPORT
+   ======================================== */
+.motion-reduce *,
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ========================================
+   7. TOUCH OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) {
+  /* Larger touch targets */
+  button,
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Remove tap highlight */
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+  
+  /* Prevent text selection on buttons */
+  button,
+  a {
+    -webkit-user-select: none;
+    user-select: none;
+  }
+}
+
+/* ========================================
+   8. FONT OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) {
+  /* System fonts for faster loading */
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+                 'Helvetica Neue', Arial, sans-serif;
+  }
+  
+  /* Prevent font flash */
+  @font-face {
+    font-display: swap;
+  }
+  
+  /* Optimize text rendering */
+  * {
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* ========================================
+   9. LAYOUT OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) {
+  /* Prevent layout shift */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Contain layout changes */
+  .container,
+  .section {
+    contain: layout style paint;
+  }
+  
+  /* Optimize repaints */
+  .card,
+  .box {
+    contain: content;
+  }
+}
+
+/* ========================================
+   10. CRITICAL CSS INLINING
+   ======================================== */
+@media (max-width: 768px) {
+  /* Above-the-fold content */
+  .hero,
+  .header,
+  .nav {
+    /* Prevent layout shift */
+    min-height: 100vh;
+    contain: layout;
+  }
+  
+  /* Below-the-fold content */
+  .footer,
+  .testimonials,
+  .projects {
+    /* Lazy render */
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
+}
+
+/* ========================================
+   11. MEMORY OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) {
+  /* Limit repaints */
+  * {
+    contain: layout style;
+  }
+  
+  /* Optimize transforms */
+  *[style*="transform"] {
+    will-change: transform;
+  }
+  
+  /* Remove will-change after animation */
+  *:not(:hover):not(:focus):not(:active) {
+    will-change: auto;
+  }
+}
+
+/* ========================================
+   12. NETWORK-AWARE STYLES
+   ======================================== */
+@media (max-width: 768px) and (prefers-reduced-data: reduce) {
+  /* Hide non-essential images */
+  img[loading="lazy"]:not([alt*="logo"]) {
+    display: none;
+  }
+  
+  /* Disable background images */
+  * {
+    background-image: none !important;
+  }
+  
+  /* Show text alternatives */
+  img::after {
+    content: attr(alt);
+    display: block;
+    padding: 1rem;
+    background: #f3f4f6;
+    color: #374151;
+  }
+}
+
+/* ========================================
+   13. DARK MODE OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+  /* Reduce white backgrounds */
+  img {
+    opacity: 0.9;
+  }
+  
+  /* Optimize for OLED */
+  body {
+    background: #000;
+  }
+}
+
+/* ========================================
+   14. ORIENTATION OPTIMIZATION
+   ======================================== */
+@media (max-width: 768px) and (orientation: landscape) {
+  /* Optimize for landscape */
+  .hero {
+    min-height: 100vw;
+  }
+  
+  /* Reduce vertical spacing */
+  .section {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* ========================================
+   15. PRINT OPTIMIZATION
+   ======================================== */
+@media print {
+  /* Hide non-essential elements */
+  nav,
+  footer,
+  .cta,
+  button {
+    display: none !important;
+  }
+  
+  /* Optimize images */
+  img {
+    max-width: 100%;
+    page-break-inside: avoid;
+  }
+}

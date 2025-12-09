@@ -1,9 +1,11 @@
 import '../styles/globals.css'
+import '../styles/mobile-ultra-optimized.css'
 import { useEffect } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import Layout from '../components/Layout'
 import MobilePerformanceOptimizer from '../components/MobilePerformanceOptimizer'
+import UltimateMobileOptimizer from '../components/UltimateMobileOptimizer'
 import PerformanceOptimizer from '../components/PerformanceOptimizer'
 import AccessibilityOptimizer from '../components/AccessibilityOptimizer'
 import CustomCursor from '../components/CustomCursor'
@@ -52,6 +54,7 @@ export default function App({ Component, pageProps, router }) {
       </Head>
       <PerformanceOptimizer />
       <AccessibilityOptimizer />
+      <UltimateMobileOptimizer />
       <SmoothScroll>
         <CustomCursor />
         <MobilePerformanceOptimizer />

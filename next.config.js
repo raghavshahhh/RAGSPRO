@@ -5,12 +5,12 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   
-  // Image optimization - MOBILE-FIRST OPTIMIZED
+  // Image optimization - ULTRA MOBILE-FIRST OPTIMIZED
   images: {
     unoptimized: false, // Enable Next.js image optimization
     formats: ['image/avif', 'image/webp'],
-    deviceSizes: [320, 420, 640, 750, 828, 1080, 1200, 1920], // Added smaller sizes for mobile
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    deviceSizes: [320, 375, 414, 640, 750, 828, 1080, 1200, 1920], // Mobile-first sizes
+    imageSizes: [16, 24, 32, 48, 64, 96, 128, 256, 384],
     minimumCacheTTL: 31536000, // 1 year cache
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
@@ -29,6 +29,10 @@ const nextConfig = {
         hostname: 'ui-avatars.com',
       },
     ],
+    // Mobile-specific loader config
+    loader: 'default',
+    path: '/_next/image',
+    disableStaticImages: false,
   },
   
   // Compression
