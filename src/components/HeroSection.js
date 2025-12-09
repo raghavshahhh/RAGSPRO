@@ -146,11 +146,11 @@ export default function HeroSection() {
               className="group inline-flex items-center gap-2 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-2 md:px-3 lg:px-4 py-2 sm:py-1.5 md:py-2 lg:py-2.5 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-6 sm:mb-6 md:mb-8 lg:mb-16 text-[10px] sm:text-[10px] md:text-xs lg:text-sm mt-4 sm:mt-6"
             >
               <div className="flex -space-x-0.5 sm:-space-x-1 md:-space-x-2 relative">
-                {/* User 1 Circle */}
+                {/* User 1 Circle - Indian Male */}
                 <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="User 1"
+                    src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Startup Founder"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="32"
@@ -159,11 +159,11 @@ export default function HeroSection() {
                   />
                 </div>
 
-                {/* User 2 Circle */}
+                {/* User 2 Circle - Indian Female */}
                 <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="User 2"
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Entrepreneur"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="32"
@@ -186,8 +186,8 @@ export default function HeroSection() {
               <div className="flex -space-x-0.5">
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="Client 1"
+                    src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Client 1"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="20"
@@ -197,8 +197,8 @@ export default function HeroSection() {
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="Client 2"
+                    src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Client 2"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="20"
@@ -208,8 +208,8 @@ export default function HeroSection() {
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="Client 3"
+                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Client 3"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="20"
@@ -219,8 +219,8 @@ export default function HeroSection() {
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="Client 4"
+                    src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Client 4"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="20"
@@ -230,8 +230,8 @@ export default function HeroSection() {
                 </div>
                 <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face&auto=format&q=75"
-                    alt="Client 5"
+                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&h=100&fit=crop&crop=faces&auto=format&q=75"
+                    alt="Indian Client 5"
                     className="w-full h-full object-cover"
                     loading="eager"
                     width="20"
@@ -373,13 +373,13 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Tech Stack Section - Full Width */}
-      <div className="w-full -mt-[15rem] sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-56 py-0.5 sm:py-1 md:py-2 overflow-hidden">
+      {/* Tech Stack Section - Full Width - Mobile Optimized */}
+      <div className="w-full -mt-[15rem] sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-56 py-2 sm:py-1 md:py-2 overflow-hidden bg-white">
         <div
-          className="flex tech-logos-scroll gap-3 sm:gap-6 md:gap-8 lg:gap-12 items-center hover:pause-animation"
+          className="flex tech-logos-scroll gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center hover:pause-animation"
           style={{
             width: 'max-content',
-            animation: 'scrollLogos 15s linear infinite'
+            animation: 'scrollLogos 20s linear infinite'
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.animationPlayState = 'paused'
@@ -445,29 +445,30 @@ export default function HeroSection() {
         Our Latest Projects
       </h2>
 
-      {/* Static Project Cards for Mobile - Optimized */}
+      {/* Static Project Cards for Mobile - Ultra Optimized */}
       <div className="block sm:hidden px-4 mt-6">
         <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
           {projects.slice(0, 4).map((project, index) => (
             <div
               key={project.id}
               onClick={() => handleProjectClick(project.url)}
-              className="w-full h-24 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200"
+              className="w-full h-28 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-white relative group active:scale-95 transition-transform duration-200"
             >
-              {/* Placeholder background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 animate-pulse"></div>
+              {/* White placeholder background */}
+              <div className="absolute inset-0 bg-white"></div>
               
-              {/* Optimized image for mobile */}
+              {/* Optimized image for mobile - Load immediately */}
               <img
-                src={`${project.image}?w=400&q=60&fm=webp&auto=format,compress`}
-                alt={project.name}
+                src={project.image}
+                alt={`${project.name} - Mobile App by RAGSPRO`}
                 className="w-full h-full object-cover group-active:scale-110 transition-transform duration-200 relative z-10"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
                 width="200"
                 height="112"
+                style={{display: 'block'}}
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 z-20">
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-2 z-20">
                 <p className="text-white text-xs font-semibold truncate">{project.name}</p>
               </div>
               {/* Click indicator */}
