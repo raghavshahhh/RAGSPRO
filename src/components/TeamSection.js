@@ -215,6 +215,9 @@ export default function TeamSection() {
                 src="/images/projects/lawai.jpg" 
                 alt="Lawai - AI Legal Assistant"
                 className="w-[480px] h-[270px] object-cover rounded-xl shadow-2xl"
+                loading="lazy"
+                width="480"
+                height="270"
               />
             </div>
             
@@ -323,6 +326,9 @@ export default function TeamSection() {
                     src={testimonial.avatar}
                     alt={testimonial.name}
                     className="w-10 h-10 rounded-full object-cover"
+                    loading="lazy"
+                    width="40"
+                    height="40"
                   />
                   <div>
                     <p className="font-semibold text-black text-xs">{testimonial.name}</p>

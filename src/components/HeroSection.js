@@ -256,8 +256,8 @@ export default function HeroSection() {
 
           {/* Right Column - Floating Project Cards - Hidden on Mobile */}
           <div className="relative w-full h-[200px] sm:h-[180px] md:h-[240px] lg:h-[350px] xl:h-[600px] pt-1 sm:pt-2 md:pt-4 hidden md:block" style={{ perspective: '1500px', zIndex: 1000 }}>
-            {/* Placeholder for faster perceived loading */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl animate-pulse" style={{ zIndex: 1 }}></div>
+            {/* White background placeholder - matches website theme */}
+            <div className="absolute inset-0 bg-white rounded-2xl" style={{ zIndex: 1 }}></div>
             {projects.map((project, index) => {
               // Use state-based mobile detection
               const isTablet = typeof window !== 'undefined' && window.innerWidth < 1024
