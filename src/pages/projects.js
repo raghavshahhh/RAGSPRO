@@ -50,7 +50,7 @@ export default function AllProjects() {
       image: '/images/projects/lead-generator.jpg',
       description: 'Powerful lead generation and marketing automation platform for businesses to capture and nurture leads.',
       technologies: ['Next.js', 'React', 'TailwindCSS', 'API Integration'],
-      liveLink: 'https://lead-generator.vercel.app',
+      liveLink: 'https://lead-0ku8.onrender.com',
       githubLink: 'https://github.com/raghavshahhh/lead-generater'
     },
     {
@@ -60,7 +60,7 @@ export default function AllProjects() {
       image: '/images/projects/maid-premium.jpg',
       description: 'Premium maid service platform with advanced features, real-time booking, payment gateway, and admin dashboard. Project Value: ₹30-40k',
       technologies: ['Next.js', 'React', 'TailwindCSS', 'Payment Integration', 'Admin Panel'],
-      liveLink: 'https://maidagency.vercel.app',
+      liveLink: 'https://www.babysitterdelhi.in',
       githubLink: 'https://github.com/raghavshahhh/maidagency'
     },
     {
@@ -70,7 +70,7 @@ export default function AllProjects() {
       image: '/images/projects/subtitle.jpg',
       description: 'AI-powered subtitle generation tool for videos with automatic transcription and translation capabilities.',
       technologies: ['Next.js', 'AI/ML', 'FFmpeg', 'Speech Recognition'],
-      liveLink: 'https://subtitle-generator.vercel.app',
+      liveLink: 'https://subtitle-rho.vercel.app',
       githubLink: 'https://github.com/raghavshahhh/subtitle'
     },
     {
@@ -80,7 +80,7 @@ export default function AllProjects() {
       image: '/images/projects/restaurant.jpg',
       description: 'Beautiful and modern restaurant website with menu showcase, online ordering and reservation system.',
       technologies: ['Next.js', 'React', 'TailwindCSS', 'Framer Motion'],
-      liveLink: 'https://v0-restaurant.vercel.app',
+      liveLink: 'https://v0-restaurant-website-design-nu-lake.vercel.app',
       githubLink: 'https://github.com/raghavshahhh/v0-restaurant-website-design'
     },
     {
