@@ -37,7 +37,7 @@ export default function AllProjects() {
       id: 1,
       title: 'RAGS AI - AI-Powered Solutions',
       category: ['web', 'ai'],
-      image: '/images/projects/rags-ai.jpg',
+      image: '/images/logo.png',
       description: 'Advanced AI platform offering intelligent automation and machine learning solutions for businesses.',
       technologies: ['Next.js', 'AI/ML', 'TailwindCSS', 'OpenAI'],
       liveLink: 'https://rags-ai.vercel.app',
