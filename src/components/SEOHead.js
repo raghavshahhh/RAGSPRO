@@ -1,12 +1,16 @@
 import Head from 'next/head'
 
 export default function SEOHead({ 
-  title = "RAGSPRO | Startup MVP Development Agency | Launch in 20 Days | Delhi, India",
-  description = "Build revenue-ready MVPs in 20 days. RAGSPRO helps startup founders with web apps, AI automation, and growth funnels. Leading MVP development agency in Delhi, India.",
-  keywords = "startup MVP development, MVP agency India, startup development Delhi, revenue-focused MVP, AI automation for startups, MVP builder India, 20-day MVP launch, startup growth agency Delhi, founder-focused development, rapid MVP development India",
+  title = "iOS & Web App Development Agency in India | RAGSPRO",
+  description = "RAGSPRO is a premium app & web development agency helping startups build iOS apps, web apps, SaaS products & AI-powered solutions. Trusted by founders across India, USA, UK.",
+  keywords = "iOS app development agency, web development agency India, startup app developers, SaaS development company, AI automation agency, mobile app development India, app development agency Delhi, iPhone app developers, SwiftUI developers",
   ogImage = "https://ragspro.com/images/og-image.jpg",
   url = "https://ragspro.com",
-  type = "website"
+  type = "website",
+  publishedDate,
+  modifiedDate,
+  author = "Raghav Shah",
+  schema
 }) {
   return (
     <Head>
@@ -45,11 +49,46 @@ export default function SEOHead({
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
       
-      {/* Geo Tags */}
+      {/* Geo Tags for Local SEO */}
       <meta name="geo.region" content="IN-DL" />
-      <meta name="geo.placename" content="Delhi, India" />
+      <meta name="geo.placename" content="New Delhi" />
       <meta name="geo.position" content="28.7041;77.1025" />
       <meta name="ICBM" content="28.7041, 77.1025" />
+      
+      {/* Language & Alternate */}
+      <meta httpEquiv="content-language" content="en-US" />
+      <link rel="alternate" hrefLang="en" href={url} />
+      <link rel="alternate" hrefLang="x-default" href={url} />
+      
+      {/* Article Meta (for blog posts) */}
+      {publishedDate && <meta property="article:published_time" content={publishedDate} />}
+      {modifiedDate && <meta property="article:modified_time" content={modifiedDate} />}
+      {author && <meta property="article:author" content={author} />}
+      
+      {/* Additional Twitter */}
+      <meta name="twitter:image:alt" content={title} />
+      
+      {/* Image Dimensions */}
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={title} />
+      
+      {/* Additional SEO Meta */}
+      <meta name="rating" content="General" />
+      <meta name="distribution" content="global" />
+      <meta name="revisit-after" content="7 days" />
+      <meta name="coverage" content="Worldwide" />
+      <meta name="target" content="all" />
+      <meta name="HandheldFriendly" content="True" />
+      <meta name="MobileOptimized" content="320" />
+      
+      {/* Schema.org JSON-LD */}
+      {schema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+        />
+      )}
     </Head>
   )
 }

@@ -373,8 +373,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Tech Stack Section - Full Width - Mobile Optimized */}
-      <div className="w-full -mt-[15rem] sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-56 py-2 sm:py-1 md:py-2 overflow-hidden bg-white">
+      {/* Tech Stack Section - Full Width - Desktop Only */}
+      <div className="hidden md:block w-full -mt-[15rem] sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-56 py-2 sm:py-1 md:py-2 bg-white" style={{ overflow: 'hidden' }}>
         <div
           className="flex tech-logos-scroll gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center hover:pause-animation"
           style={{
@@ -436,7 +436,7 @@ export default function HeroSection() {
 
       {/* Latest Projects Heading */}
       <h2
-        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight mt-4 sm:mt-2 md:mt-4 lg:mt-6 xl:mt-16 relative px-2 sm:px-4 md:px-6 lg:px-8"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight -mt-64 sm:mt-2 md:mt-4 lg:mt-6 xl:mt-16 relative px-2 sm:px-4 md:px-6 lg:px-8"
         style={{
           zIndex: 3000,
           position: 'relative'
@@ -452,21 +452,29 @@ export default function HeroSection() {
             <div
               key={project.id}
               onClick={() => handleProjectClick(project.url)}
-              className="w-full h-28 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-white relative group active:scale-95 transition-transform duration-200"
+              className="w-full h-28 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200"
             >
-              {/* White placeholder background */}
-              <div className="absolute inset-0 bg-white"></div>
+              {/* Gray placeholder background for faster perceived load */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse"></div>
               
-              {/* Optimized image for mobile - Load immediately */}
+              {/* Optimized image for mobile - Prioritize first 2 */}
               <img
                 src={project.image}
                 alt={`${project.name} - Mobile App by RAGSPRO`}
                 className="w-full h-full object-cover group-active:scale-110 transition-transform duration-200 relative z-10"
-                loading="eager"
+                loading={index < 2 ? "eager" : "lazy"}
                 decoding="async"
+                fetchpriority={index < 2 ? "high" : "low"}
                 width="200"
                 height="112"
-                style={{display: 'block'}}
+                style={{
+                  display: 'block',
+                  visibility: 'visible',
+                  opacity: 1,
+                  maxWidth: '100%',
+                  height: '100%',
+                  imageRendering: '-webkit-optimize-contrast'
+                }}
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-2 z-20">
                 <p className="text-white text-xs font-semibold truncate">{project.name}</p>

@@ -68,37 +68,37 @@ export default function TeamSection() {
       quote: "My business was struggling to get online presence, RAGSPRO's team really helped me establish digital presence and started generating leads consistently.",
       name: "Rajesh Kumar",
       title: "Founder of Digital Solutions (50K+ followers)",
-      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
     },
     {
       quote: "While building my startup, I worked with RAGSPRO's team to build my web application. They delivered super fast, saved me thousands in development costs.",
       name: "Priya Sharma",
       title: "CEO of TechStart India",
-      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
     },
     {
       quote: "RAGSPRO has been an incredible long-term partner for us. When we were considering starting our mobile app, we ultimately chose RAGSPRO for their unbeatable turnaround times and competitive pricing.",
       name: "Amit Singh",
       title: "CEO of StartupHub",
-      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
     },
     {
       quote: "RAGSPRO's team has been a game-changer—helped me deliver 3+ UI/UX projects, sharpen my product management skills, and land amazing tech roles.",
       name: "Sneha Patel",
       title: "Product Manager at TechCorp",
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
     },
     {
       quote: "In just one week, RAGSPRO's team automated our business processes—eliminating manual work and dramatically boosting efficiency. Highly recommend for business automation!",
       name: "Vikram Mehta",
       title: "CEO of Business Solutions",
-      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
     },
     {
       quote: "RAGSPRO delivered an exceptional e-commerce platform for my business. Their attention to detail and quick turnaround time exceeded my expectations. Highly professional team!",
       name: "Ananya Gupta",
       title: "Founder of StyleHub",
-      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
     }
   ]
 
@@ -247,31 +247,31 @@ export default function TeamSection() {
                 quote: "RAGSPRO's web development team helped us build our startup app in record time. My business was struggling to get online presence, and they really helped me establish digital presence and started generating leads consistently.",
                 name: "Rajesh Kumar",
                 title: "Founder of Digital Solutions (50K+ followers)",
-                avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face"
+                avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
               },
               {
                 quote: "RAGSPRO's startup app development team helped me build my web application fast. While building my startup, I worked with their team and they delivered super fast, saved me thousands in development costs.",
                 name: "Priya Sharma",
                 title: "CEO of TechStart India",
-                avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=face"
+                avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
               },
               {
                 quote: "RAGSPRO's AI app development team has been an incredible long-term partner for us. When we were considering starting our mobile app, we ultimately chose RAGSPRO for their unbeatable turnaround times and competitive pricing.",
                 name: "Amit Singh",
                 title: "CEO of StartupHub",
-                avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop&crop=face"
+                avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
               },
               {
                 quote: "RAGSPRO's team has been a game-changer—helped me deliver 3+ UI/UX projects, sharpen my product management skills, and land amazing tech roles.",
                 name: "Sneha Patel",
                 title: "Product Manager at TechCorp",
-                avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face"
+                avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
               },
               {
                 quote: "In just one week, RAGSPRO's team automated our business processes—eliminating manual work and dramatically boosting efficiency. Highly recommend for business automation!",
                 name: "Vikram Mehta",
                 title: "CEO of Business Solutions",
-                avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&h=150&fit=crop&crop=face"
+                avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
               }
             ].map((testimonial, index) => (
               <div
@@ -322,17 +322,32 @@ export default function TeamSection() {
                 
                 {/* Profile with Avatar */}
                 <div className="flex items-center gap-2.5 border-t border-gray-100 pt-3">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-10 h-10 rounded-full object-cover"
-                    loading="lazy"
-                    width="40"
-                    height="40"
-                  />
-                  <div>
-                    <p className="font-semibold text-black text-xs">{testimonial.name}</p>
-                    <p className="text-gray-500 text-[10px] mt-0.5">{testimonial.title}</p>
+                  {/* Avatar with placeholder */}
+                  <div className="relative w-10 h-10 rounded-full bg-gray-200 overflow-hidden flex-shrink-0">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-full h-full rounded-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                      width="40"
+                      height="40"
+                      style={{
+                        display: 'block',
+                        visibility: 'visible',
+                        opacity: 1,
+                        borderRadius: '50%',
+                        imageRendering: '-webkit-optimize-contrast'
+                      }}
+                      onError={(e) => {
+                        // Fallback to ui-avatars if Unsplash fails
+                        e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(testimonial.name)}&background=random&size=80`
+                      }}
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-semibold text-black text-xs truncate">{testimonial.name}</p>
+                    <p className="text-gray-500 text-[10px] mt-0.5 truncate">{testimonial.title}</p>
                   </div>
                 </div>
               </div>

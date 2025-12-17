@@ -1,0 +1,159 @@
+/* ============================================
+   MOBILE FIXED POSITIONING - FINAL FIX
+   ============================================ */
+
+/* NAVBAR - Fixed on all devices */
+#global-navbar {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  z-index: 2147483647 !important;
+  pointer-events: auto !important;
+  will-change: transform !important;
+}
+
+/* CONTACT BUTTONS - Fixed on all devices */
+#global-contact-buttons {
+  pointer-events: auto;
+  max-width: 95vw;
+}
+
+/* ============================================
+   MOBILE SPECIFIC - Size adjustments only
+   ============================================ */
+@media (max-width: 768px) {
+  /* Navbar - slightly smaller on mobile */
+  #global-navbar {
+    top: env(safe-area-inset-top, 0px);
+    padding: 0.5rem;
+  }
+
+  /* Contact Buttons - smaller on mobile */
+  #global-contact-buttons {
+    transform: translateX(-50%) scale(0.92);
+  }
+
+  /* Kill any body transforms on mobile */
+  html,
+  body {
+    transform: none !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Kill transforms on main wrappers */
+  body > div,
+  #__next,
+  #__next > div,
+  main {
+    transform: none !important;
+  }
+  
+  /* Force fixed positioning to work */
+  #global-navbar,
+  #global-contact-buttons {
+    position: fixed !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Tech stack section - no overflow traps, SLOWER animation */
+  .tech-stack-wrapper,
+  .tech-stack-section,
+  [class*="tech-stack"] {
+    overflow: visible !important;
+    height: auto !important;
+    animation-duration: 60s !important; /* MUCH SLOWER */
+    animation-timing-function: linear !important;
+  }
+
+  /* Slow down ANY scrolling animation on mobile */
+  [class*="animate-"],
+  [class*="scroll-"] {
+    animation-duration: 40s !important;
+    animation-timing-function: linear !important;
+  }
+
+  /* ============================================
+     MOBILE IMAGE FIXES
+     ============================================ */
+  
+  /* Force all images to display properly */
+  img {
+    display: block !important;
+    max-width: 100% !important;
+    height: auto !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* Project images - ensure they load */
+  img[src*="/images/projects/"],
+  img[alt*="Mobile App"],
+  img[alt*="project"] {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+  /* Testimonial avatars - force load */
+  img[src*="unsplash"],
+  img[src*="ui-avatars"],
+  img[alt*="avatar"],
+  .rounded-full img {
+    display: block !important;
+    border-radius: 50% !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  /* ============================================
+     MOBILE IMAGE PERFORMANCE BOOST
+     ============================================ */
+  
+  /* Optimize image rendering on mobile */
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    content-visibility: auto;
+    contain-intrinsic-size: 200px 200px;
+  }
+
+  /* Reduce image quality slightly for faster load */
+  img[loading="lazy"] {
+    will-change: auto;
+  }
+
+  /* Placeholder animation for loading images */
+  @keyframes shimmer {
+    0% { background-position: -200px 0; }
+    100% { background-position: 200px 0; }
+  }
+
+  .bg-gray-100,
+  .bg-gray-200 {
+    background: linear-gradient(90deg, #f3f4f6 0px, #e5e7eb 40px, #f3f4f6 80px);
+    background-size: 200px 100%;
+  }
+
+  .animate-pulse {
+    animation: shimmer 1.5s infinite linear;
+  }
+}
+
+/* ============================================
+   SAFE AREA SUPPORT (iPhone notch)
+   ============================================ */
+@supports (padding: env(safe-area-inset-top)) {
+  @media (max-width: 768px) {
+    #global-navbar {
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    #global-contact-buttons {
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+    }
+  }
+}

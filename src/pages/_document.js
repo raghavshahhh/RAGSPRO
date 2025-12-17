@@ -32,10 +32,15 @@ export default function Document() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="preconnect" href="https://ui-avatars.com" />
         <link rel="preconnect" href="https://cdn.jsdelivr.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         <link rel="dns-prefetch" href="https://calendly.com" />
+        
+        {/* Preload critical project images for mobile */}
+        <link rel="preload" href="/images/projects/lead-generator.jpg" as="image" media="(max-width: 768px)" />
+        <link rel="preload" href="/images/projects/lawai.jpg" as="image" media="(max-width: 768px)" />
         
         {/* Mobile-specific optimizations */}
         <meta name="mobile-web-app-capable" content="yes" />

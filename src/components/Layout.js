@@ -1,3 +1,5 @@
+'use client'
+
 import SEOHead from './SEOHead'
 import FloatingBrand from './FloatingBrand'
 import Footer from './Footer'
@@ -9,8 +11,12 @@ export default function Layout({ children, seoProps }) {
     <>
       <SEOHead {...seoProps} />
       
+      {/* GLOBAL - ALWAYS ON SCREEN */}
       <FloatingBrand />
+      
+      {/* PAGE CONTENT */}
       <main>{children}</main>
+      
       <Footer />
       <ChatbotTrigger />
       <ReviewSubmissionBox />

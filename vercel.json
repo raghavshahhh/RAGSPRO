@@ -2,6 +2,12 @@
   "buildCommand": "npm run build",
   "outputDirectory": ".next",
   "framework": "nextjs",
+  "crons": [
+    {
+      "path": "/api/cron/daily-blog",
+      "schedule": "0 10 * * *"
+    }
+  ],
   "rewrites": [
     {
       "source": "/(.*)",
@@ -19,6 +25,14 @@
         {
           "key": "X-Content-Type-Options",
           "value": "nosniff"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
         }
       ]
     }

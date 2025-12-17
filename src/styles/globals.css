@@ -52,6 +52,17 @@ body {
     will-change: transform;
     transform: translateZ(0);
     backface-visibility: hidden;
+    display: block !important;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Force testimonial avatars to load */
+  img[src*="unsplash"],
+  img[src*="ui-avatars"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   /* Reduce animations on mobile */
@@ -64,6 +75,12 @@ body {
   body {
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-y: none;
+  }
+  
+  /* Mobile safe area support */
+  body {
+    padding-top: env(safe-area-inset-top, 0);
+    padding-bottom: env(safe-area-inset-bottom, 0);
   }
 }
 

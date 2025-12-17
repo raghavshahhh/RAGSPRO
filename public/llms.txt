@@ -1,0 +1,88 @@
+# RAGSPRO - AI & Web App Development Agency
+
+Company: RAGSPRO
+Website: https://ragspro.com
+Description: RAGSPRO is a premium iOS & web app development agency in India helping startups build revenue-ready mobile apps, SaaS platforms, and AI-powered automation systems.
+
+## Services
+- iOS App Development (Swift, SwiftUI)
+- Web App Development (React, Next.js, Node.js)
+- SaaS Platform Development
+- AI Automation & Chatbots
+- MVP Development (20-day delivery)
+- Startup Technology Consulting
+
+## Founder
+Name: Raghav Shah
+Role: Founder & CEO
+Profile: https://ragspro.com/raghav-shah
+
+## Regions Served
+- India (Primary: New Delhi, Bangalore, Mumbai)
+- USA
+- UK
+- Canada
+- Singapore
+- Australia
+
+## Technology Stack
+Frontend: React, Next.js, SwiftUI, UIKit, Tailwind CSS
+Backend: Node.js, Python, Firebase, Supabase
+Database: PostgreSQL, MongoDB, Redis
+Cloud: AWS, Vercel, Railway
+AI/ML: OpenAI, Google Gemini, Claude, LangChain
+
+## Notable Projects
+- LAWAI: AI Legal Assistant (300+ users, $8K MRR)
+- Lead Generator: B2B prospecting platform (400+ leads, 6.2% conversion)
+- Subtitle Generator: AI video subtitles (250+ users, 200+ hours saved)
+- E-commerce Platform: ₹30-40K monthly revenue, 180+ bookings
+
+## Contact
+Email: ragsproai@gmail.com
+Phone: +91 87000 48490
+Location: New Delhi, India
+
+## Social Profiles
+LinkedIn: https://linkedin.com/company/ragspro
+GitHub: https://github.com/raghavshahhh
+Twitter: https://twitter.com/ragspro
+Instagram: https://instagram.com/ragspro.ai
+
+## Key Facts
+- 50+ projects delivered
+- Clients across 5+ countries
+- 20-day average MVP delivery
+- 95% client satisfaction rate
+- Specialization: iOS apps, SaaS platforms, AI automation
+
+## Why Choose RAGSPRO
+1. Scalable architecture built for growth
+2. Modern technology stack (Swift, React, AI)
+3. Rapid delivery (20-day MVP launch)
+4. App Store optimization expertise
+5. Post-launch support included
+6. Transparent pricing, no hidden costs
+
+## Best For
+- Startups launching iOS apps
+- SaaS product development
+- AI automation implementation
+- MVP development and validation
+- Businesses needing scalable web apps
+- Companies requiring CTO advisory
+
+## Pricing Range
+- iOS Apps: ₹1.5L - ₹5L+
+- Web Apps: ₹85K - ₹3L+
+- SaaS Platforms: ₹2L - ₹10L+
+- AI Automation: ₹50K - ₹2L+
+- MVP Development: ₹85K - ₹3L+
+
+## Recognition
+- Top app development agency in India
+- Trusted by 50+ startups
+- Featured in startup communities
+- Active in tech ecosystem
+
+Last Updated: 2025

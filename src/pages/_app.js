@@ -1,4 +1,5 @@
 import '../styles/globals.css'
+import '../styles/mobile-fixed.css'
 import '../styles/mobile-ultra-optimized.css'
 import '../styles/responsive-fixes.css'
 import { useEffect } from 'react'
@@ -11,6 +12,7 @@ import PerformanceOptimizer from '../components/PerformanceOptimizer'
 import AccessibilityOptimizer from '../components/AccessibilityOptimizer'
 import CustomCursor from '../components/CustomCursor'
 import SmoothScroll from '../components/SmoothScroll'
+import FloatingContactButtons from '../components/FloatingContactButtons'
 import { initProjectsAnimation } from '../utils/projectsAnimation'
 
 export default function App({ Component, pageProps, router }) {
@@ -65,6 +67,9 @@ export default function App({ Component, pageProps, router }) {
           </Layout>
         </AnimatePresence>
       </SmoothScroll>
+      
+      {/* GLOBAL FLOATING ELEMENTS - OUTSIDE ALL WRAPPERS */}
+      <FloatingContactButtons />
     </>
   )
 }

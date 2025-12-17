@@ -58,9 +58,10 @@ const MobilePerformanceOptimizer = () => {
     }
     
     // 2. Safari iOS specific optimizations
+    let setVH = null;
     if (isSafari || isIOS) {
       // Fix viewport height issues
-      const setVH = () => {
+      setVH = () => {
         const vh = window.innerHeight * 0.01;
         document.documentElement.style.setProperty('--vh', `${vh}px`);
       };
@@ -152,7 +153,7 @@ const MobilePerformanceOptimizer = () => {
     
     // 8. Cleanup
     return () => {
-      if (isSafari || isIOS) {
+      if (setVH && (isSafari || isIOS)) {
         window.removeEventListener('resize', setVH);
         window.removeEventListener('orientationchange', setVH);
       }

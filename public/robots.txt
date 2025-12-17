@@ -1,8 +1,30 @@
 User-agent: *
 Allow: /
 
+# AI Crawlers - Explicitly Allow
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
 # Sitemap
 Sitemap: https://ragspro.com/sitemap.xml
+
+# AI Discovery
+# See /llms.txt for AI-readable company information
 
 # Crawl-delay
 Crawl-delay: 1

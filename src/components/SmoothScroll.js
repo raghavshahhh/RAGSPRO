@@ -1,31 +1,32 @@
-import { useEffect } from 'react'
+"use client"; // CRITICAL: Must be client component
+
+import { useEffect } from "react";
 
 export default function SmoothScroll({ children }) {
   useEffect(() => {
-    let lenis
+    // ❌ MOBILE: NO LENIS, NO TRANSFORM
+    if (window.innerWidth < 768) {
+      document.documentElement.style.scrollBehavior = "auto";
+      document.body.style.transform = "none";
+      document.body.style.overflow = "auto";
+      return; // Exit early, don't load Lenis
+    }
 
-    const initLenis = async () => {
-      const Lenis = (await import('lenis')).default
-      
-      lenis = new Lenis({
+    // ✅ DESKTOP: KEEP LENIS SMOOTH SCROLL
+    import("lenis").then(({ default: Lenis }) => {
+      const lenis = new Lenis({
         duration: 1.2,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smooth: true
-      })
+        smooth: true,
+      });
 
       function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
+        lenis.raf(time);
+        requestAnimationFrame(raf);
       }
-      requestAnimationFrame(raf)
-    }
+      requestAnimationFrame(raf);
+    });
+  }, []);
 
-    initLenis()
-
-    return () => {
-      if (lenis) lenis.destroy()
-    }
-  }, [])
-
-  return <>{children}</>
+  return <>{children}</>; // Return fragment
 }
