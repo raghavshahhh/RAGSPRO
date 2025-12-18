@@ -2,6 +2,7 @@
 import { GoogleGenerativeAI } from '@google/generative-ai'
 import fs from 'fs'
 import path from 'path'
+import { logBlogRun, logSystemEvent } from '../../utils/supabase'
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
 
@@ -10,11 +11,18 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' })
   }
 
+  const startTime = Date.now()
+  let blogSlug = null
+  
   try {
     const { topic, keywords, manual } = req.body
     
+    // Log start
+    await logSystemEvent('ai', 'info', 'Blog generation started', { topic, keywords, manual })
+    
     // Check if auto-generation is enabled (unless manual request)
     if (!manual && process.env.ENABLE_AUTO_BLOG !== 'true') {
+      await logSystemEvent('ai', 'warning', 'Auto blog generation disabled', { topic })
       return res.status(403).json({ 
         error: 'Auto blog generation is disabled' 
       })
@@ -76,6 +84,7 @@ Make it engaging, valuable, and conversion-focused!
     const date = new Date()
     const dateStr = date.toISOString().split('T')[0]
     const uniqueSlug = `${blogData.slug}-${dateStr}`
+    blogSlug = uniqueSlug
     
     // Create blog post file
     const blogContent = generateBlogFile(blogData, uniqueSlug)
@@ -87,16 +96,56 @@ Make it engaging, valuable, and conversion-focused!
     // Update blog listing
     await updateBlogListing(blogData, uniqueSlug, date)
     
+    // Calculate execution time and token usage (approximate)
+    const executionTime = Date.now() - startTime
+    const tokenUsage = Math.ceil(text.length / 4) // Rough estimate
+    
+    // Log success to database
+    await logBlogRun({
+      slug: uniqueSlug,
+      status: 'success',
+      error: null,
+      tokenUsage,
+      prompt: topic || 'Auto-generated topic'
+    })
+    
+    await logSystemEvent('ai', 'success', `Blog generated: ${blogData.title}`, {
+      slug: uniqueSlug,
+      executionTime,
+      tokenUsage,
+      wordCount: blogData.content.split(' ').length
+    })
+    
     return res.status(200).json({
       success: true,
       message: 'Blog post generated successfully',
       slug: uniqueSlug,
       title: blogData.title,
-      filePath: `/blog/${uniqueSlug}`
+      filePath: `/blog/${uniqueSlug}`,
+      stats: {
+        executionTime,
+        tokenUsage,
+        wordCount: blogData.content.split(' ').length
+      }
     })
     
   } catch (error) {
     console.error('Blog generation error:', error)
+    
+    // Log error to database
+    await logBlogRun({
+      slug: blogSlug || 'unknown',
+      status: 'failed',
+      error: error.message,
+      tokenUsage: 0,
+      prompt: req.body.topic || 'Unknown'
+    })
+    
+    await logSystemEvent('ai', 'failed', `Blog generation failed: ${error.message}`, {
+      error: error.toString(),
+      stack: error.stack
+    })
+    
     return res.status(500).json({ 
       error: error.message,
       details: error.toString()
