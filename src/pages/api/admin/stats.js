@@ -1,4 +1,6 @@
-export default async function handler(req, res) {
+import { requireAdminAuth } from '../../../utils/adminAuth'
+
+async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ error: 'Method not allowed' })
   }
@@ -41,3 +43,5 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Failed to fetch stats' })
   }
 }
+
+export default requireAdminAuth(handler)

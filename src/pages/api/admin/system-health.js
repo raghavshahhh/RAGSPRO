@@ -1,11 +1,8 @@
 import fs from 'fs'
 import path from 'path'
+import { requireAdminAuth } from '../../../utils/adminAuth'
 
-export default async function handler(req, res) {
-  const authHeader = req.headers.authorization
-  if (authHeader !== `Bearer ${process.env.ADMIN_SECRET || 'ragspro2025'}`) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+async function handler(req, res) {
 
   try {
     const health = {
@@ -56,3 +53,5 @@ export default async function handler(req, res) {
     })
   }
 }
+
+export default requireAdminAuth(handler)

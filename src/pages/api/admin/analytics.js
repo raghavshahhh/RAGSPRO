@@ -1,10 +1,7 @@
 import { getSupabaseAdmin, getTrafficStats, isSupabaseConfigured } from '../../../utils/supabase'
+import { requireAdminAuth } from '../../../utils/adminAuth'
 
-export default async function handler(req, res) {
-  const authHeader = req.headers.authorization
-  if (authHeader !== `Bearer ${process.env.ADMIN_SECRET || 'ragspro2025'}`) {
-    return res.status(401).json({ error: 'Unauthorized' })
-  }
+async function handler(req, res) {
 
   if (!isSupabaseConfigured()) {
     return res.status(503).json({ 
@@ -75,3 +72,5 @@ export default async function handler(req, res) {
     })
   }
 }
+
+export default requireAdminAuth(handler)
