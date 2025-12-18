@@ -279,3 +279,6 @@ export async function sendLeadNotifications(leadData) {
     return { success: false, error: error.message }
   }
 }
+
+// Alias for backward compatibility
+export const sendLeadEmail = sendLeadNotifications

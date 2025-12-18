@@ -66,11 +66,11 @@ export default async function handler(req, res) {
         logSystemEvent('email', 'failed', `Failed to send lead email: ${error.message}`, {
           leadId: savedLead[0]?.id,
           error: error.toString()
-        })
+        }).catch(e => console.error('Failed to log email error:', e))
       })
     }
 
-    res.status(200).json({
+    return res.status(200).json({
       success: true,
       message: 'Lead submitted successfully',
       leadId: savedLead[0]?.id
@@ -78,14 +78,19 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error('Lead submission error:', error)
     
-    await logSystemEvent('api', 'failed', `Lead submission failed: ${error.message}`, {
-      error: error.toString(),
-      stack: error.stack
-    })
+    try {
+      await logSystemEvent('api', 'failed', `Lead submission failed: ${error.message}`, {
+        error: error.toString(),
+        stack: error.stack
+      })
+    } catch (logError) {
+      console.error('Failed to log error:', logError)
+    }
     
-    res.status(500).json({
+    return res.status(500).json({
       success: false,
-      error: error.message
+      error: error.message || 'Lead submission failed',
+      timestamp: new Date().toISOString()
     })
   }
 }

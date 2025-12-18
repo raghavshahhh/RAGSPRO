@@ -4,7 +4,22 @@ import fs from 'fs'
 import path from 'path'
 import { logBlogRun, logSystemEvent } from '../../utils/supabase'
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+// Initialize Gemini with error handling
+let genAI = null
+try {
+  if (process.env.GEMINI_API_KEY) {
+    genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY)
+  }
+} catch (error) {
+  console.error('Failed to initialize Gemini:', error)
+}
+
+// Available models in priority order
+const GEMINI_MODELS = [
+  'gemini-2.5-flash',
+  'gemini-2.5-pro',
+  'gemini-2.0-flash'
+]
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -15,6 +30,14 @@ export default async function handler(req, res) {
   let blogSlug = null
   
   try {
+    // Validate Gemini API key
+    if (!genAI || !process.env.GEMINI_API_KEY) {
+      return res.status(500).json({ 
+        error: 'Gemini API not configured',
+        details: 'GEMINI_API_KEY environment variable is missing'
+      })
+    }
+
     const { topic, keywords, manual } = req.body
     
     // Log start
@@ -28,11 +51,17 @@ export default async function handler(req, res) {
       })
     }
     
-    // Generate blog content using Gemini
-    // Using gemini-2.5-flash - the latest, fastest, and most cost-effective model
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
+    // Try models with fallback
+    let result = null
+    let usedModel = null
+    let lastError = null
+
+    for (const modelName of GEMINI_MODELS) {
+      try {
+        const model = genAI.getGenerativeModel({ model: modelName })
+        usedModel = modelName
     
-    const prompt = `
+        const prompt = `
 You are a professional content writer for RAGSPRO, a startup MVP development agency in India that builds startups in 20 days.
 
 Write a comprehensive, SEO-optimized blog post about: ${topic || 'trending startup development topic'}
@@ -61,8 +90,26 @@ Format the response as JSON with these fields:
 
 Make it engaging, valuable, and conversion-focused!
 `
-    
-    const result = await model.generateContent(prompt)
+        
+        result = await model.generateContent(prompt)
+        break // Success, exit loop
+      } catch (error) {
+        lastError = error
+        console.error(`Model ${modelName} failed:`, error.message)
+        
+        // If it's a 503 or rate limit, try next model
+        if (error.message.includes('503') || error.message.includes('overloaded') || error.message.includes('429')) {
+          continue
+        }
+        // For other errors, throw immediately
+        throw error
+      }
+    }
+
+    if (!result) {
+      throw new Error(`All Gemini models failed. Last error: ${lastError?.message || 'Unknown'}`)
+    }
+
     const response = await result.response
     const text = response.text()
     
@@ -73,11 +120,29 @@ Make it engaging, valuable, and conversion-focused!
       const jsonMatch = text.match(/```json\n([\s\S]*?)\n```/) || text.match(/\{[\s\S]*\}/)
       const jsonText = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : text
       blogData = JSON.parse(jsonText)
+      
+      // Validate required fields
+      if (!blogData.title || !blogData.slug || !blogData.content) {
+        throw new Error('Missing required fields in AI response')
+      }
+      
+      // Sanitize and validate content
+      blogData.title = String(blogData.title).substring(0, 200)
+      blogData.slug = String(blogData.slug).toLowerCase().replace(/[^a-z0-9-]/g, '-').substring(0, 100)
+      blogData.excerpt = String(blogData.excerpt || '').substring(0, 300)
+      blogData.category = String(blogData.category || 'Startup Development').substring(0, 50)
+      blogData.readTime = String(blogData.readTime || '5 min read').substring(0, 20)
+      blogData.keywords = Array.isArray(blogData.keywords) ? blogData.keywords.slice(0, 10) : []
+      
     } catch (parseError) {
       console.error('JSON parse error:', parseError)
+      await logSystemEvent('ai', 'failed', 'Failed to parse AI response', {
+        error: parseError.message,
+        rawResponse: text.substring(0, 500)
+      })
       return res.status(500).json({ 
         error: 'Failed to parse AI response',
-        rawResponse: text
+        details: parseError.message
       })
     }
     
@@ -114,7 +179,8 @@ Make it engaging, valuable, and conversion-focused!
       slug: uniqueSlug,
       executionTime,
       tokenUsage,
-      wordCount: blogData.content.split(' ').length
+      wordCount: blogData.content.split(' ').length,
+      model: usedModel
     })
     
     return res.status(200).json({
@@ -123,6 +189,7 @@ Make it engaging, valuable, and conversion-focused!
       slug: uniqueSlug,
       title: blogData.title,
       filePath: `/blog/${uniqueSlug}`,
+      model: usedModel,
       stats: {
         executionTime,
         tokenUsage,
@@ -134,22 +201,29 @@ Make it engaging, valuable, and conversion-focused!
     console.error('Blog generation error:', error)
     
     // Log error to database
-    await logBlogRun({
-      slug: blogSlug || 'unknown',
-      status: 'failed',
-      error: error.message,
-      tokenUsage: 0,
-      prompt: req.body.topic || 'Unknown'
-    })
+    try {
+      await logBlogRun({
+        slug: blogSlug || 'unknown',
+        status: 'failed',
+        error: error.message,
+        tokenUsage: 0,
+        prompt: req.body?.topic || 'Unknown'
+      })
+      
+      await logSystemEvent('ai', 'failed', `Blog generation failed: ${error.message}`, {
+        error: error.toString(),
+        stack: error.stack
+      })
+    } catch (logError) {
+      console.error('Failed to log error:', logError)
+    }
     
-    await logSystemEvent('ai', 'failed', `Blog generation failed: ${error.message}`, {
-      error: error.toString(),
-      stack: error.stack
-    })
-    
+    // Return clean JSON error (never HTML)
     return res.status(500).json({ 
-      error: error.message,
-      details: error.toString()
+      success: false,
+      error: error.message || 'Blog generation failed',
+      details: error.toString(),
+      timestamp: new Date().toISOString()
     })
   }
 }
