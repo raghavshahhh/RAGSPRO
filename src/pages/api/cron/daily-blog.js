@@ -7,14 +7,24 @@ export default async function handler(req, res) {
   
   // Log cron start
   await logSystemEvent('cron', 'info', 'Daily blog cron started', {
-    timestamp: new Date().toISOString()
+    timestamp: new Date().toISOString(),
+    headers: req.headers
   })
   
-  // Verify cron secret for security
+  // Verify cron authentication
+  // Vercel Cron sends authorization header, external cron can use x-cron-secret
+  const authHeader = req.headers.authorization
   const cronSecret = req.headers['x-cron-secret']
-  if (cronSecret !== process.env.CRON_SECRET) {
+  
+  // Allow Vercel Cron (has authorization header) or valid cron secret
+  const isVercelCron = authHeader && authHeader.startsWith('Bearer ')
+  const isValidSecret = cronSecret === process.env.CRON_SECRET
+  
+  if (!isVercelCron && !isValidSecret && process.env.CRON_SECRET) {
     await logSystemEvent('cron', 'failed', 'Cron authentication failed', {
-      reason: 'Invalid cron secret'
+      reason: 'Invalid authentication',
+      hasAuth: !!authHeader,
+      hasSecret: !!cronSecret
     })
     return res.status(401).json({ error: 'Unauthorized' })
   }
