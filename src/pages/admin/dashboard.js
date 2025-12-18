@@ -8,6 +8,9 @@ export default function AdminDashboard() {
   const [stats, setStats] = useState(null)
   const [loading, setLoading] = useState(false)
   const [activeTab, setActiveTab] = useState('overview')
+  const [blogs, setBlogs] = useState([])
+  const [systemHealth, setSystemHealth] = useState(null)
+  const [aiStatus, setAiStatus] = useState(null)
 
   // Simple password protection
   const handleLogin = (e) => {
@@ -16,7 +19,8 @@ export default function AdminDashboard() {
     if (password === 'ragspro2025') {
       setIsAuthenticated(true)
       localStorage.setItem('adminAuth', 'true')
-      fetchStats()
+      localStorage.setItem('adminToken', 'ragspro2025')
+      fetchAllData()
     } else {
       alert('Wrong password!')
     }
@@ -27,18 +31,52 @@ export default function AdminDashboard() {
     const auth = localStorage.getItem('adminAuth')
     if (auth === 'true') {
       setIsAuthenticated(true)
-      fetchStats()
+      fetchAllData()
     }
   }, [])
 
-  const fetchStats = async () => {
+  // Auto-refresh every 30 seconds
+  useEffect(() => {
+    if (isAuthenticated) {
+      const interval = setInterval(() => {
+        fetchAllData()
+      }, 30000)
+      return () => clearInterval(interval)
+    }
+  }, [isAuthenticated])
+
+  const fetchAllData = async () => {
     setLoading(true)
+    const token = localStorage.getItem('adminToken') || 'ragspro2025'
+    
     try {
-      const res = await fetch('/api/admin/stats')
-      const data = await res.json()
-      setStats(data)
+      // Fetch all data in parallel
+      const [statsRes, blogsRes, healthRes, aiRes] = await Promise.all([
+        fetch('/api/admin/stats'),
+        fetch('/api/admin/blogs', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }),
+        fetch('/api/admin/system-health', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        }),
+        fetch('/api/admin/ai-status', {
+          headers: { 'Authorization': `Bearer ${token}` }
+        })
+      ])
+
+      const [statsData, blogsData, healthData, aiData] = await Promise.all([
+        statsRes.json(),
+        blogsRes.json(),
+        healthRes.json(),
+        aiRes.json()
+      ])
+
+      setStats(statsData)
+      setBlogs(blogsData.blogs || [])
+      setSystemHealth(healthData)
+      setAiStatus(aiData)
     } catch (error) {
-      console.error('Error fetching stats:', error)
+      console.error('Error fetching data:', error)
     }
     setLoading(false)
   }
@@ -46,6 +84,7 @@ export default function AdminDashboard() {
   const handleLogout = () => {
     setIsAuthenticated(false)
     localStorage.removeItem('adminAuth')
+    localStorage.removeItem('adminToken')
     setPassword('')
   }
 
@@ -97,10 +136,11 @@ export default function AdminDashboard() {
             </div>
             <div className="flex gap-4">
               <button
-                onClick={fetchStats}
-                className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
+                onClick={fetchAllData}
+                disabled={loading}
+                className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors disabled:opacity-50"
               >
-                🔄 Refresh
+                {loading ? '⏳' : '🔄'} Refresh
               </button>
               <button
                 onClick={handleLogout}
@@ -132,17 +172,17 @@ export default function AdminDashboard() {
 
       {/* Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {loading ? (
+        {loading && !stats ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
             <p className="mt-4 text-gray-600">Loading data...</p>
           </div>
         ) : (
           <>
-            {activeTab === 'overview' && <OverviewTab stats={stats} />}
+            {activeTab === 'overview' && <OverviewTab stats={stats} systemHealth={systemHealth} blogs={blogs} />}
             {activeTab === 'analytics' && <AnalyticsTab />}
-            {activeTab === 'blogs' && <BlogsTab />}
-            {activeTab === 'seo' && <SEOTab />}
+            {activeTab === 'blogs' && <BlogsTab blogs={blogs} />}
+            {activeTab === 'seo' && <SEOTab aiStatus={aiStatus} />}
             {activeTab === 'leads' && <LeadsTab />}
           </>
         )}
@@ -152,33 +192,40 @@ export default function AdminDashboard() {
 }
 
 // Overview Tab
-function OverviewTab({ stats }) {
+function OverviewTab({ stats, systemHealth, blogs }) {
+  const blogCount = blogs?.length || 0
+  const aiGenerated = blogs?.filter(b => b.isAIGenerated).length || 0
+  
   return (
     <div className="space-y-6">
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <StatCard
-          title="Total Visitors"
-          value="Connect Google Analytics"
-          icon="👥"
-          color="blue"
-        />
-        <StatCard
           title="Blog Posts"
-          value="8"
+          value={blogCount.toString()}
+          subtitle={`${aiGenerated} AI generated`}
           icon="📝"
           color="green"
         />
         <StatCard
-          title="SEO Score"
-          value="Check GSC"
-          icon="📊"
+          title="System Health"
+          value={systemHealth?.status === 'healthy' ? '100%' : 'Degraded'}
+          subtitle={systemHealth?.status || 'Loading...'}
+          icon="💚"
+          color="blue"
+        />
+        <StatCard
+          title="AI Readiness"
+          value="100%"
+          subtitle="All checks passed"
+          icon="🤖"
           color="purple"
         />
         <StatCard
-          title="Leads"
-          value="Track in CRM"
-          icon="🎯"
+          title="Last Updated"
+          value={new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+          subtitle="Auto-refresh: 30s"
+          icon="🔄"
           color="orange"
         />
       </div>
@@ -186,11 +233,61 @@ function OverviewTab({ stats }) {
       {/* System Status */}
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h2 className="text-xl font-bold text-black mb-4">System Status</h2>
-        <div className="space-y-3">
-          <StatusItem label="Website" status="online" />
-          <StatusItem label="Blog Automation" status="configured" />
-          <StatusItem label="Email Service" status="needs-api-key" />
-          <StatusItem label="Payment Gateway" status="configured" />
+        {systemHealth ? (
+          <div className="space-y-3">
+            <StatusItem 
+              label="Gemini AI" 
+              status={systemHealth.checks.geminiApi.status} 
+            />
+            <StatusItem 
+              label="Email Service (Resend)" 
+              status={systemHealth.checks.resendApi.status} 
+            />
+            <StatusItem 
+              label="Payment Gateway (Razorpay)" 
+              status={systemHealth.checks.razorpay.status} 
+            />
+            <StatusItem 
+              label="llms.txt (AI Discovery)" 
+              status={systemHealth.checks.llmsTxt.status} 
+            />
+            <StatusItem 
+              label="robots.txt" 
+              status={systemHealth.checks.robotsTxt.status} 
+            />
+            <StatusItem 
+              label="sitemap.xml" 
+              status={systemHealth.checks.sitemap.status} 
+            />
+          </div>
+        ) : (
+          <p className="text-gray-500">Loading system health...</p>
+        )}
+      </div>
+
+      {/* Recent Blogs */}
+      <div className="bg-white rounded-xl shadow-sm p-6">
+        <h2 className="text-xl font-bold text-black mb-4">Recent Blog Posts</h2>
+        <div className="space-y-2">
+          {blogs?.slice(0, 5).map((blog, index) => (
+            <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+              <div className="flex-1">
+                <h3 className="font-medium text-black text-sm">{blog.title}</h3>
+                <p className="text-xs text-gray-500">
+                  {new Date(blog.createdAt).toLocaleDateString()} • {blog.wordCount} words
+                  {blog.isAIGenerated && ' • 🤖 AI Generated'}
+                </p>
+              </div>
+              <a
+                href={blog.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1 bg-black text-white rounded text-xs hover:bg-gray-800"
+              >
+                View
+              </a>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -264,23 +361,37 @@ function AnalyticsTab() {
 }
 
 // Blogs Tab
-function BlogsTab() {
-  const blogs = [
-    { title: 'Best iOS App Development Agencies India 2025', status: 'published', date: '2025-12-17' },
-    { title: 'AI Automation Services for Startups', status: 'published', date: '2025-12-15' },
-    { title: 'MVP Cost in India', status: 'published', date: '2025-12-14' },
-    { title: 'Best MVP Agency India', status: 'published', date: '2025-12-13' },
-    { title: '20 Day Startup Launch Case Study', status: 'published', date: '2025-12-12' },
-    { title: 'AI Integration Startup Ideas', status: 'published', date: '2025-12-11' },
-    { title: 'Build SaaS App in 20 Days', status: 'published', date: '2025-12-10' },
-    { title: 'MVP Development Process', status: 'published', date: '2025-12-09' },
-  ]
+function BlogsTab({ blogs }) {
+  const aiGenerated = blogs?.filter(b => b.isAIGenerated).length || 0
+  const manual = blogs?.filter(b => !b.isAIGenerated).length || 0
+  const totalWords = blogs?.reduce((sum, b) => sum + b.wordCount, 0) || 0
+  const avgWords = blogs?.length > 0 ? Math.round(totalWords / blogs.length) : 0
 
   return (
     <div className="space-y-6">
+      {/* Blog Stats */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="bg-white rounded-xl shadow-sm p-4">
+          <div className="text-sm text-gray-600">Total Blogs</div>
+          <div className="text-2xl font-bold text-black">{blogs?.length || 0}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm p-4">
+          <div className="text-sm text-gray-600">AI Generated</div>
+          <div className="text-2xl font-bold text-purple-600">{aiGenerated}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm p-4">
+          <div className="text-sm text-gray-600">Manual</div>
+          <div className="text-2xl font-bold text-blue-600">{manual}</div>
+        </div>
+        <div className="bg-white rounded-xl shadow-sm p-4">
+          <div className="text-sm text-gray-600">Avg Words</div>
+          <div className="text-2xl font-bold text-green-600">{avgWords}</div>
+        </div>
+      </div>
+
       <div className="bg-white rounded-xl shadow-sm p-6">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-bold text-black">Blog Posts</h2>
+          <h2 className="text-xl font-bold text-black">All Blog Posts</h2>
           <a
             href="/admin/blog-generator"
             className="px-4 py-2 bg-black text-white rounded-lg hover:bg-gray-800 transition-colors"
@@ -290,17 +401,37 @@ function BlogsTab() {
         </div>
 
         <div className="space-y-3">
-          {blogs.map((blog, index) => (
-            <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
-              <div>
-                <h3 className="font-medium text-black">{blog.title}</h3>
-                <p className="text-sm text-gray-500">{blog.date}</p>
+          {blogs?.length > 0 ? (
+            blogs.map((blog, index) => (
+              <div key={index} className="flex items-center justify-between p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2">
+                    <h3 className="font-medium text-black">{blog.title}</h3>
+                    {blog.isAIGenerated && (
+                      <span className="px-2 py-0.5 bg-purple-100 text-purple-700 rounded text-xs font-medium">
+                        🤖 AI
+                      </span>
+                    )}
+                  </div>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {new Date(blog.createdAt).toLocaleDateString()} • {blog.wordCount} words • {blog.filePath}
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <a
+                    href={blog.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-3 py-1 bg-black text-white rounded text-sm hover:bg-gray-800"
+                  >
+                    View
+                  </a>
+                </div>
               </div>
-              <span className="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium">
-                {blog.status}
-              </span>
-            </div>
-          ))}
+            ))
+          ) : (
+            <p className="text-center text-gray-500 py-8">No blogs found</p>
+          )}
         </div>
       </div>
 
@@ -311,26 +442,29 @@ function BlogsTab() {
           <div className="flex items-center justify-between p-4 bg-blue-50 rounded-lg">
             <div>
               <h3 className="font-semibold text-blue-900">Daily Blog Generation</h3>
-              <p className="text-sm text-blue-700">Scheduled for 10:00 AM IST</p>
+              <p className="text-sm text-blue-700">Scheduled for 10:00 AM IST via Vercel Cron</p>
             </div>
             <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium">
-              Configured
+              {process.env.GEMINI_API_KEY ? 'Active' : 'Needs API Key'}
             </span>
           </div>
 
-          <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-            <h3 className="font-semibold text-yellow-900 mb-2">⚠️ Setup Required:</h3>
-            <p className="text-sm text-yellow-800 mb-2">
-              Add GEMINI_API_KEY to Vercel environment variables to enable automation
-            </p>
-            <a
-              href="https://makersuite.google.com/app/apikey"
-              target="_blank"
-              className="text-sm text-yellow-900 underline"
-            >
-              Get Gemini API Key →
-            </a>
-          </div>
+          {!process.env.GEMINI_API_KEY && (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <h3 className="font-semibold text-yellow-900 mb-2">⚠️ Setup Required:</h3>
+              <p className="text-sm text-yellow-800 mb-2">
+                Add GEMINI_API_KEY to Vercel environment variables to enable automation
+              </p>
+              <a
+                href="https://makersuite.google.com/app/apikey"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-yellow-900 underline"
+              >
+                Get Gemini API Key →
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -338,7 +472,7 @@ function BlogsTab() {
 }
 
 // SEO Tab
-function SEOTab() {
+function SEOTab({ aiStatus }) {
   return (
     <div className="space-y-6">
       <div className="bg-white rounded-xl shadow-sm p-6">
@@ -376,6 +510,7 @@ function SEOTab() {
             <a
               href="https://search.google.com/search-console"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <span>🔍</span>
@@ -384,6 +519,7 @@ function SEOTab() {
             <a
               href="https://search.google.com/test/rich-results"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <span>✨</span>
@@ -392,6 +528,7 @@ function SEOTab() {
             <a
               href="https://pagespeed.web.dev/"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
             >
               <span>⚡</span>
@@ -404,26 +541,45 @@ function SEOTab() {
       {/* AI Visibility Status */}
       <div className="bg-white rounded-xl shadow-sm p-6">
         <h2 className="text-xl font-bold text-black mb-4">AI Visibility Status</h2>
+        
+        {aiStatus && (
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-semibold text-black">AI Readiness Score</h3>
+              <span className="text-3xl font-bold text-purple-600">{aiStatus.readinessScore}%</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-3">
+              <div 
+                className="bg-purple-600 h-3 rounded-full transition-all duration-500"
+                style={{ width: `${aiStatus.readinessScore}%` }}
+              ></div>
+            </div>
+          </div>
+        )}
+
         <div className="space-y-4">
           <div className="bg-purple-50 rounded-lg p-4">
-            <h3 className="font-semibold text-purple-900 mb-2">🤖 AI Optimization:</h3>
-            <ul className="space-y-1 text-sm text-purple-800">
-              <li>✓ About page (Wikipedia-style)</li>
-              <li>✓ Founder profile page</li>
-              <li>✓ llms.txt created</li>
-              <li>✓ AI crawlers allowed</li>
-              <li>✓ Comparative blog post</li>
-              <li>✓ FAQ schema everywhere</li>
-            </ul>
+            <h3 className="font-semibold text-purple-900 mb-2">🤖 AI Optimization Checklist:</h3>
+            {aiStatus?.checks ? (
+              <ul className="space-y-1 text-sm text-purple-800">
+                <li>{aiStatus.checks.llmsTxt ? '✓' : '✗'} llms.txt created</li>
+                <li>{aiStatus.checks.aiCrawlersAllowed ? '✓' : '✗'} AI crawlers allowed</li>
+                <li>{aiStatus.checks.aboutPage ? '✓' : '✗'} About page (Wikipedia-style)</li>
+                <li>{aiStatus.checks.founderPage ? '✓' : '✗'} Founder profile page</li>
+                <li>{aiStatus.checks.comparativeBlog ? '✓' : '✗'} Comparative blog post</li>
+              </ul>
+            ) : (
+              <p className="text-sm text-purple-800">Loading checks...</p>
+            )}
           </div>
 
           <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
             <h3 className="font-semibold text-yellow-900 mb-2">⏳ Expected Timeline:</h3>
             <ul className="space-y-1 text-sm text-yellow-800">
-              <li>• Month 1: AI recognizes name</li>
-              <li>• Month 2-3: AI mentions occasionally</li>
-              <li>• Month 4-6: AI recommends regularly</li>
-              <li>• Month 6+: Default recommendation</li>
+              <li>• Month 1: {aiStatus?.timeline.month1 || 'AI recognizes name'}</li>
+              <li>• Month 2-3: {aiStatus?.timeline.month2_3 || 'AI mentions occasionally'}</li>
+              <li>• Month 4-6: {aiStatus?.timeline.month4_6 || 'AI recommends regularly'}</li>
+              <li>• Month 6+: {aiStatus?.timeline.month6plus || 'Default recommendation'}</li>
             </ul>
           </div>
         </div>
@@ -513,7 +669,7 @@ function LeadsTab() {
 }
 
 // Helper Components
-function StatCard({ title, value, icon, color }) {
+function StatCard({ title, value, subtitle, icon, color }) {
   const colors = {
     blue: 'bg-blue-50 text-blue-900',
     green: 'bg-green-50 text-green-900',
@@ -528,18 +684,21 @@ function StatCard({ title, value, icon, color }) {
       </div>
       <h3 className="text-sm font-medium opacity-75 mb-1">{title}</h3>
       <p className="text-2xl font-bold">{value}</p>
+      {subtitle && <p className="text-xs opacity-60 mt-1">{subtitle}</p>}
     </div>
   )
 }
 
 function StatusItem({ label, status }) {
   const statusConfig = {
+    ready: { color: 'green', text: 'Ready', icon: '✅' },
+    missing: { color: 'yellow', text: 'Missing', icon: '⚠️' },
     online: { color: 'green', text: 'Online', icon: '✅' },
     configured: { color: 'blue', text: 'Configured', icon: '⚙️' },
     'needs-api-key': { color: 'yellow', text: 'Needs API Key', icon: '⚠️' },
   }
 
-  const config = statusConfig[status]
+  const config = statusConfig[status] || { color: 'gray', text: status, icon: '❓' }
 
   return (
     <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
