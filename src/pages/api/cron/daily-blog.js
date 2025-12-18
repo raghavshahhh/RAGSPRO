@@ -1,16 +1,30 @@
 // Cron job endpoint for daily blog generation
 // This can be triggered by Vercel Cron or external cron service
+import { logSystemEvent } from '../../../utils/supabase'
 
 export default async function handler(req, res) {
+  const startTime = Date.now()
+  
+  // Log cron start
+  await logSystemEvent('cron', 'info', 'Daily blog cron started', {
+    timestamp: new Date().toISOString()
+  })
+  
   // Verify cron secret for security
   const cronSecret = req.headers['x-cron-secret']
   if (cronSecret !== process.env.CRON_SECRET) {
+    await logSystemEvent('cron', 'failed', 'Cron authentication failed', {
+      reason: 'Invalid cron secret'
+    })
     return res.status(401).json({ error: 'Unauthorized' })
   }
 
   try {
     // Check if auto-generation is enabled
     if (process.env.ENABLE_AUTO_BLOG !== 'true') {
+      await logSystemEvent('cron', 'info', 'Auto blog generation disabled', {
+        skipped: true
+      })
       return res.status(200).json({ 
         message: 'Auto blog generation is disabled',
         skipped: true
@@ -80,10 +94,20 @@ export default async function handler(req, res) {
     const result = await response.json()
 
     if (result.success) {
+      const executionTime = Date.now() - startTime
+      
+      await logSystemEvent('cron', 'success', 'Daily blog generated successfully', {
+        slug: result.slug,
+        title: result.title,
+        executionTime,
+        topic: randomTopic.topic
+      })
+      
       return res.status(200).json({
         success: true,
         message: 'Daily blog generated successfully',
-        blog: result
+        blog: result,
+        executionTime
       })
     } else {
       throw new Error(result.error || 'Blog generation failed')
@@ -91,6 +115,15 @@ export default async function handler(req, res) {
 
   } catch (error) {
     console.error('Cron job error:', error)
+    
+    const executionTime = Date.now() - startTime
+    
+    await logSystemEvent('cron', 'failed', `Daily blog cron failed: ${error.message}`, {
+      error: error.toString(),
+      stack: error.stack,
+      executionTime
+    })
+    
     return res.status(500).json({
       success: false,
       error: error.message

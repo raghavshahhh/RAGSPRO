@@ -13,6 +13,7 @@ import AccessibilityOptimizer from '../components/AccessibilityOptimizer'
 import CustomCursor from '../components/CustomCursor'
 import SmoothScroll from '../components/SmoothScroll'
 import FloatingContactButtons from '../components/FloatingContactButtons'
+import Analytics from '../components/Analytics'
 import { initProjectsAnimation } from '../utils/projectsAnimation'
 
 export default function App({ Component, pageProps, router }) {
@@ -58,6 +59,7 @@ export default function App({ Component, pageProps, router }) {
       <PerformanceOptimizer />
       <AccessibilityOptimizer />
       <UltimateMobileOptimizer />
+      <Analytics />
       <SmoothScroll>
         <CustomCursor />
         <MobilePerformanceOptimizer />
