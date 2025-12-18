@@ -3,6 +3,15 @@ import { useRouter } from 'next/router'
 
 const blogPosts = [
   {
+    id: 1766057414258,
+    title: "AI Automation for Indian Startups: Build, Scale, Conquer Faster",
+    excerpt: "Discover how AI automation can transform your Indian startup, drive efficiency, and accelerate growth. Learn practical applications and RAGSPRO's 20-day MVP approach.",
+    date: "2025-12-18",
+    slug: "ai-automation-indian-startups-build-scale-2025-12-18",
+    category: "Startup Growth",
+    readTime: "10-12 min read"
+  },
+  {
     id: 1,
     title: "Best AI Automation Services for Startups in India 2025",
     excerpt: "Complete guide to AI automation services. ChatGPT integration, workflow automation, and AI-powered features for Indian startups.",

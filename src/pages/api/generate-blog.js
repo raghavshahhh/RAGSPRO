@@ -29,7 +29,8 @@ export default async function handler(req, res) {
     }
     
     // Generate blog content using Gemini
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' })
+    // Using gemini-2.5-flash - the latest, fastest, and most cost-effective model
+    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' })
     
     const prompt = `
 You are a professional content writer for RAGSPRO, a startup MVP development agency in India that builds startups in 20 days.
