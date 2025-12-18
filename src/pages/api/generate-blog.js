@@ -156,6 +156,20 @@ Make it engaging, valuable, and conversion-focused!
 
 // Generate Next.js blog page file
 function generateBlogFile(blogData, slug) {
+  // Escape special characters for JSX
+  const escapeJSX = (str) => {
+    return str
+      .replace(/\\/g, '\\\\')
+      .replace(/`/g, '\\`')
+      .replace(/\$/g, '\\$')
+      .replace(/'/g, "\\'")
+  }
+  
+  const safeTitle = escapeJSX(blogData.title)
+  const safeExcerpt = escapeJSX(blogData.excerpt)
+  const safeContent = escapeJSX(blogData.content)
+  const safeCategory = escapeJSX(blogData.category)
+  
   return `import SEOHead from '../../components/SEOHead'
 import { useRouter } from 'next/router'
 import BlogCTA from '../../components/blog/BlogCTA'
@@ -166,8 +180,8 @@ export default function ${toPascalCase(slug)}() {
   return (
     <>
       <SEOHead 
-        title="${blogData.title} | RAGSPRO Blog"
-        description="${blogData.excerpt}"
+        title={\`${safeTitle} | RAGSPRO Blog\`}
+        description={\`${safeExcerpt}\`}
         keywords="${blogData.keywords.join(', ')}"
         url="https://ragspro.com/blog/${slug}"
       />
@@ -189,13 +203,13 @@ export default function ${toPascalCase(slug)}() {
           <header className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               <span className="px-4 py-2 bg-black text-white text-sm font-medium rounded-full">
-                ${blogData.category}
+                ${safeCategory}
               </span>
               <span className="text-gray-500">${blogData.readTime}</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold text-black mb-6 leading-tight">
-              ${blogData.title}
+              ${safeTitle}
             </h1>
             
             <div className="flex items-center text-gray-600">
@@ -207,17 +221,10 @@ export default function ${toPascalCase(slug)}() {
           <BlogCTA position="after-intro" />
 
           {/* Article Content */}
-          <div className="prose prose-lg max-w-none">
-            ${blogData.content}
-          </div>
+          <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: \`${safeContent}\` }} />
 
           {/* CTA Mid Content */}
           <BlogCTA position="mid-content" />
-
-          {/* More Content */}
-          <div className="prose prose-lg max-w-none mt-8">
-            {/* Additional content sections */}
-          </div>
 
           {/* CTA End */}
           <BlogCTA position="end" />

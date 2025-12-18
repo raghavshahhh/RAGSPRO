@@ -3,6 +3,24 @@ import { useRouter } from 'next/router'
 
 const blogPosts = [
   {
+    id: 1766059640966,
+    title: "Startup Funding Guide 2025: A Founder's Roadmap for Indian Startups",
+    excerpt: "Unlock funding for your Indian startup in 2025! This comprehensive guide covers early-stage to growth capital, investor insights, and actionable tips for founders.",
+    date: "2025-12-18",
+    slug: "startup-funding-guide-indian-founders-2025-2025-12-18",
+    category: "Startup Funding",
+    readTime: "8 min read"
+  },
+  {
+    id: 1766059211285,
+    title: "Unlocking Success: The Ultimate MVP Development Guide for Indian Startups",
+    excerpt: "Navigate the dynamic Indian startup landscape with our comprehensive MVP development guide. Learn to build, validate, and launch your startup idea efficiently and cost-effectively.",
+    date: "2025-12-18",
+    slug: "mvp-development-guide-indian-startups-2025-12-18",
+    category: "Startup Resources, Product Development",
+    readTime: "12 min read"
+  },
+  {
     id: 1766057414258,
     title: "AI Automation for Indian Startups: Build, Scale, Conquer Faster",
     excerpt: "Discover how AI automation can transform your Indian startup, drive efficiency, and accelerate growth. Learn practical applications and RAGSPRO's 20-day MVP approach.",
