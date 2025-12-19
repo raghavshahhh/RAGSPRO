@@ -78,13 +78,13 @@ export default function FixedContactButtons() {
             <span className="whitespace-nowrap">WhatsApp</span>
           </a>
 
-          <button
-            onClick={() => setShowQuoteForm(true)}
+          <a
+            href="/get-quote"
             className="bg-black text-white rounded-full flex items-center justify-center gap-2 px-5 py-3 hover:bg-gray-800 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg font-medium text-sm"
           >
             <FaLightbulb className="text-xl" />
             <span className="whitespace-nowrap">Get Quote</span>
-          </button>
+          </a>
         </div>
       </div>
 
