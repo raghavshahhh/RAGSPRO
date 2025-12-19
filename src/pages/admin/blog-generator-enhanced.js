@@ -1,8 +1,10 @@
-// Enhanced Admin Blog Generator with animations, progress, timer
+// Enhanced Admin Blog Generator with animations, progress, timer, and edit
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import SEOHead from '../../components/SEOHead'
 
-export default function BlogGenerator() {
+export default function BlogGeneratorEnhanced() {
+  const router = useRouter()
   const [topic, setTopic] = useState('')
   const [keywords, setKeywords] = useState('')
   const [loading, setLoading] = useState(false)
@@ -10,6 +12,8 @@ export default function BlogGenerator() {
   const [timer, setTimer] = useState(0)
   const [result, setResult] = useState(null)
   const [error, setError] = useState(null)
+  const [editMode, setEditMode] = useState(false)
+  const [editedContent, setEditedContent] = useState('')
 
   // Timer effect
   useEffect(() => {
@@ -46,12 +50,6 @@ export default function BlogGenerator() {
     'Mobile app vs web app: What should startups build first'
   ]
 
-  const formatTime = (seconds) => {
-    const mins = Math.floor(seconds / 60)
-    const secs = seconds % 60
-    return `${mins}:${secs.toString().padStart(2, '0')}`
-  }
-
   const handleGenerate = async () => {
     if (!topic.trim()) {
       setError('Please enter a topic')
@@ -82,6 +80,7 @@ export default function BlogGenerator() {
       if (data.success) {
         setProgress(100)
         setResult(data)
+        setEditedContent(data.title) // Initialize with title for editing
       } else {
         setError(data.error || data.details || 'Failed to generate blog')
       }
@@ -90,6 +89,12 @@ export default function BlogGenerator() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins}:${secs.toString().padStart(2, '0')}`
   }
 
   return (
@@ -291,7 +296,7 @@ export default function BlogGenerator() {
           )}
 
           {/* Suggested Topics */}
-          <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100 mb-8">
+          <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
             <h2 className="text-2xl font-bold text-black mb-6 flex items-center">
               <span className="mr-3">💡</span>
               Suggested Topics
@@ -311,7 +316,7 @@ export default function BlogGenerator() {
           </div>
 
           {/* Quick Stats */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl p-6 text-white">
               <div className="text-4xl mb-2">⚡</div>
               <div className="text-3xl font-bold mb-1">30-60s</div>

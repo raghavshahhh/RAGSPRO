@@ -61,35 +61,31 @@ export default async function handler(req, res) {
         const model = genAI.getGenerativeModel({ model: modelName })
         usedModel = modelName
     
-        const prompt = `
-You are a professional content writer for RAGSPRO, a startup MVP development agency in India that builds startups in 20 days.
+        const prompt = `You are a professional content writer for RAGSPRO, a startup MVP development agency in India.
 
-Write a comprehensive, SEO-optimized blog post about: ${topic || 'trending startup development topic'}
+Write a comprehensive blog post about: ${topic || 'trending startup development topic'}
 
-Requirements:
-- Target keywords: ${keywords || 'MVP development, startup development, SaaS development, AI automation'}
-- Length: 1500-2000 words
-- Tone: Professional but conversational, founder-focused
-- Include: Introduction, 5-7 main sections with H2 headings, conclusion
-- Add practical examples and actionable tips
-- Focus on Indian startup ecosystem
-- Mention RAGSPRO's 20-day MVP development process naturally
-- Include pricing context (₹85K-₹3L range)
-- End with a clear CTA
+Target keywords: ${keywords || 'MVP development, startup development, SaaS development'}
 
-Format the response as JSON with these fields:
+CRITICAL INSTRUCTIONS:
+1. Return ONLY a valid JSON object
+2. NO markdown formatting
+3. NO code blocks (no \`\`\`json)
+4. NO extra text before or after the JSON
+5. Start with { and end with }
+
+Required JSON structure:
 {
   "title": "SEO-optimized title (60-70 characters)",
-  "slug": "url-friendly-slug",
+  "slug": "url-friendly-slug-without-special-chars",
   "excerpt": "Compelling excerpt (150-160 characters)",
-  "category": "Category name",
-  "readTime": "X min read",
+  "category": "Startup Development",
+  "readTime": "8 min read",
   "keywords": ["keyword1", "keyword2", "keyword3"],
-  "content": "Full HTML content with proper headings and formatting"
+  "content": "<h2>Introduction</h2><p>Write 1500-2000 words with proper HTML tags. Use h2 for sections, p for paragraphs. Focus on Indian startup ecosystem. Mention RAGSPRO naturally. Include pricing context (₹85K-₹3L). End with CTA.</p>"
 }
 
-Make it engaging, valuable, and conversion-focused!
-`
+Write the actual blog content and return ONLY the JSON object.`
         
         result = await model.generateContent(prompt)
         break // Success, exit loop
@@ -116,10 +112,29 @@ Make it engaging, valuable, and conversion-focused!
     // Parse JSON from response
     let blogData
     try {
-      // Extract JSON from markdown code blocks if present
-      const jsonMatch = text.match(/```json\n([\s\S]*?)\n```/) || text.match(/\{[\s\S]*\}/)
-      const jsonText = jsonMatch ? (jsonMatch[1] || jsonMatch[0]) : text
-      blogData = JSON.parse(jsonText)
+      // Clean the response text
+      let cleanText = text.trim()
+      
+      // Remove markdown code blocks if present
+      if (cleanText.includes('```json')) {
+        const jsonMatch = cleanText.match(/```json\s*\n([\s\S]*?)\n```/)
+        if (jsonMatch) {
+          cleanText = jsonMatch[1].trim()
+        }
+      } else if (cleanText.includes('```')) {
+        const jsonMatch = cleanText.match(/```\s*\n([\s\S]*?)\n```/)
+        if (jsonMatch) {
+          cleanText = jsonMatch[1].trim()
+        }
+      }
+      
+      // Extract JSON object if there's extra text
+      const jsonMatch = cleanText.match(/\{[\s\S]*\}/)
+      if (jsonMatch) {
+        cleanText = jsonMatch[0]
+      }
+      
+      blogData = JSON.parse(cleanText)
       
       // Validate required fields
       if (!blogData.title || !blogData.slug || !blogData.content) {
