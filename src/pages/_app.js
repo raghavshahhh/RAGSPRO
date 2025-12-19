@@ -12,7 +12,7 @@ import PerformanceOptimizer from '../components/PerformanceOptimizer'
 import AccessibilityOptimizer from '../components/AccessibilityOptimizer'
 import CustomCursor from '../components/CustomCursor'
 import SmoothScroll from '../components/SmoothScroll'
-import FloatingContactButtons from '../components/FloatingContactButtons'
+import FixedContactButtons from '../components/FixedContactButtons'
 import Analytics from '../components/Analytics'
 import { initProjectsAnimation } from '../utils/projectsAnimation'
 
@@ -70,8 +70,8 @@ export default function App({ Component, pageProps, router }) {
         </AnimatePresence>
       </SmoothScroll>
       
-      {/* GLOBAL FLOATING ELEMENTS - OUTSIDE ALL WRAPPERS */}
-      <FloatingContactButtons />
+      {/* FIXED CONTACT BUTTONS - ALWAYS VISIBLE ON DESKTOP */}
+      <FixedContactButtons />
     </>
   )
 }

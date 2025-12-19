@@ -1,7 +1,7 @@
 'use client'
 
 import SEOHead from './SEOHead'
-import FloatingBrand from './FloatingBrand'
+import FixedNavbar from './FixedNavbar'
 import Footer from './Footer'
 import ChatbotTrigger from './ChatbotTrigger'
 import ReviewSubmissionBox from './ReviewSubmissionBox'
@@ -11,11 +11,11 @@ export default function Layout({ children, seoProps }) {
     <>
       <SEOHead {...seoProps} />
       
-      {/* GLOBAL - ALWAYS ON SCREEN */}
-      <FloatingBrand />
+      {/* FIXED NAVBAR - ALWAYS VISIBLE */}
+      <FixedNavbar />
       
-      {/* PAGE CONTENT */}
-      <main>{children}</main>
+      {/* PAGE CONTENT - Add padding top to account for fixed navbar */}
+      <main className="pt-20">{children}</main>
       
       <Footer />
       <ChatbotTrigger />
