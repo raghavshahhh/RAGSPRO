@@ -56,7 +56,14 @@ export default function FixedContactButtons() {
           pointerEvents: 'auto',
         }}
       >
-        <div className="bg-white/95 backdrop-blur-xl rounded-full p-2 shadow-2xl border border-gray-200/50 flex gap-3 items-center">
+        <div 
+          className="bg-white/90 backdrop-blur-2xl rounded-full p-2 shadow-2xl flex gap-3 items-center"
+          style={{
+            backdropFilter: 'blur(40px)',
+            WebkitBackdropFilter: 'blur(40px)',
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+          }}
+        >
           <a
             href="https://wa.me/918700048490?text=Hi%2C%20I%27m%20interested%20in%20your%20development%20services.%20Can%20we%20discuss%20my%20project%3F"
             target="_blank"

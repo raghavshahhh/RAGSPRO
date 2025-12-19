@@ -49,18 +49,27 @@ export default function FixedNavbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-300 ${
-        isScrolled
-          ? 'bg-white/95 backdrop-blur-xl shadow-lg py-3'
-          : 'bg-white/80 backdrop-blur-md py-4'
-      }`}
+      className="fixed top-0 left-0 right-0 z-[9999] transition-all duration-300"
       style={{
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        pointerEvents: 'none', // Allow clicks through the nav container
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+        <div 
+          className={`transition-all duration-300 ${
+            isScrolled
+              ? 'bg-white/90 backdrop-blur-2xl shadow-2xl py-3'
+              : 'bg-white/70 backdrop-blur-xl shadow-xl py-4'
+          }`}
+          style={{
+            backdropFilter: 'blur(40px)',
+            WebkitBackdropFilter: 'blur(40px)',
+            borderRadius: '9999px', // Full rounded
+            border: '1px solid rgba(255, 255, 255, 0.3)',
+            pointerEvents: 'auto', // Enable clicks on the navbar itself
+          }}
+        >
+          <div className="flex items-center justify-between px-6">
           {/* Logo */}
           <button
             onClick={() => router.push('/')}
@@ -115,24 +124,34 @@ export default function FixedNavbar() {
               </svg>
             )}
           </button>
+          </div>
         </div>
 
-        {/* Mobile Menu */}
+        {/* Mobile Menu - Separate rounded container */}
         {isMenuOpen && (
-          <div className="md:hidden mt-4 pb-4 border-t border-gray-200 pt-4">
+          <div 
+            className="md:hidden mt-3 bg-white/90 backdrop-blur-2xl shadow-2xl py-4 px-6"
+            style={{
+              backdropFilter: 'blur(40px)',
+              WebkitBackdropFilter: 'blur(40px)',
+              borderRadius: '24px',
+              border: '1px solid rgba(255, 255, 255, 0.3)',
+              pointerEvents: 'auto',
+            }}
+          >
             <div className="flex flex-col gap-3">
               {navLinks.map((link) => (
                 <button
                   key={link.name}
                   onClick={() => handleNavClick(link.href)}
-                  className="text-left px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-lg transition-colors font-medium"
+                  className="text-left px-4 py-2 text-gray-700 hover:bg-gray-50 rounded-xl transition-colors font-medium"
                 >
                   {link.name}
                 </button>
               ))}
               <button
                 onClick={handleContactClick}
-                className="px-4 py-2.5 bg-black text-white rounded-lg font-medium hover:bg-gray-800 transition-all text-center"
+                className="px-4 py-2.5 bg-black text-white rounded-xl font-medium hover:bg-gray-800 transition-all text-center"
               >
                 Still not sure?
               </button>
