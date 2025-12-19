@@ -51,10 +51,14 @@ export default function FixedNavbar() {
     <nav
       className="fixed top-0 left-0 right-0 z-[9999] transition-all duration-300"
       style={{
-        pointerEvents: 'none', // Allow clicks through the nav container
+        position: 'fixed', // Force fixed positioning
+        top: 0,
+        left: 0,
+        right: 0,
+        pointerEvents: 'none',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4">
+      <div className="flex justify-center px-4 sm:px-6 lg:px-8 pt-4">
         <div 
           className={`transition-all duration-300 ${
             isScrolled
@@ -67,6 +71,7 @@ export default function FixedNavbar() {
             borderRadius: '9999px', // Full rounded
             border: '1px solid rgba(255, 255, 255, 0.3)',
             pointerEvents: 'auto', // Enable clicks on the navbar itself
+            maxWidth: 'fit-content', // Only as wide as content
           }}
         >
           <div className="flex items-center justify-between px-6">

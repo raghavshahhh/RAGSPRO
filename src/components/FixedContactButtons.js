@@ -53,6 +53,10 @@ export default function FixedContactButtons() {
       <div
         className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[9998]"
         style={{
+          position: 'fixed', // Force fixed positioning
+          bottom: '24px',
+          left: '50%',
+          transform: 'translateX(-50%)',
           pointerEvents: 'auto',
         }}
       >

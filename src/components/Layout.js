@@ -14,8 +14,8 @@ export default function Layout({ children, seoProps }) {
       {/* FIXED NAVBAR - ALWAYS VISIBLE */}
       <FixedNavbar />
       
-      {/* PAGE CONTENT - Add padding top to account for fixed navbar */}
-      <main className="pt-20">{children}</main>
+      {/* PAGE CONTENT */}
+      <main>{children}</main>
       
       <Footer />
       <ChatbotTrigger />
