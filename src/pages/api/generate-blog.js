@@ -115,6 +115,8 @@ Write the actual blog content and return ONLY the JSON object.`
       // Clean the response text
       let cleanText = text.trim()
       
+      console.log('Raw AI response (first 500 chars):', cleanText.substring(0, 500))
+      
       // Remove markdown code blocks if present
       if (cleanText.includes('```json')) {
         const jsonMatch = cleanText.match(/```json\s*\n([\s\S]*?)\n```/)
@@ -133,6 +135,8 @@ Write the actual blog content and return ONLY the JSON object.`
       if (jsonMatch) {
         cleanText = jsonMatch[0]
       }
+      
+      console.log('Cleaned text (first 500 chars):', cleanText.substring(0, 500))
       
       blogData = JSON.parse(cleanText)
       
