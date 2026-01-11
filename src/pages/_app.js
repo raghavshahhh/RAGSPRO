@@ -2,7 +2,7 @@ import '../styles/globals.css'
 import '../styles/mobile-fixed.css'
 import '../styles/mobile-ultra-optimized.css'
 import '../styles/responsive-fixes.css'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import Layout from '../components/Layout'
@@ -14,10 +14,20 @@ import CustomCursor from '../components/CustomCursor'
 import SmoothScroll from '../components/SmoothScroll'
 import FixedContactButtons from '../components/FixedContactButtons'
 import Analytics from '../components/Analytics'
+import GoogleAnalytics from '../components/GoogleAnalytics'
+import ErrorBoundary from '../components/ErrorBoundary'
+import LoginModal from '../components/auth/LoginModal'
+import { AuthProvider } from '../context/AuthContext'
 import { initProjectsAnimation } from '../utils/projectsAnimation'
+import { initErrorMonitoring } from '../utils/errorMonitoring'
 
 export default function App({ Component, pageProps, router }) {
+  const [showLoginModal, setShowLoginModal] = useState(false)
+
   useEffect(() => {
+    // Initialize error monitoring
+    initErrorMonitoring()
+
     // Add custom cursor class to body
     if (typeof window !== 'undefined' && window.innerWidth >= 768) {
       document.body.classList.add('custom-cursor-active')
@@ -51,27 +61,57 @@ export default function App({ Component, pageProps, router }) {
     };
   }, []);
 
+  // Check for login query param
+  useEffect(() => {
+    if (router.query.login === 'true') {
+      setShowLoginModal(true)
+      // Remove query param
+      router.replace(router.pathname, undefined, { shallow: true })
+    }
+  }, [router.query.login])
+
+  // Global function to open login modal
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.openLoginModal = () => setShowLoginModal(true)
+    }
+  }, [])
+
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes, viewport-fit=cover" />
       </Head>
-      <PerformanceOptimizer />
-      <AccessibilityOptimizer />
-      <UltimateMobileOptimizer />
-      <Analytics />
-      <SmoothScroll>
-        <CustomCursor />
-        <MobilePerformanceOptimizer />
-        <AnimatePresence mode="wait">
-          <Layout key={router.route}>
-            <Component {...pageProps} />
-          </Layout>
-        </AnimatePresence>
-      </SmoothScroll>
       
-      {/* FIXED CONTACT BUTTONS - ALWAYS VISIBLE ON DESKTOP */}
-      <FixedContactButtons />
+      {/* Google Analytics */}
+      <GoogleAnalytics />
+      
+      <AuthProvider>
+        <ErrorBoundary>
+          <PerformanceOptimizer />
+          <AccessibilityOptimizer />
+          <UltimateMobileOptimizer />
+          <Analytics />
+          <SmoothScroll>
+            <CustomCursor />
+            <MobilePerformanceOptimizer />
+            <AnimatePresence mode="wait">
+              <Layout key={router.route}>
+                <Component {...pageProps} />
+              </Layout>
+            </AnimatePresence>
+          </SmoothScroll>
+          
+          {/* FIXED CONTACT BUTTONS - ALWAYS VISIBLE ON DESKTOP */}
+          <FixedContactButtons />
+          
+          {/* Login Modal */}
+          <LoginModal 
+            isOpen={showLoginModal} 
+            onClose={() => setShowLoginModal(false)} 
+          />
+        </ErrorBoundary>
+      </AuthProvider>
     </>
   )
 }

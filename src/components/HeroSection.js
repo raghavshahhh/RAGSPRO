@@ -112,27 +112,27 @@ export default function HeroSection() {
       ref={containerRef}
       className="h-[110vh] sm:h-[120vh] md:h-[140vh] lg:h-[200vh] bg-white relative z-0 main-section"
     >
-      <div ref={canvasRef} className="sticky top-0 h-screen flex items-start overflow-visible pt-1 sm:pt-4 md:pt-6 lg:pt-12 pb-1 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: heroZ }}>
+      <div ref={canvasRef} className="sticky top-0 h-screen flex items-start overflow-visible pt-1 sm:pt-2 md:pt-4 lg:pt-8 pb-1 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: heroZ }}>
         <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 md:gap-6 lg:gap-8 items-start">
-          <div className="max-w-full md:max-w-3xl pt-16 sm:pt-1 md:pt-2 lg:pt-4 relative" style={{ zIndex: 2000 }}>
+          <div className="max-w-full md:max-w-3xl pt-8 sm:pt-0 md:pt-0 lg:pt-0 relative" style={{ zIndex: 2000 }}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-2 md:px-3 py-1 sm:py-1 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[10px] md:text-xs mb-3 sm:mb-3 md:mb-6 mt-2 sm:mt-2 md:mt-4">
+            <div className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-2 md:px-3 py-1 sm:py-1 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[10px] md:text-xs mb-1 sm:mb-2 md:mb-4 mt-0 sm:mt-0 md:mt-1">
               <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-green-500 rounded-full"></span>
               <span className="text-gray-700 font-medium">50+ STARTUPS LAUNCHED</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-[44px] sm:text-[24px] md:text-[32px] lg:text-[48px] xl:text-[68px] font-normal leading-[1.05] tracking-tight mb-3 sm:mb-3 md:mb-6">
+            <h1 className="text-[44px] sm:text-[24px] md:text-[32px] lg:text-[48px] xl:text-[68px] font-normal leading-[1.05] tracking-tight mb-2 sm:mb-3 md:mb-6">
               <span className="text-gray-400">Launch Your</span>
               <br />
               <span className="text-black">Startup in 20 Days</span>
             </h1>
 
             {/* Subheading */}
-            <h2 className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2 font-normal">
+            <h2 className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-2 sm:mb-4 md:mb-8 mt-2 sm:mt-2 font-normal">
               Revenue-focused web apps, funnels & AI automations for founders who need users, not pretty dashboards.
             </h2>
-            <p className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-3 sm:mb-4 md:mb-8 mt-4 sm:mt-2">
+            <p className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-2 sm:mb-4 md:mb-8 mt-2 sm:mt-2">
               <span className="text-black font-semibold">Yes, it's true.</span> RAGSPRO helps startup founders build complete revenue-ready products with AI integration & business automation — all within 20 days. End-to-end development by Raghav Shah, your trusted startup growth partner.
             </p>
 
@@ -143,7 +143,7 @@ export default function HeroSection() {
                 const event = new CustomEvent('openQuoteForm')
                 window.dispatchEvent(event)
               }}
-              className="group inline-flex items-center gap-2 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-2 md:px-3 lg:px-4 py-2 sm:py-1.5 md:py-2 lg:py-2.5 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-6 sm:mb-6 md:mb-8 lg:mb-16 text-[10px] sm:text-[10px] md:text-xs lg:text-sm mt-4 sm:mt-6"
+              className="group inline-flex items-center gap-2 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-2 md:px-3 lg:px-4 py-2 sm:py-1.5 md:py-2 lg:py-2.5 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-2 sm:mb-6 md:mb-8 lg:mb-16 text-[10px] sm:text-[10px] md:text-xs lg:text-sm mt-2 sm:mt-6"
             >
               <div className="flex -space-x-0.5 sm:-space-x-1 md:-space-x-2 relative">
                 {/* User 1 Circle - Indian Male */}
@@ -182,9 +182,9 @@ export default function HeroSection() {
             </button>
 
             {/* Social Proof - Compact for mobile */}
-            <div className="flex items-center gap-2 sm:gap-1 md:gap-2 mb-3 sm:mb-4 md:mb-8 lg:mb-12 -mt-2 sm:mt-0">
-              <div className="flex -space-x-0.5">
-                <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+            <div className="flex items-center justify-start gap-2 sm:gap-1 md:gap-2 mb-3 sm:mb-4 md:mb-8 lg:mb-12 mt-0 sm:-mt-6 md:-mt-8 lg:-mt-10 w-full">
+              <div className="flex -space-x-1">
+                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 1"
@@ -195,7 +195,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 2"
@@ -206,7 +206,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 3"
@@ -217,7 +217,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 4"
@@ -228,7 +228,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-3 sm:w-3 md:w-4 lg:w-5 h-3 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 5"
@@ -242,7 +242,7 @@ export default function HeroSection() {
               </div>
               <div className="text-left ml-1.5">
                 <div
-                  className="flex gap-0 sm:gap-0.5 justify-center sm:justify-start mb-0 sm:mb-0.5 cursor-pointer testimonial-area"
+                  className="flex gap-0 sm:gap-0.5 justify-start mb-0 sm:mb-0.5 cursor-pointer testimonial-area"
                   onClick={() => {
                     const testimonialsSection = document.querySelector('#testimonials') || document.querySelector('[class*="testimonial"]')
                     if (testimonialsSection) {
@@ -254,7 +254,7 @@ export default function HeroSection() {
                     <span key={i} className="text-black hover:scale-110 transition-transform text-[8px] sm:text-[5px] md:text-[6px] lg:text-[8px]">★</span>
                   ))}
                 </div>
-                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-700 font-medium -mt-8 sm:mt-0">50+ Startup Founders</p>
+                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-700 font-medium -mt-8 sm:mt-1 md:mt-1 lg:mt-2">50+ Startup Founders</p>
               </div>
             </div>
 
@@ -374,7 +374,7 @@ export default function HeroSection() {
       </div>
 
       {/* Tech Stack Section - Full Width - Desktop Only */}
-      <div className="hidden md:block w-full -mt-[15rem] sm:-mt-32 md:-mt-40 lg:-mt-48 xl:-mt-56 py-2 sm:py-1 md:py-2 bg-white" style={{ overflow: 'hidden' }}>
+      <div className="hidden md:block w-full -mt-[15rem] sm:-mt-32 md:-mt-32 lg:-mt-36 xl:-mt-40 py-2 sm:py-1 md:py-2 bg-white" style={{ overflow: 'hidden' }}>
         <div
           className="flex tech-logos-scroll gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center hover:pause-animation"
           style={{
@@ -436,7 +436,7 @@ export default function HeroSection() {
 
       {/* Latest Projects Heading */}
       <h2
-        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight -mt-64 sm:mt-2 md:mt-4 lg:mt-6 xl:mt-16 relative px-2 sm:px-4 md:px-6 lg:px-8"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight -mt-80 sm:-mt-4 md:-mt-8 lg:-mt-12 xl:mt-0 relative px-2 sm:px-4 md:px-6 lg:px-8"
         style={{
           zIndex: 3000,
           position: 'relative'
@@ -445,14 +445,21 @@ export default function HeroSection() {
         Our Latest Projects
       </h2>
 
-      {/* Static Project Cards for Mobile - Ultra Optimized */}
-      <div className="block sm:hidden px-4 mt-6">
-        <div className="grid grid-cols-2 gap-4 max-w-sm mx-auto">
-          {projects.slice(0, 4).map((project, index) => (
+      {/* Static Project Cards for Mobile - Horizontal Carousel */}
+      <div className="block sm:hidden mt-6 overflow-hidden">
+        <div 
+          className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-hide"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none',
+            WebkitOverflowScrolling: 'touch'
+          }}
+        >
+          {projects.map((project, index) => (
             <div
               key={project.id}
               onClick={() => handleProjectClick(project.url)}
-              className="w-full h-28 rounded-lg overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200"
+              className="flex-shrink-0 w-[70vw] h-40 rounded-xl overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200 snap-center"
             >
               {/* Gray placeholder background for faster perceived load */}
               <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse"></div>
@@ -465,8 +472,8 @@ export default function HeroSection() {
                 loading={index < 2 ? "eager" : "lazy"}
                 decoding="async"
                 fetchpriority={index < 2 ? "high" : "low"}
-                width="200"
-                height="112"
+                width="280"
+                height="160"
                 style={{
                   display: 'block',
                   visibility: 'visible',
@@ -476,8 +483,18 @@ export default function HeroSection() {
                   imageRendering: '-webkit-optimize-contrast'
                 }}
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-2 z-20">
-                <p className="text-white text-xs font-semibold truncate">{project.name}</p>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3 z-20">
+                <p className="text-white text-sm font-semibold truncate">{project.name}</p>
+                {project.metrics && (
+                  <div className="flex gap-2 mt-1">
+                    {project.metrics.conversionRate && (
+                      <span className="text-[10px] text-green-400">{project.metrics.conversionRate}</span>
+                    )}
+                    {project.metrics.userGrowth && (
+                      <span className="text-[10px] text-blue-400">{project.metrics.userGrowth}</span>
+                    )}
+                  </div>
+                )}
               </div>
               {/* Click indicator */}
               <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-active:opacity-100 transition-opacity duration-200 z-20">
@@ -488,6 +505,8 @@ export default function HeroSection() {
             </div>
           ))}
         </div>
+        {/* Scroll indicator */}
+        <p className="text-center text-[10px] text-gray-400 mt-2">← Swipe to see more →</p>
       </div>
     </section >
   )

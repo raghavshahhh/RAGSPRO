@@ -11,7 +11,7 @@ export const loadRazorpayScript = () => {
   })
 }
 
-export const initiatePayment = async ({ amount, planName, customerDetails }) => {
+export const initiatePayment = async ({ amount, planName, customerDetails, userId }) => {
   // Load Razorpay script
   const res = await loadRazorpayScript()
   
@@ -51,8 +51,8 @@ export const initiatePayment = async ({ amount, planName, customerDetails }) => 
       image: '/images/logo.png',
       order_id: data.orderId,
       handler: function (response) {
-        // Payment successful
-        verifyPayment(response, data.orderId)
+        // Payment successful - pass all data for storage
+        verifyPayment(response, data.orderId, data.amount, planName, customerDetails, userId)
       },
       prefill: {
         name: customerDetails.name || '',
@@ -80,7 +80,7 @@ export const initiatePayment = async ({ amount, planName, customerDetails }) => 
   }
 }
 
-const verifyPayment = async (response, orderId) => {
+const verifyPayment = async (response, orderId, amount, planName, customerDetails, userId) => {
   try {
     const verifyResponse = await fetch('/api/razorpay/verify-payment', {
       method: 'POST',
@@ -91,7 +91,11 @@ const verifyPayment = async (response, orderId) => {
         razorpay_order_id: response.razorpay_order_id,
         razorpay_payment_id: response.razorpay_payment_id,
         razorpay_signature: response.razorpay_signature,
-        orderId
+        orderId,
+        amount,
+        planName,
+        customerDetails,
+        userId
       })
     })
 

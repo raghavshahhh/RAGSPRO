@@ -237,3 +237,226 @@ export async function updateLeadStatus(leadId, status, notes = null) {
 export function isSupabaseConfigured() {
   return !!(supabaseUrl && supabaseKey)
 }
+
+// Save payment
+export async function savePayment(paymentData) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return null
+  
+  const { data, error } = await supabase
+    .from('payments')
+    .insert([{
+      razorpay_order_id: paymentData.razorpay_order_id,
+      razorpay_payment_id: paymentData.razorpay_payment_id,
+      razorpay_signature: paymentData.razorpay_signature,
+      amount: paymentData.amount,
+      currency: paymentData.currency || 'INR',
+      status: paymentData.status || 'completed',
+      description: paymentData.description,
+      user_id: paymentData.user_id,
+      customer_name: paymentData.customer_name,
+      customer_email: paymentData.customer_email,
+      customer_phone: paymentData.customer_phone,
+      metadata: paymentData.metadata || {},
+      created_at: new Date().toISOString()
+    }])
+    .select()
+  
+  if (error) console.error('Error saving payment:', error)
+  return data
+}
+
+// Get payments
+export async function getPayments(userId = null, limit = 100) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return []
+  
+  let query = supabase
+    .from('payments')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(limit)
+  
+  if (userId) {
+    query = query.eq('user_id', userId)
+  }
+  
+  const { data, error } = await query
+  
+  if (error) {
+    console.error('Error fetching payments:', error)
+    return []
+  }
+  
+  return data || []
+}
+
+// Save comment
+export async function saveComment(commentData) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return null
+  
+  const { data, error } = await supabase
+    .from('comments')
+    .insert([commentData])
+    .select()
+  
+  if (error) console.error('Error saving comment:', error)
+  return data
+}
+
+// Get comments for blog
+export async function getComments(blogSlug, status = 'approved') {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return []
+  
+  const { data, error } = await supabase
+    .from('comments')
+    .select('*')
+    .eq('blog_slug', blogSlug)
+    .eq('status', status)
+    .order('created_at', { ascending: false })
+  
+  if (error) {
+    console.error('Error fetching comments:', error)
+    return []
+  }
+  
+  return data || []
+}
+
+// Save newsletter subscriber
+export async function saveSubscriber(subscriberData) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return null
+  
+  const { data, error } = await supabase
+    .from('newsletter_subscribers')
+    .insert([subscriberData])
+    .select()
+  
+  if (error) console.error('Error saving subscriber:', error)
+  return data
+}
+
+// Get subscribers
+export async function getSubscribers(status = 'active', limit = 100) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return []
+  
+  let query = supabase
+    .from('newsletter_subscribers')
+    .select('*')
+    .order('subscribed_at', { ascending: false })
+    .limit(limit)
+  
+  if (status) {
+    query = query.eq('status', status)
+  }
+  
+  const { data, error } = await query
+  
+  if (error) {
+    console.error('Error fetching subscribers:', error)
+    return []
+  }
+  
+  return data || []
+}
+
+// Save error log
+export async function saveErrorLog(errorData) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return null
+  
+  const { data, error } = await supabase
+    .from('error_logs')
+    .insert([{
+      message: errorData.message,
+      stack: errorData.stack,
+      error_name: errorData.name,
+      level: errorData.level || 'error',
+      url: errorData.url,
+      user_agent: errorData.userAgent,
+      context: errorData.context || {},
+      resolved: false,
+      created_at: new Date().toISOString()
+    }])
+    .select()
+  
+  if (error) console.error('Error saving error log:', error)
+  return data
+}
+
+// Get error logs
+export async function getErrorLogs(resolved = null, limit = 100) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return []
+  
+  let query = supabase
+    .from('error_logs')
+    .select('*')
+    .order('created_at', { ascending: false })
+    .limit(limit)
+  
+  if (resolved !== null) {
+    query = query.eq('resolved', resolved)
+  }
+  
+  const { data, error } = await query
+  
+  if (error) {
+    console.error('Error fetching error logs:', error)
+    return []
+  }
+  
+  return data || []
+}
+
+// Save user profile
+export async function saveUserProfile(profileData) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return null
+  
+  const { data, error } = await supabase
+    .from('user_profiles')
+    .upsert([{
+      id: profileData.id,
+      name: profileData.name,
+      email: profileData.email,
+      phone: profileData.phone,
+      company: profileData.company,
+      avatar_url: profileData.avatar_url,
+      metadata: profileData.metadata || {},
+      updated_at: new Date().toISOString()
+    }])
+    .select()
+  
+  if (error) console.error('Error saving user profile:', error)
+  return data
+}
+
+// Save project
+export async function saveProject(projectData) {
+  const supabase = getSupabaseAdmin()
+  if (!supabase) return null
+  
+  const { data, error } = await supabase
+    .from('projects')
+    .insert([{
+      user_id: projectData.user_id,
+      name: projectData.name,
+      type: projectData.type,
+      description: projectData.description,
+      status: projectData.status || 'pending',
+      progress: projectData.progress || 0,
+      start_date: projectData.start_date,
+      end_date: projectData.end_date,
+      metadata: projectData.metadata || {},
+      created_at: new Date().toISOString()
+    }])
+    .select()
+  
+  if (error) console.error('Error saving project:', error)
+  return data
+}
