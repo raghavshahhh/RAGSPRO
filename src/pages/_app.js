@@ -5,15 +5,14 @@ import '../styles/responsive-fixes.css'
 import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
+import { Analytics } from '@vercel/analytics/next'
 import Layout from '../components/Layout'
 import MobilePerformanceOptimizer from '../components/MobilePerformanceOptimizer'
 import UltimateMobileOptimizer from '../components/UltimateMobileOptimizer'
 import PerformanceOptimizer from '../components/PerformanceOptimizer'
 import AccessibilityOptimizer from '../components/AccessibilityOptimizer'
-import CustomCursor from '../components/CustomCursor'
 import SmoothScroll from '../components/SmoothScroll'
 import FixedContactButtons from '../components/FixedContactButtons'
-import Analytics from '../components/Analytics'
 import GoogleAnalytics from '../components/GoogleAnalytics'
 import ErrorBoundary from '../components/ErrorBoundary'
 import LoginModal from '../components/auth/LoginModal'
@@ -27,11 +26,6 @@ export default function App({ Component, pageProps, router }) {
   useEffect(() => {
     // Initialize error monitoring
     initErrorMonitoring()
-
-    // Add custom cursor class to body
-    if (typeof window !== 'undefined' && window.innerWidth >= 768) {
-      document.body.classList.add('custom-cursor-active')
-    }
 
     // Initialize floating projects animation
     const cleanup = initProjectsAnimation();
@@ -56,7 +50,6 @@ export default function App({ Component, pageProps, router }) {
     
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      document.body.classList.remove('custom-cursor-active')
       cleanup();
     };
   }, []);
@@ -93,7 +86,6 @@ export default function App({ Component, pageProps, router }) {
           <UltimateMobileOptimizer />
           <Analytics />
           <SmoothScroll>
-            <CustomCursor />
             <MobilePerformanceOptimizer />
             <AnimatePresence mode="wait">
               <Layout key={router.route}>
