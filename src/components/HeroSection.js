@@ -110,29 +110,32 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="h-[110vh] sm:h-[120vh] md:h-[140vh] lg:h-[200vh] bg-white relative z-0 main-section"
+      className="min-h-screen sm:h-[120vh] md:h-[140vh] lg:h-[200vh] relative z-0 main-section"
+      style={{
+        background: 'linear-gradient(180deg, #fafafa 0%, #ffffff 50%, #fafafa 100%)',
+      }}
     >
-      <div ref={canvasRef} className="sticky top-0 h-screen flex items-start overflow-visible pt-1 sm:pt-2 md:pt-4 lg:pt-8 pb-1 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: heroZ }}>
-        <div className="max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-4 md:gap-6 lg:gap-8 items-start">
-          <div className="max-w-full md:max-w-3xl pt-8 sm:pt-0 md:pt-0 lg:pt-0 relative" style={{ zIndex: 2000 }}>
+      <div ref={canvasRef} className="sticky top-0 min-h-screen flex items-start overflow-visible pt-[30px] sm:pt-[30px] md:pt-[0px] lg:pt-[0px] pb-4 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: heroZ }}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-4 md:gap-6 lg:gap-8 items-start">
+          <div className="max-w-full md:max-w-3xl pt-2 sm:pt-4 md:pt-6 lg:pt-8 relative" style={{ zIndex: 2000 }}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-1 sm:gap-2 px-2 sm:px-2 md:px-3 py-1 sm:py-1 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[10px] md:text-xs mb-1 sm:mb-2 md:mb-4 mt-0 sm:mt-0 md:mt-1">
-              <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-green-500 rounded-full"></span>
+            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-3 py-1 sm:py-1.5 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[11px] md:text-xs mb-2 sm:mb-3 md:mb-4">
+              <span className="w-1.5 sm:w-1.5 h-1.5 sm:h-1.5 bg-green-500 rounded-full animate-pulse"></span>
               <span className="text-gray-700 font-medium">50+ STARTUPS LAUNCHED</span>
             </div>
 
-            {/* Main Headline */}
-            <h1 className="text-[44px] sm:text-[24px] md:text-[32px] lg:text-[48px] xl:text-[68px] font-normal leading-[1.05] tracking-tight mb-2 sm:mb-3 md:mb-6">
+            {/* Main Headline - Fluid Typography */}
+            <h1 className="text-[clamp(28px,8vw,68px)] sm:text-[clamp(24px,5vw,32px)] md:text-[clamp(32px,4vw,48px)] lg:text-[clamp(48px,4vw,68px)] font-normal leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6">
               <span className="text-gray-400">Launch Your</span>
               <br />
               <span className="text-black">Startup in 20 Days</span>
             </h1>
 
             {/* Subheading */}
-            <h2 className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-2 sm:mb-4 md:mb-8 mt-2 sm:mt-2 font-normal">
+            <h2 className="text-[12px] sm:text-[13px] md:text-sm lg:text-base text-gray-700 mb-3 sm:mb-4 md:mb-6 font-normal leading-relaxed">
               Revenue-focused web apps, funnels & AI automations for founders who need users, not pretty dashboards.
             </h2>
-            <p className="text-[11px] sm:text-[12px] md:text-xs lg:text-sm text-gray-700 mb-2 sm:mb-4 md:mb-8 mt-2 sm:mt-2">
+            <p className="text-[11px] sm:text-[12px] md:text-sm lg:text-base text-gray-700 mb-4 sm:mb-5 md:mb-8 leading-relaxed">
               <span className="text-black font-semibold">Yes, it's true.</span> RAGSPRO helps startup founders build complete revenue-ready products with AI integration & business automation — all within 20 days. End-to-end development by Raghav Shah, your trusted startup growth partner.
             </p>
 
@@ -143,7 +146,7 @@ export default function HeroSection() {
                 const event = new CustomEvent('openQuoteForm')
                 window.dispatchEvent(event)
               }}
-              className="group inline-flex items-center gap-2 sm:gap-2 md:gap-3 lg:gap-4 px-2 sm:px-2 md:px-3 lg:px-4 py-2 sm:py-1.5 md:py-2 lg:py-2.5 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-2 sm:mb-6 md:mb-8 lg:mb-16 text-[10px] sm:text-[10px] md:text-xs lg:text-sm mt-2 sm:mt-6"
+              className="group inline-flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 px-4 sm:px-4 md:px-5 lg:px-6 py-2.5 sm:py-2.5 md:py-3 lg:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-4 sm:mb-6 md:mb-8 lg:mb-12 text-xs sm:text-xs md:text-sm lg:text-sm mt-2 sm:mt-4"
             >
               <div className="flex -space-x-0.5 sm:-space-x-1 md:-space-x-2 relative">
                 {/* User 1 Circle - Indian Male */}
@@ -182,9 +185,9 @@ export default function HeroSection() {
             </button>
 
             {/* Social Proof - Compact for mobile */}
-            <div className="flex items-center justify-start gap-2 sm:gap-1 md:gap-2 mb-3 sm:mb-4 md:mb-8 lg:mb-12 mt-0 sm:-mt-6 md:-mt-8 lg:-mt-10 w-full">
-              <div className="flex -space-x-1">
-                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+            <div className="flex items-center justify-start gap-3 sm:gap-2 md:gap-3 mb-4 sm:mb-6 md:mb-8 lg:mb-12 mt-0 sm:mt-0 md:-mt-4 lg:-mt-6 w-full">
+              <div className="flex -space-x-1.5">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border-2 border-white shadow-sm">
                   <img
                     src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 1"
@@ -195,7 +198,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 2"
@@ -206,7 +209,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 3"
@@ -217,7 +220,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 4"
@@ -228,7 +231,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-5 sm:w-3 md:w-4 lg:w-5 h-5 sm:h-3 md:h-4 lg:h-5 rounded-full overflow-hidden border border-white">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 5"
@@ -251,10 +254,10 @@ export default function HeroSection() {
                   }}
                 >
                   {[1, 2, 3, 4, 5].map(i => (
-                    <span key={i} className="text-black hover:scale-110 transition-transform text-[8px] sm:text-[5px] md:text-[6px] lg:text-[8px]">★</span>
+                    <span key={i} className="text-yellow-500 hover:scale-110 transition-transform text-sm sm:text-xs md:text-sm lg:text-base">★</span>
                   ))}
                 </div>
-                <p className="text-[7px] sm:text-[6px] md:text-[8px] lg:text-[10px] text-gray-700 font-medium -mt-8 sm:mt-1 md:mt-1 lg:mt-2">50+ Startup Founders</p>
+                <p className="text-[10px] sm:text-[10px] md:text-xs lg:text-sm text-gray-700 font-medium mt-0.5">50+ Startup Founders</p>
               </div>
             </div>
 
@@ -446,13 +449,14 @@ export default function HeroSection() {
       </h2>
 
       {/* Static Project Cards for Mobile - Horizontal Carousel */}
-      <div className="block sm:hidden mt-6 overflow-hidden">
+      <div className="block sm:hidden mt-6">
         <div 
-          className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory scrollbar-hide"
+          className="flex gap-4 overflow-x-scroll px-4 pb-4 snap-x snap-mandatory"
           style={{
             scrollbarWidth: 'none',
             msOverflowStyle: 'none',
-            WebkitOverflowScrolling: 'touch'
+            WebkitOverflowScrolling: 'touch',
+            overflowY: 'hidden'
           }}
         >
           {projects.map((project, index) => (

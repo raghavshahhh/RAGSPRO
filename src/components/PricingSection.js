@@ -58,17 +58,16 @@ export default function PricingSection() {
           {/* Left Column - Info */}
           <div className="space-y-12">
             {/* Headline */}
-            <div className="mt-4 md:-mt-28">
+            <div className="mt-4 md:mt-0">
               <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4">
-                <div className="ml-0 md:ml-8">
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight">
+                <div className="ml-0 md:ml-0">
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-4">
                     Development Packages
                   </h2>
-                  <div className="text-xl md:text-2xl lg:text-3xl font-medium leading-tight mt-4">
+                  <div className="text-xl md:text-2xl lg:text-3xl font-medium leading-tight space-y-2">
                     <div className="text-gray-500">Transparent pricing.</div>
-                    <div className="relative text-black">
+                    <div className="text-black">
                       Professional solutions.
-                      <div className="absolute inset-0 bg-gray-200 -z-10 rounded-lg transform -rotate-1 opacity-60"></div>
                     </div>
                   </div>
                 </div>

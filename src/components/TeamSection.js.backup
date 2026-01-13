@@ -208,25 +208,27 @@ export default function TeamSection() {
           {/* Right Side - Lawai Project */}
           <div className="flex flex-col items-center space-y-6 mt-16">
             <div
-              className="relative cursor-pointer hover:scale-105 transition-transform duration-300 bg-gray-100 rounded-xl overflow-hidden shadow-2xl"
+              className="relative cursor-pointer hover:scale-105 transition-transform duration-300 bg-gray-100 rounded-xl overflow-hidden"
               onClick={() => window.open('https://lawai.ragspro.com', '_blank')}
               style={{ width: '480px', height: '270px' }}
             >
               <img 
                 src="/images/projects/lawai.jpg" 
                 alt="Lawai - AI Legal Assistant"
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  display: 'block'
-                }}
+                className="w-full h-full object-cover"
                 loading="eager"
                 width="480"
                 height="270"
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                }}
                 onError={(e) => {
-                  console.error('Lawai image failed to load')
+                  console.error('Image failed to load:', e.target.src)
                   e.target.style.display = 'none'
+                  e.target.parentElement.innerHTML = '<div style="width:100%;height:100%;display:flex;align-items:center;justify-center;background:#f3f4f6;color:#6b7280;font-size:14px;">Image not available</div>'
                 }}
               />
             </div>
@@ -251,56 +253,55 @@ export default function TeamSection() {
             <span className="text-black">founders have to say.</span>
           </p>
 
-          {/* Horizontal Scrollable Reviews Carousel */}
-          <div 
-            className="flex gap-4 overflow-x-scroll pb-6 snap-x snap-mandatory"
-            style={{ 
-              scrollbarWidth: 'thin',
-              scrollbarColor: '#d1d5db #f3f4f6',
-              WebkitOverflowScrolling: 'touch',
-              scrollBehavior: 'smooth',
-              scrollSnapType: 'x mandatory',
-            }}
-          >
-            {[...userReviews, 
-              {
-                quote: "RAGSPRO's web development team helped us build our startup app in record time. My business was struggling to get online presence, and they really helped me establish digital presence and started generating leads consistently.",
-                name: "Rajesh Kumar",
-                title: "Founder of Digital Solutions (50K+ followers)",
-                avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
-              },
-              {
-                quote: "RAGSPRO's startup app development team helped me build my web application fast. While building my startup, I worked with their team and they delivered super fast, saved me thousands in development costs.",
-                name: "Priya Sharma",
-                title: "CEO of TechStart India",
-                avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
-              },
-              {
-                quote: "RAGSPRO's AI app development team has been an incredible long-term partner for us. When we were considering starting our mobile app, we ultimately chose RAGSPRO for their unbeatable turnaround times and competitive pricing.",
-                name: "Amit Singh",
-                title: "CEO of StartupHub",
-                avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
-              },
-              {
-                quote: "RAGSPRO's team has been a game-changer—helped me deliver 3+ UI/UX projects, sharpen my product management skills, and land amazing tech roles.",
-                name: "Sneha Patel",
-                title: "Product Manager at TechCorp",
-                avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
-              },
-              {
-                quote: "In just one week, RAGSPRO's team automated our business processes—eliminating manual work and dramatically boosting efficiency. Highly recommend for business automation!",
-                name: "Vikram Mehta",
-                title: "CEO of Business Solutions",
-                avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
-              }
-            ].map((testimonial, index) => (
-              <div
-                key={index}
-                className="bg-white/70 backdrop-blur-md p-3 rounded-2xl shadow-lg border border-white/30 hover:shadow-xl hover:bg-white/85 transition-all min-w-[240px] max-w-[240px] flex-shrink-0 relative"
-                style={{ scrollSnapAlign: 'start' }}
-              >
-                {/* Edit/Delete buttons for user reviews */}
-                {testimonial.isUserReview && index < userReviews.length && (
+          {/* Carousel Container with Write Review Button */}
+          <div className="flex items-center gap-6">
+            {/* Horizontal Scrollable Reviews */}
+            <div 
+              className="flex gap-4 md:gap-6 overflow-x-auto pb-4 scrollbar-hide snap-x snap-mandatory"
+              style={{
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch',
+              }}
+            >
+              {[...userReviews, 
+                {
+                  quote: "RAGSPRO's web development team helped us build our startup app in record time. My business was struggling to get online presence, and they really helped me establish digital presence and started generating leads consistently.",
+                  name: "Rajesh Kumar",
+                  title: "Founder of Digital Solutions (50K+ followers)",
+                  avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
+                },
+                {
+                  quote: "RAGSPRO's startup app development team helped me build my web application fast. While building my startup, I worked with their team and they delivered super fast, saved me thousands in development costs.",
+                  name: "Priya Sharma",
+                  title: "CEO of TechStart India",
+                  avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
+                },
+                {
+                  quote: "RAGSPRO's AI app development team has been an incredible long-term partner for us. When we were considering starting our mobile app, we ultimately chose RAGSPRO for their unbeatable turnaround times and competitive pricing.",
+                  name: "Amit Singh",
+                  title: "CEO of StartupHub",
+                  avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
+                },
+                {
+                  quote: "RAGSPRO's team has been a game-changer—helped me deliver 3+ UI/UX projects, sharpen my product management skills, and land amazing tech roles.",
+                  name: "Sneha Patel",
+                  title: "Product Manager at TechCorp",
+                  avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
+                },
+                {
+                  quote: "In just one week, RAGSPRO's team automated our business processes—eliminating manual work and dramatically boosting efficiency. Highly recommend for business automation!",
+                  name: "Vikram Mehta",
+                  title: "CEO of Business Solutions",
+                  avatar: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&h=80&fit=crop&crop=face&q=80&auto=format"
+                }
+              ].map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="bg-white/70 backdrop-blur-md p-3 md:p-4 rounded-2xl md:rounded-3xl shadow-lg border border-white/30 hover:shadow-xl hover:bg-white/85 transition-all min-w-[280px] md:min-w-[320px] snap-start flex-shrink-0 relative"
+                >
+                  {/* Edit/Delete buttons for user reviews */}
+                  {testimonial.isUserReview && index < userReviews.length && (
                   <div className="absolute top-2 right-2 flex gap-1">
                     <button
                       onClick={() => handleEditReview(index)}
@@ -374,40 +375,24 @@ export default function TeamSection() {
               </div>
             ))}
             
-            {/* Write a Review Button - In Carousel */}
+            {/* Write a Review Button - Side */}
             <button
               onClick={() => setShowReviewModal(true)}
-              className="bg-black text-white px-6 py-6 rounded-full font-semibold text-sm hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 min-w-[140px] max-w-[140px] flex-shrink-0 whitespace-nowrap flex items-center justify-center"
-              style={{ scrollSnapAlign: 'start' }}
+              className="bg-black text-white px-6 py-8 rounded-3xl font-semibold text-base hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 min-w-[200px] flex-shrink-0 snap-start whitespace-nowrap"
             >
               Write a Review
             </button>
           </div>
 
-          {/* Custom scrollbar styling */}
+          {/* Hide scrollbar CSS */}
           <style jsx>{`
-            div::-webkit-scrollbar {
-              height: 8px;
-            }
-            div::-webkit-scrollbar-track {
-              background: #f3f4f6;
-              border-radius: 10px;
-            }
-            div::-webkit-scrollbar-thumb {
-              background: #d1d5db;
-              border-radius: 10px;
-            }
-            div::-webkit-scrollbar-thumb:hover {
-              background: #9ca3af;
-            }
-            /* Smooth scroll for all browsers */
-            * {
-              scroll-behavior: smooth;
+            .scrollbar-hide::-webkit-scrollbar {
+              display: none;
             }
           `}</style>
         </div>
 
-        {/* Review Submission Modal - Removed duplicate button */}
+        {/* Review Submission Modal */}
         <ReviewSubmissionBox 
           isOpen={showReviewModal} 
           onClose={() => {
@@ -485,8 +470,7 @@ export default function TeamSection() {
                   {/* CTA Button */}
                   <button
                     onClick={() => {
-                      const event = new CustomEvent('openQuoteForm')
-                      window.dispatchEvent(event)
+                      window.location.href = '/get-quote'
                     }}
                     className="inline-block bg-black hover:bg-gray-800 text-white font-semibold py-2.5 px-6 rounded-full shadow-md hover:shadow-lg transition-all text-sm cursor-pointer"
                   >

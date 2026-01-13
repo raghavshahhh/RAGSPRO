@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import Head from 'next/head'
 import { Analytics } from '@vercel/analytics/next'
+import Navbar from '../components/Navbar.jsx'
 import Layout from '../components/Layout'
 import MobilePerformanceOptimizer from '../components/MobilePerformanceOptimizer'
 import UltimateMobileOptimizer from '../components/UltimateMobileOptimizer'
@@ -85,6 +86,10 @@ export default function App({ Component, pageProps, router }) {
           <AccessibilityOptimizer />
           <UltimateMobileOptimizer />
           <Analytics />
+          
+          {/* NAVBAR - TOP LEVEL, OUTSIDE LAYOUT */}
+          <Navbar />
+          
           <SmoothScroll>
             <MobilePerformanceOptimizer />
             <AnimatePresence mode="wait">
