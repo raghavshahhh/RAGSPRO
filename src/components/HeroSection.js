@@ -110,10 +110,7 @@ export default function HeroSection() {
   return (
     <section
       ref={containerRef}
-      className="min-h-screen sm:h-[120vh] md:h-[140vh] lg:h-[200vh] relative z-0 main-section"
-      style={{
-        background: 'linear-gradient(180deg, #fafafa 0%, #ffffff 50%, #fafafa 100%)',
-      }}
+      className="min-h-screen sm:h-[120vh] md:h-[140vh] lg:h-[200vh] bg-white relative z-0 main-section"
     >
       <div ref={canvasRef} className="sticky top-0 min-h-screen flex items-start overflow-visible pt-[30px] sm:pt-[30px] md:pt-[0px] lg:pt-[0px] pb-4 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: heroZ }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-4 md:gap-6 lg:gap-8 items-start">
