@@ -5,8 +5,9 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import Image from 'next/image'
-import { FiMenu, FiX, FiPhone, FiMail } from 'react-icons/fi'
+import { FiMenu, FiX, FiPhone, FiMail, FiSettings } from 'react-icons/fi'
 import { FaWhatsapp } from 'react-icons/fa'
+import { useAuth } from '../context/AuthContext'
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -14,6 +15,10 @@ export default function Navbar() {
   const [mounted, setMounted] = useState(false)
   const [scrolled, setScrolled] = useState(false)
   const router = useRouter()
+  const { user } = useAuth()
+
+  // Check if user is admin
+  const isAdmin = user?.email === 'ragsproai@gmail.com'
 
   // Detect mobile
   useEffect(() => {
@@ -242,7 +247,41 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           {!isMobile && (
-            <button
+            <>
+              {/* Admin Dashboard Button (only for admin) */}
+              {isAdmin && (
+                <Link
+                  href="/admin/dashboard"
+                  style={{
+                    padding: '10px 20px',
+                    backgroundColor: '#1a1a1a',
+                    color: '#fff',
+                    fontSize: '13px',
+                    fontWeight: 600,
+                    borderRadius: '50px',
+                    border: 'none',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s',
+                    whiteSpace: 'nowrap',
+                    marginLeft: '8px',
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.target.style.backgroundColor = '#333'
+                  }}
+                  onMouseLeave={(e) => {
+                    e.target.style.backgroundColor = '#1a1a1a'
+                  }}
+                >
+                  <FiSettings style={{ width: '14px', height: '14px' }} />
+                  Admin
+                </Link>
+              )}
+              
+              <button
               onClick={handleGetStarted}
               style={{
                 padding: '10px 24px',
@@ -271,6 +310,7 @@ export default function Navbar() {
             >
               Get Started
             </button>
+            </>
           )}
 
           {/* Mobile Menu Button */}
