@@ -23,6 +23,9 @@ import { initErrorMonitoring } from '../utils/errorMonitoring'
 
 export default function App({ Component, pageProps, router }) {
   const [showLoginModal, setShowLoginModal] = useState(false)
+  
+  // Check if current page is admin page
+  const isAdminPage = router.pathname.startsWith('/admin')
 
   useEffect(() => {
     // Initialize error monitoring
@@ -87,20 +90,25 @@ export default function App({ Component, pageProps, router }) {
           <UltimateMobileOptimizer />
           <Analytics />
           
-          {/* NAVBAR - TOP LEVEL, OUTSIDE LAYOUT */}
-          <Navbar />
+          {/* NAVBAR - Only show on non-admin pages */}
+          {!isAdminPage && <Navbar />}
           
           <SmoothScroll>
             <MobilePerformanceOptimizer />
             <AnimatePresence mode="wait">
-              <Layout key={router.route}>
-                <Component {...pageProps} />
-              </Layout>
+              {/* Layout - Only wrap non-admin pages */}
+              {isAdminPage ? (
+                <Component {...pageProps} key={router.route} />
+              ) : (
+                <Layout key={router.route}>
+                  <Component {...pageProps} />
+                </Layout>
+              )}
             </AnimatePresence>
           </SmoothScroll>
           
-          {/* FIXED CONTACT BUTTONS - ALWAYS VISIBLE ON DESKTOP */}
-          <FixedContactButtons />
+          {/* FIXED CONTACT BUTTONS - Only show on non-admin pages */}
+          {!isAdminPage && <FixedContactButtons />}
           
           {/* Login Modal */}
           <LoginModal 
