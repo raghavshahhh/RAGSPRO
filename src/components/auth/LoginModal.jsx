@@ -1,11 +1,13 @@
 // Login/Signup Modal Component
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '../../context/AuthContext'
 import { FiX, FiMail, FiLock, FiUser, FiPhone, FiEye, FiEyeOff } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 
 export default function LoginModal({ isOpen, onClose, initialMode = 'login' }) {
+  const router = useRouter()
   const [mode, setMode] = useState(initialMode) // login, signup, forgot
   const [showPassword, setShowPassword] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -35,8 +37,11 @@ export default function LoginModal({ isOpen, onClose, initialMode = 'login' }) {
       if (mode === 'login') {
         const { error } = await signIn(formData.email, formData.password)
         if (error) throw new Error(error.message || error)
-        setMessage({ type: 'success', text: 'Login successful!' })
-        setTimeout(() => onClose(), 1000)
+        setMessage({ type: 'success', text: 'Login successful! Redirecting...' })
+        setTimeout(() => {
+          onClose()
+          router.push('/admin')
+        }, 1000)
       } 
       else if (mode === 'signup') {
         if (formData.password !== formData.confirmPassword) {
