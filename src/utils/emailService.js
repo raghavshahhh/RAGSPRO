@@ -353,7 +353,7 @@ export async function sendPaymentConfirmationEmail(data) {
             </div>
             
             <p style="text-align: center; color: #666;">
-              Questions? Reply to this email or call us at <a href="tel:+918700048490" style="color: #10b981;">+91 87000 48490</a>
+              Questions? Reply to this email or call us at <a href="tel:+918826073013" style="color: #10b981;">+91 88260 73013</a>
             </p>
           </div>
           

@@ -86,18 +86,37 @@ export default function ContactSection() {
         
         {/* Header */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "easeOut" }}
           className="text-center mb-12"
         >
-          <span className="inline-block px-4 py-1.5 bg-black text-white text-xs font-medium rounded-full mb-4">
+          <motion.span 
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
+            className="inline-block px-4 py-1.5 bg-black text-white text-xs font-medium rounded-full mb-4"
+          >
             LET'S BUILD TOGETHER
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          </motion.span>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1, ease: "easeOut" }}
+            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+          >
             Start Your Project
-          </h2>
-          <p className="text-gray-600 max-w-xl mx-auto">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.15, ease: "easeOut" }}
+            className="text-gray-600 max-w-xl mx-auto"
+          >
             Tell us about your idea and we'll get back to you within 24 hours with a custom roadmap.
           </p>
         </motion.div>
@@ -116,7 +135,7 @@ export default function ContactSection() {
               
               <div className="space-y-4">
                 <a 
-                  href="https://wa.me/918700048490?text=Hi! I want to discuss a project."
+                  href="https://wa.me/918826073013?text=Hi! I want to discuss a project."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-3 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
@@ -131,7 +150,7 @@ export default function ContactSection() {
                 </a>
 
                 <a 
-                  href="tel:+918700048490"
+                  href="tel:+918826073013"
                   className="flex items-center gap-4 p-3 bg-white/10 rounded-xl hover:bg-white/20 transition-colors"
                 >
                   <div className="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center">

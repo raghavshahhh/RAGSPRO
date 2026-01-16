@@ -129,7 +129,7 @@ export default function MeetFounder() {
                   </div>
                   <div className="flex items-center text-gray-400">
                     <span className="text-accent mr-2">📱</span>
-                    <span>+91-8700048490</span>
+                    <span>+91-8826073013</span>
                   </div>
                   <div className="flex items-center text-gray-400">
                     <FiMapPin className="text-accent mr-2" size={16} />

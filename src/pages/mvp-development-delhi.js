@@ -94,7 +94,7 @@ export default function MVPDevelopmentDelhi() {
       
       <p><strong>Contact RAGSPRO Delhi:</strong></p>
       <ul>
-        <li>📞 Phone: +918700048490</li>
+        <li>📞 Phone: +918826073013</li>
         <li>📧 Email: ragsproai@gmail.com</li>
         <li>💬 WhatsApp: Available 24/7</li>
         <li>📍 Location: Delhi, India</li>

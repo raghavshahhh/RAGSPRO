@@ -132,7 +132,7 @@ export default function iOSAppDevelopment() {
                 Get Free Quote
               </button>
               <a
-                href="https://wa.me/918700048490?text=Hi, I want to build an iOS app"
+                href="https://wa.me/918826073013?text=Hi, I want to build an iOS app"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white text-black border-2 border-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-black hover:text-white transition-all"

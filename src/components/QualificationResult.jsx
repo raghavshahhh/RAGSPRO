@@ -74,7 +74,7 @@ export default function QualificationResult({ qualification, leadData, onBookCal
               
               <div className="flex gap-3">
                 <a
-                  href="https://wa.me/918700048490?text=Hi, I just filled the qualification form"
+                  href="https://wa.me/918826073013?text=Hi, I just filled the qualification form"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex-1 bg-green-600 text-white py-3 rounded-full font-semibold hover:bg-green-700 transition-colors text-center text-sm"
@@ -82,7 +82,7 @@ export default function QualificationResult({ qualification, leadData, onBookCal
                   WhatsApp Us
                 </a>
                 <a
-                  href="tel:+918700048490"
+                  href="tel:+918826073013"
                   className="flex-1 bg-gray-100 text-black py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors text-center text-sm"
                 >
                   Call Now
@@ -155,7 +155,7 @@ export default function QualificationResult({ qualification, leadData, onBookCal
                 We're happy to chat about your project and explore options that fit your budget.
               </p>
               <a
-                href="https://wa.me/918700048490?text=Hi, I want to discuss my project"
+                href="https://wa.me/918826073013?text=Hi, I want to discuss my project"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-block bg-green-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-700 transition-colors text-sm"

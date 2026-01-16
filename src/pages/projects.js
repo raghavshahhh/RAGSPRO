@@ -5,25 +5,48 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { FiExternalLink, FiGithub, FiArrowLeft } from 'react-icons/fi'
 import SEOHead from '../components/SEOHead'
-import CustomCursor from '../components/CustomCursor'
 
 export default function AllProjects() {
   const [activeFilter, setActiveFilter] = useState('all')
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
   
   useEffect(() => {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth'
     
-    // Preload project images
-    projects.forEach(project => {
-      const img = new window.Image()
-      img.src = project.image
-    })
+    // Fetch projects from database
+    fetchProjects()
     
     return () => {
       document.documentElement.style.scrollBehavior = 'auto'
     }
   }, [])
+
+  const fetchProjects = async () => {
+    try {
+      const res = await fetch('/api/admin/portfolio-projects')
+      const data = await res.json()
+      if (data.success) {
+        // Transform database format to match component format
+        const transformedProjects = data.projects.map(p => ({
+          id: p.id,
+          title: p.title,
+          category: p.category || [],
+          image: p.image,
+          description: p.description,
+          technologies: p.technologies || [],
+          liveLink: p.live_link,
+          githubLink: p.github_link
+        }))
+        setProjects(transformedProjects)
+      }
+    } catch (error) {
+      console.error('Error fetching projects:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
   
   const filters = [
     { id: 'all', name: 'All Projects' },
@@ -32,155 +55,32 @@ export default function AllProjects() {
     { id: 'design', name: 'UI/UX Design' }
   ]
   
-  const projects = [
-    {
-      id: 1,
-      title: 'RAGS AI - AI-Powered Solutions',
-      category: ['web', 'ai'],
-      image: '/images/logo.png',
-      description: 'Advanced AI platform offering intelligent automation and machine learning solutions for businesses.',
-      technologies: ['Next.js', 'AI/ML', 'TailwindCSS', 'OpenAI'],
-      liveLink: 'https://rags-ai.vercel.app',
-      githubLink: 'https://github.com/raghavshahhh/RAGS-AI'
-    },
-    {
-      id: 2,
-      title: 'Lead Generator - Marketing Automation',
-      category: ['web'],
-      image: '/images/projects/lead-generator.jpg',
-      description: 'Powerful lead generation and marketing automation platform for businesses to capture and nurture leads.',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'API Integration'],
-      liveLink: 'https://lead-0ku8.onrender.com',
-      githubLink: 'https://github.com/raghavshahhh/lead-generater'
-    },
-    {
-      id: 3,
-      title: 'Maid Agency Premium - Advanced Booking Platform',
-      category: ['web', 'design'],
-      image: '/images/projects/maid-premium.jpg',
-      description: 'Premium maid service platform with advanced features, real-time booking, payment gateway, and admin dashboard. Project Value: ₹30-40k',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'Payment Integration', 'Admin Panel'],
-      liveLink: 'https://www.babysitterdelhi.in',
-      githubLink: 'https://github.com/raghavshahhh/maidagency'
-    },
-    {
-      id: 4,
-      title: 'Subtitle Generator - AI Video Tool',
-      category: ['web', 'ai'],
-      image: '/images/projects/subtitle.jpg',
-      description: 'AI-powered subtitle generation tool for videos with automatic transcription and translation capabilities.',
-      technologies: ['Next.js', 'AI/ML', 'FFmpeg', 'Speech Recognition'],
-      liveLink: 'https://subtitle-rho.vercel.app',
-      githubLink: 'https://github.com/raghavshahhh/subtitle'
-    },
-    {
-      id: 5,
-      title: 'Restaurant Website - Modern Design',
-      category: ['web', 'design'],
-      image: '/images/projects/restaurant.jpg',
-      description: 'Beautiful and modern restaurant website with menu showcase, online ordering and reservation system.',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'Framer Motion'],
-      liveLink: 'https://v0-restaurant-website-design-nu-lake.vercel.app',
-      githubLink: 'https://github.com/raghavshahhh/v0-restaurant-website-design'
-    },
-    {
-      id: 6,
-      title: 'Raghav Portfolio - Personal Brand',
-      category: ['web', 'design'],
-      image: '/images/projects/raghav-portfolio.jpg',
-      description: 'Personal portfolio website showcasing projects, skills and professional experience with modern design.',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'Three.js'],
-      liveLink: 'https://raghav.ragspro.com',
-      githubLink: 'https://github.com/raghavshahhh/Raghav'
-    },
-    {
-      id: 7,
-      title: 'Maid Service Basic - Standard Website',
-      category: ['web', 'design'],
-      image: '/images/projects/maid.jpg',
-      description: 'Basic maid service website with essential features, contact forms, and service showcase. Project Value: ₹12-18k',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'Contact Forms'],
-      liveLink: 'https://maid-agency.vercel.app',
-      githubLink: 'https://github.com/ragspro/maid-agency'
-    },
-    {
-      id: 8,
-      title: 'LAWAI - Legal AI Assistant',
-      category: ['web', 'ai'],
-      image: '/images/projects/lawai.jpg',
-      description: 'AI-powered legal assistant platform providing intelligent legal document analysis and consultation services.',
-      technologies: ['Next.js', 'OpenAI API', 'TailwindCSS', 'Node.js'],
-      liveLink: 'https://lawai.ragspro.com',
-      githubLink: 'https://github.com/ragspro/lawai-legal-assistant'
-    },
-    {
-      id: 9,
-      title: 'Main - 3D Portfolio Website',
-      category: ['web', 'design'],
-      image: '/images/projects/main.jpg',
-      description: 'Interactive 3D portfolio website with advanced animations and immersive user experience.',
-      technologies: ['Next.js', 'Three.js', 'React'],
-      liveLink: 'https://main-chi-virid.vercel.app',
-      githubLink: 'https://github.com/ragspro/main'
-    },
-    {
-      id: 10,
-      title: 'GLOW - AI Photo Transformation',
-      category: ['ai', 'web'],
-      image: '/images/projects/glow.png',
-      description: 'Create a viral AI photo transformation tool for social media users',
-      technologies: ['Stable Diffusion', 'Computer Vision', 'React'],
-      liveLink: 'https://glow.ragspro.com',
-      githubLink: 'https://github.com/ragspro/glow-ai'
-    },
-    {
-      id: 11,
-      title: 'SAPD - Coaching Institute Management',
-      category: ['web'],
-      image: '/images/projects/sapd.jpg',
-      description: 'Complete coaching institute management system with progress tracking and student management.',
-      technologies: ['Next.js', 'React', 'Management System'],
-      liveLink: 'https://sapd-eight.vercel.app',
-      githubLink: 'https://github.com/ragspro/SAPD'
-    },
-    {
-      id: 12,
-      title: 'Elito - Premium Shoes E-commerce',
-      category: ['web', 'design'],
-      image: '/images/projects/elito.jpg',
-      description: 'Premium shoes e-commerce platform with modern design and seamless shopping experience.',
-      technologies: ['Next.js', 'E-commerce', 'TailwindCSS'],
-      liveLink: 'https://elito-premium-shoes.vercel.app',
-      githubLink: 'https://github.com/ragspro/Elito-premium-shoes-'
-    },
-    {
-      id: 13,
-      title: 'Himshakti E-commerce Website',
-      category: ['web', 'design'],
-      image: '/images/projects/himshakti.jpg',
-      description: 'Complete e-commerce solution for Himshakti brand with product catalog, shopping cart and order management.',
-      technologies: ['Next.js', 'React', 'TailwindCSS', 'PayPal API'],
-      liveLink: 'https://himshakti.ragspro.com',
-      githubLink: 'https://github.com/ragspro/himshakti-ecommerce'
-    }
-  ]
-  
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter(project => project.category.includes(activeFilter))
   
+  if (loading) {
+    return (
+      <div className="bg-white min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading projects...</p>
+        </div>
+      </div>
+    )
+  }
+  
   return (
-    <div className="bg-white page-rails">
+    <div className="bg-white min-h-screen">
       <SEOHead 
         title="Our Startup Apps Portfolio | SaaS & AI Development Projects by RAGSPRO"
         description="See all startup apps we built - SaaS platforms, AI solutions, and web applications. RAGSPRO's complete portfolio of successful startup development projects."
         keywords="startup apps portfolio, SaaS development projects, AI app development, web application portfolio, startup development agency, MVP development examples"
         url="https://ragspro.com/projects"
       />
-      <CustomCursor />
       
       {/* Hero Section */}
-      <section className="min-h-screen bg-white pt-20 pb-16 page-canvas">
+      <section className="min-h-screen bg-white pt-20 pb-16">
         <div className="max-w-7xl mx-auto px-8">
           {/* Back Button */}
           <motion.div
@@ -309,9 +209,6 @@ export default function AllProjects() {
 
         </div>
       </section>
-
-      {/* Bottom Blur Overlay - Same as Landing Page */}
-      <div className="fixed bottom-0 left-0 right-0 h-14 bg-gradient-to-t from-white/40 via-white/10 to-transparent backdrop-blur-[2px] pointer-events-none z-30 rounded-t-[1.25rem]" />
     </div>
   )
 }

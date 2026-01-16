@@ -67,10 +67,11 @@ export default function HeroSection() {
     offset: ["start start", "end start"]
   })
   
-  // Mobile-specific scroll progress
   const [isMobileDevice, setIsMobileDevice] = useState(false)
+  const [mounted, setMounted] = useState(false)
   
   useEffect(() => {
+    setMounted(true)
     const checkMobile = () => {
       setIsMobileDevice(window.innerWidth < 640)
     }
@@ -112,79 +113,100 @@ export default function HeroSection() {
       ref={containerRef}
       className="min-h-screen sm:h-[120vh] md:h-[140vh] lg:h-[200vh] bg-white relative z-0 main-section"
     >
-      <div ref={canvasRef} className="sticky top-0 min-h-screen flex items-start overflow-visible pt-[30px] sm:pt-[30px] md:pt-[0px] lg:pt-[0px] pb-4 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: heroZ }}>
+      <div ref={canvasRef} className="relative sm:sticky top-0 min-h-screen flex items-start overflow-visible pt-[20px] sm:pt-[30px] md:pt-[0px] lg:pt-[0px] pb-4 sm:pb-4 md:pb-6 lg:pb-20" style={{ zIndex: isMobileDevice ? 1 : heroZ }}>
         <div className="max-w-7xl mx-auto px-4 sm:px-4 md:px-6 lg:px-8 w-full grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-4 md:gap-6 lg:gap-8 items-start">
-          <div className="max-w-full md:max-w-3xl pt-2 sm:pt-4 md:pt-6 lg:pt-8 relative" style={{ zIndex: 2000 }}>
+          <div className="max-w-full md:max-w-3xl pt-0 sm:pt-4 md:pt-6 lg:pt-8 relative" style={{ zIndex: 2000 }}>
             {/* Badge */}
-            <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-3 py-1 sm:py-1.5 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[11px] md:text-xs mb-2 sm:mb-3 md:mb-4">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 md:px-3 py-1 sm:py-1.5 md:py-1.5 bg-white border border-gray-200 rounded-full text-[10px] sm:text-[11px] md:text-xs mb-2 sm:mb-3 md:mb-4"
+            >
               <span className="w-1.5 sm:w-1.5 h-1.5 sm:h-1.5 bg-green-500 rounded-full animate-pulse"></span>
               <span className="text-gray-700 font-medium">50+ STARTUPS LAUNCHED</span>
-            </div>
+            </motion.div>
 
             {/* Main Headline - Fluid Typography */}
-            <h1 className="text-[clamp(28px,8vw,68px)] sm:text-[clamp(24px,5vw,32px)] md:text-[clamp(32px,4vw,48px)] lg:text-[clamp(48px,4vw,68px)] font-normal leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6">
+            <motion.h1 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
+              className="text-[clamp(28px,8vw,68px)] sm:text-[clamp(24px,5vw,32px)] md:text-[clamp(32px,4vw,48px)] lg:text-[clamp(48px,4vw,68px)] font-normal leading-[1.1] tracking-tight mb-3 sm:mb-4 md:mb-6"
+            >
               <span className="text-gray-400">Launch Your</span>
               <br />
               <span className="text-black">Startup in 20 Days</span>
-            </h1>
+            </motion.h1>
 
             {/* Subheading */}
-            <h2 className="text-[12px] sm:text-[13px] md:text-sm lg:text-base text-gray-700 mb-3 sm:mb-4 md:mb-6 font-normal leading-relaxed">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.2, ease: "easeOut" }}
+              className="text-[12px] sm:text-[13px] md:text-sm lg:text-base text-gray-700 mb-3 sm:mb-4 md:mb-6 font-normal leading-relaxed"
+            >
               Revenue-focused web apps, funnels & AI automations for founders who need users, not pretty dashboards.
-            </h2>
-            <p className="text-[11px] sm:text-[12px] md:text-sm lg:text-base text-gray-700 mb-4 sm:mb-5 md:mb-8 leading-relaxed">
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.3, ease: "easeOut" }}
+              className="text-[11px] sm:text-[12px] md:text-sm lg:text-base text-gray-700 mb-4 sm:mb-5 md:mb-8 leading-relaxed"
+            >
               <span className="text-black font-semibold">Yes, it's true.</span> RAGSPRO helps startup founders build complete revenue-ready products with AI integration & business automation — all within 20 days. End-to-end development by Raghav Shah, your trusted startup growth partner.
-            </p>
+            </motion.p>
 
             {/* CTA Button with Avatars */}
-            <button
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.35, ease: "easeOut" }}
               onClick={() => {
-                // Trigger the quote form in ServicesSection
-                const event = new CustomEvent('openQuoteForm')
-                window.dispatchEvent(event)
+                window.location.href = '/get-quote'
               }}
-              className="group inline-flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 px-4 sm:px-4 md:px-5 lg:px-6 py-2.5 sm:py-2.5 md:py-3 lg:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-4 sm:mb-6 md:mb-8 lg:mb-12 text-xs sm:text-xs md:text-sm lg:text-sm mt-2 sm:mt-4"
+              className="group inline-flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 px-4 sm:px-4 md:px-5 lg:px-6 py-2.5 sm:py-2.5 md:py-3 lg:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-2 sm:mb-6 md:mb-8 lg:mb-12 text-xs sm:text-xs md:text-sm lg:text-sm mt-2 sm:mt-4"
             >
-              <div className="flex -space-x-0.5 sm:-space-x-1 md:-space-x-2 relative">
+              <div className="flex -space-x-1 sm:-space-x-1 md:-space-x-2 relative">
                 {/* User 1 Circle - Indian Male */}
-                <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-8 h-6 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white flex-shrink-0">
                   <img
                     src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=150&h=150&fit=crop&crop=entropy&auto=format&q=75&zoom=0.7"
                     alt="Indian Startup Founder"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover"
                     loading="eager"
                     width="32"
                     height="32"
-                    style={{display: 'block', objectPosition: 'center 30%'}}
+                    style={{display: 'block', objectFit: 'cover'}}
                   />
                 </div>
 
                 {/* User 2 Circle - Indian Female */}
-                <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white">
+                <div className="w-6 sm:w-5 md:w-6 lg:w-8 h-6 sm:h-5 md:h-6 lg:h-8 rounded-full overflow-hidden border-2 border-white flex-shrink-0">
                   <img
                     src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&h=150&fit=crop&crop=entropy&auto=format&q=75&zoom=0.7"
                     alt="Indian Entrepreneur"
-                    className="w-full h-full object-cover object-center"
+                    className="w-full h-full object-cover"
                     loading="eager"
                     width="32"
                     height="32"
-                    style={{display: 'block', objectPosition: 'center 30%'}}
+                    style={{display: 'block', objectFit: 'cover'}}
                   />
                 </div>
 
                 {/* '+ you' Circle - Appears on hover */}
-                <div className="w-4 sm:w-5 md:w-6 lg:w-8 h-4 sm:h-5 md:h-6 lg:h-8 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center group-hover:scale-100 group-hover:opacity-100 opacity-0 scale-0 transition-all duration-300">
-                  <span className="text-black text-[4px] sm:text-[5px] md:text-[6px] lg:text-[8px] font-bold">+ you</span>
+                <div className="w-6 sm:w-5 md:w-6 lg:w-8 h-6 sm:h-5 md:h-6 lg:h-8 rounded-full bg-white border-2 border-gray-300 flex items-center justify-center group-hover:scale-100 group-hover:opacity-100 opacity-0 scale-0 transition-all duration-300 flex-shrink-0">
+                  <span className="text-black text-[6px] sm:text-[5px] md:text-[6px] lg:text-[8px] font-bold">+ you</span>
                 </div>
               </div>
 
               <span className="text-white">Get Your Project Roadmap</span>
-            </button>
+            </motion.button>
 
-            {/* Social Proof - Compact for mobile */}
-            <div className="flex items-center justify-start gap-3 sm:gap-2 md:gap-3 mb-4 sm:mb-6 md:mb-8 lg:mb-12 mt-0 sm:mt-0 md:-mt-4 lg:-mt-6 w-full">
+            {/* Social Proof - Desktop Only */}
+            <div className="hidden sm:flex items-center justify-start gap-3 sm:gap-2 md:gap-3 mb-4 sm:mb-6 md:mb-8 lg:mb-12 mt-0 sm:mt-0 md:-mt-4 lg:-mt-6 w-full">
               <div className="flex -space-x-1.5">
-                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                <div className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border-2 border-white shadow-sm">
                   <img
                     src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 1"
@@ -195,7 +217,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
+                <div className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 2"
@@ -206,7 +228,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
+                <div className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 3"
@@ -217,7 +239,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
+                <div className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1552058544-f2b08422138a?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 4"
@@ -228,7 +250,7 @@ export default function HeroSection() {
                     style={{display: 'block', objectPosition: 'center 30%'}}
                   />
                 </div>
-                <div className="w-6 sm:w-5 md:w-6 lg:w-7 h-6 sm:h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
+                <div className="w-5 md:w-6 lg:w-7 h-5 md:h-6 lg:h-7 rounded-full overflow-hidden border border-white">
                   <img
                     src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=120&h=120&fit=crop&crop=entropy&auto=format&q=75"
                     alt="Indian Client 5"
@@ -251,10 +273,10 @@ export default function HeroSection() {
                   }}
                 >
                   {[1, 2, 3, 4, 5].map(i => (
-                    <span key={i} className="text-yellow-500 hover:scale-110 transition-transform text-sm sm:text-xs md:text-sm lg:text-base">★</span>
+                    <span key={i} className="text-yellow-500 hover:scale-110 transition-transform text-xs md:text-sm lg:text-base">★</span>
                   ))}
                 </div>
-                <p className="text-[10px] sm:text-[10px] md:text-xs lg:text-sm text-gray-700 font-medium mt-0.5">50+ Startup Founders</p>
+                <p className="text-[10px] md:text-xs lg:text-sm text-gray-700 font-medium mt-0 sm:mt-0.5">50+ Startup Founders</p>
               </div>
             </div>
 
@@ -435,25 +457,32 @@ export default function HeroSection() {
       </div>
 
       {/* Latest Projects Heading */}
-      <h2
-        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight -mt-80 sm:-mt-4 md:-mt-8 lg:-mt-12 xl:mt-0 relative px-2 sm:px-4 md:px-6 lg:px-8"
+      <motion.h2
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight -mt-96 sm:-mt-4 md:-mt-8 lg:-mt-12 xl:mt-0 relative px-2 sm:px-4 md:px-6 lg:px-8"
         style={{
           zIndex: 3000,
           position: 'relative'
         }}
       >
         Our Latest Projects
-      </h2>
+      </motion.h2>
 
       {/* Static Project Cards for Mobile - Horizontal Carousel */}
-      <div className="block sm:hidden mt-6">
+      <div className="block sm:hidden mt-6 min-h-[200px]">
         <div 
-          className="flex gap-4 overflow-x-scroll px-4 pb-4 snap-x snap-mandatory"
+          className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory"
           style={{
-            scrollbarWidth: 'none',
-            msOverflowStyle: 'none',
+            scrollbarWidth: 'thin',
+            scrollbarColor: '#d1d5db #f3f4f6',
             WebkitOverflowScrolling: 'touch',
-            overflowY: 'hidden'
+            overflowY: 'hidden',
+            minHeight: '160px',
+            touchAction: 'pan-x',
+            scrollBehavior: 'smooth'
           }}
         >
           {projects.map((project, index) => (
@@ -461,9 +490,13 @@ export default function HeroSection() {
               key={project.id}
               onClick={() => handleProjectClick(project.url)}
               className="flex-shrink-0 w-[70vw] h-40 rounded-xl overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200 snap-center"
+              style={{ 
+                minHeight: '160px', 
+                maxHeight: '160px'
+              }}
             >
               {/* Gray placeholder background for faster perceived load */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200 animate-pulse"></div>
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"></div>
               
               {/* Optimized image for mobile - Prioritize first 2 */}
               <img
@@ -480,7 +513,7 @@ export default function HeroSection() {
                   visibility: 'visible',
                   opacity: 1,
                   maxWidth: '100%',
-                  height: '100%',
+                  height: '160px',
                   imageRendering: '-webkit-optimize-contrast'
                 }}
               />
@@ -498,7 +531,7 @@ export default function HeroSection() {
                 )}
               </div>
               {/* Click indicator */}
-              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-active:opacity-100 transition-opacity duration-200 z-20">
+              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-active:opacity-100 transition-opacity duration-200 z-20" style={{ pointerEvents: 'none' }}>
                 <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>

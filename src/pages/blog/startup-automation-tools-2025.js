@@ -226,7 +226,7 @@ export default function StartupAutomationTools2025() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <a 
-                  href="https://wa.me/918700048490?text=Hi, I need help with startup automation"
+                  href="https://wa.me/918826073013?text=Hi, I need help with startup automation"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-black text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-800 transition-colors text-center"

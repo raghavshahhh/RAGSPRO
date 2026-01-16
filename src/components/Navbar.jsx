@@ -83,11 +83,11 @@ export default function Navbar() {
   }
 
   const handleWhatsApp = () => {
-    window.open('https://wa.me/918700048490?text=Hi! I want to discuss a project.', '_blank')
+    window.open('https://wa.me/918826073013?text=Hi! I want to discuss a project.', '_blank')
   }
 
   const handleCall = () => {
-    window.location.href = 'tel:+918700048490'
+    window.location.href = 'tel:+918826073013'
   }
 
   // Prevent hydration mismatch
@@ -512,7 +512,7 @@ export default function Navbar() {
       )}
 
       {/* Spacer */}
-      <div style={{ height: isMobile ? '76px' : '96px' }} />
+      <div style={{ height: isMobile ? '64px' : '0px' }} />
 
       {/* Animations */}
       <style jsx>{`

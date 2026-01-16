@@ -71,7 +71,7 @@ export default function OurStory() {
 
               <div className="text-center mt-12">
                 <a
-                  href="https://wa.me/918700048490?text=Hi, I'm interested in RAGSPRO's AI development services and would like to book a free consultation to discuss my project."
+                  href="https://wa.me/918826073013?text=Hi, I'm interested in RAGSPRO's AI development services and would like to book a free consultation to discuss my project."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block px-8 py-3 bg-accent hover:bg-accent-hover text-white font-medium rounded-full transition-all"

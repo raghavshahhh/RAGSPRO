@@ -269,7 +269,7 @@ export default function PricingPage() {
               Get Custom Quote
             </button>
             <a
-              href="https://wa.me/918700048490?text=Hi, I'd like to discuss pricing"
+              href="https://wa.me/918826073013?text=Hi, I'd like to discuss pricing"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-colors"

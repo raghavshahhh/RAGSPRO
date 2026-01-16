@@ -85,7 +85,7 @@ export default function TermsOfService() {
                   <p className="text-gray-700">
                     <strong>RAGSPRO</strong><br />
                     Email: ragsproai@gmail.com<br />
-                    Phone: +918700048490<br />
+                    Phone: +918826073013<br />
                     Address: Delhi, India
                   </p>
                 </div>

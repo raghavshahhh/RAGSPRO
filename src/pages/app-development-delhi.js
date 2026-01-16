@@ -87,7 +87,7 @@ export default function AppDevelopmentDelhi() {
       
       <p>Ready to build your app in Delhi? Schedule a free consultation with RAGSPRO. We'll discuss your app idea, recommend the best technology stack, and create a custom development roadmap.</p>
       
-      <p><strong>Contact:</strong> +918700048490 | ragsproai@gmail.com</p>
+      <p><strong>Contact:</strong> +918826073013 | ragsproai@gmail.com</p>
     `,
     
     benefits: [

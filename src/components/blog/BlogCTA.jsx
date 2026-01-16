@@ -68,7 +68,7 @@ export default function BlogCTA({ position = 'after-intro', variant = 'default' 
           </button>
           
           <a
-            href="https://wa.me/918700048490?text=Hi, I'm interested in MVP development"
+            href="https://wa.me/918826073013?text=Hi, I'm interested in MVP development"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-all flex items-center gap-2"
@@ -108,10 +108,10 @@ export default function BlogCTA({ position = 'after-intro', variant = 'default' 
           </button>
           
           <a
-            href="tel:+918700048490"
+            href="tel:+918826073013"
             className="border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-all"
           >
-            Call: +91-8700048490
+            Call: +91-8826073013
           </a>
         </div>
         

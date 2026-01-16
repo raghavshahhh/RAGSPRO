@@ -17,7 +17,7 @@ export default function GeoLandingPage({
   faqs,
   testimonials = []
 }) {
-  const whatsappLink = "https://wa.me/918700048490?text=Hi, I'm interested in " + service + " in " + location;
+  const whatsappLink = "https://wa.me/918826073013?text=Hi, I'm interested in " + service + " in " + location;
   
   return (
     <>
@@ -66,10 +66,10 @@ export default function GeoLandingPage({
                 </a>
                 
                 <a
-                  href="tel:+918700048490"
+                  href="tel:+918826073013"
                   className="border-2 border-black text-black px-8 py-4 rounded-full font-semibold hover:bg-black hover:text-white transition-all"
                 >
-                  Call: +91-8700048490
+                  Call: +91-8826073013
                 </a>
               </div>
             </motion.div>

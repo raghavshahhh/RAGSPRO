@@ -85,7 +85,7 @@ export default function StartupDevelopmentIndia() {
       
       <p><strong>Contact RAGSPRO:</strong></p>
       <ul>
-        <li>📞 Phone: +918700048490</li>
+        <li>📞 Phone: +918826073013</li>
         <li>📧 Email: ragsproai@gmail.com</li>
         <li>💬 WhatsApp: Available 24/7</li>
         <li>📍 Serving: All of India</li>

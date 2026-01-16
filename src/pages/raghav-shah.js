@@ -263,7 +263,7 @@ export default function RaghavShah() {
                   Connect on LinkedIn
                 </a>
                 <a 
-                  href="https://wa.me/918700048490" 
+                  href="https://wa.me/918826073013" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="bg-transparent border-2 border-white text-white px-6 py-3 rounded-full font-semibold hover:bg-white hover:text-black transition-colors"

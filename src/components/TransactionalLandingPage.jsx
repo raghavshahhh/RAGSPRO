@@ -74,7 +74,7 @@ export default function TransactionalLandingPage({
                 {cta.primary}
               </button>
               <a
-                href="https://wa.me/918700048490?text=Hi%2C%20I%27m%20interested%20in%20your%20services"
+                href="https://wa.me/918826073013?text=Hi%2C%20I%27m%20interested%20in%20your%20services"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-transparent border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-black transition-colors flex items-center gap-2"

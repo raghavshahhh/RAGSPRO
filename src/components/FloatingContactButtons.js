@@ -56,7 +56,7 @@ export default function FloatingContactButtons() {
           }}
         >
           <a
-            href="https://wa.me/918700048490?text=Hi%2C%20I%27m%20interested%20in%20your%20development%20services.%20Can%20we%20discuss%20my%20project%3F"
+            href="https://wa.me/918826073013?text=Hi%2C%20I%27m%20interested%20in%20your%20development%20services.%20Can%20we%20discuss%20my%20project%3F"
             target="_blank"
             rel="noopener noreferrer"
             className="bg-white text-black rounded-full flex items-center justify-center gap-2 px-5 py-3 hover:bg-black hover:text-white transition-all duration-300 border border-gray-200 shadow-md hover:shadow-lg font-medium text-sm"

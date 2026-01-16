@@ -132,7 +132,7 @@ export default function Document() {
               "@type": "LocalBusiness",
               "name": "RAGSPRO Startup MVP Development Agency",
               "image": "https://ragspro.com/images/logo.png",
-              "telephone": "+918700048490",
+              "telephone": "+918826073013",
               "email": "ragsproai@gmail.com",
               "address": {
                 "@type": "PostalAddress",

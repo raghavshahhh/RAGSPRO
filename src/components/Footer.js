@@ -125,7 +125,7 @@ export default function Footer() {
 
           {/* WhatsApp */}
           <a
-            href="https://wa.me/918700048490"
+            href="https://wa.me/918826073013"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-[#888888] transition-colors duration-300"
@@ -186,6 +186,15 @@ export default function Footer() {
             >
               Terms of Service
             </a>
+            <button
+              onClick={() => {
+                const event = new CustomEvent('openLoginModal')
+                window.dispatchEvent(event)
+              }}
+              className="text-[#888888] text-[13px] hover:text-white transition-colors duration-300 bg-transparent border-none cursor-pointer"
+            >
+              Admin
+            </button>
           </div>
 
           {/* Bottom Info */}

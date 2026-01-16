@@ -291,3 +291,47 @@ CREATE TRIGGER update_projects_updated_at
 -- ============================================
 -- DONE! Your database is ready.
 -- ============================================
+
+
+-- ============================================
+-- 12. PORTFOLIO PROJECTS TABLE
+-- ============================================
+CREATE TABLE IF NOT EXISTS portfolio_projects (
+  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
+  title TEXT NOT NULL,
+  category TEXT[] DEFAULT '{}',
+  image TEXT NOT NULL,
+  description TEXT NOT NULL,
+  technologies TEXT[] DEFAULT '{}',
+  live_link TEXT,
+  github_link TEXT,
+  display_order INTEGER DEFAULT 0,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE INDEX idx_portfolio_projects_display_order ON portfolio_projects(display_order);
+CREATE INDEX idx_portfolio_projects_is_active ON portfolio_projects(is_active);
+
+-- Trigger for updated_at
+CREATE TRIGGER update_portfolio_projects_updated_at
+  BEFORE UPDATE ON portfolio_projects
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
+-- Enable RLS
+ALTER TABLE portfolio_projects ENABLE ROW LEVEL SECURITY;
+
+-- Public can view active projects
+CREATE POLICY "Anyone can view active portfolio projects" ON portfolio_projects
+  FOR SELECT USING (is_active = TRUE);
+
+-- Only authenticated users can manage (you can make this admin-only later)
+CREATE POLICY "Authenticated users can insert portfolio projects" ON portfolio_projects
+  FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+
+CREATE POLICY "Authenticated users can update portfolio projects" ON portfolio_projects
+  FOR UPDATE USING (auth.role() = 'authenticated');
+
+CREATE POLICY "Authenticated users can delete portfolio projects" ON portfolio_projects
+  FOR DELETE USING (auth.role() = 'authenticated');

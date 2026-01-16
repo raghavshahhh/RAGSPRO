@@ -54,7 +54,7 @@ export default function AIAutomationDelhi() {
       
       <p>Ready to add AI to your startup? Schedule a free AI consultation with RAGSPRO in Delhi. We'll assess your needs and create a custom AI automation roadmap.</p>
       
-      <p><strong>Contact:</strong> +918700048490 | ragsproai@gmail.com</p>
+      <p><strong>Contact:</strong> +918826073013 | ragsproai@gmail.com</p>
     `,
     
     benefits: [

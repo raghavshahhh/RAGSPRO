@@ -10,7 +10,7 @@ export const siteConfig = {
   logo: 'https://ragspro.com/images/logo.png',
   founder: 'Raghav Shah',
   email: 'ragsproai@gmail.com',
-  phone: '+918700048490',
+  phone: '+918826073013',
   location: {
     city: 'New Delhi',
     state: 'Delhi',

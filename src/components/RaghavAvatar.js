@@ -26,7 +26,7 @@ export default function RaghavAvatar({
       imageSize: 64
     },
     md: {
-      container: 'w-56 h-56',
+      container: 'w-56 h-56 sm:w-48 sm:h-48 lg:w-56 lg:h-56',
       text: 'text-7xl',
       imageSize: 224
     },
@@ -40,7 +40,7 @@ export default function RaghavAvatar({
   // Variant configurations
   const variantConfig = {
     square: 'rounded-lg',
-    'square-xl': 'rounded-3xl',
+    'square-xl': 'rounded-[2rem]',
     circle: 'rounded-full',
     'circle-gradient': 'rounded-full bg-gradient-to-br from-black to-gray-700',
     'circle-accent': 'rounded-full bg-gradient-to-br from-accent/20 to-purple-600/20 border-2 border-accent/30'
@@ -56,6 +56,7 @@ export default function RaghavAvatar({
       ${currentVariant}
       overflow-hidden
       relative
+      flex-shrink-0
       ${className}
     `}>
       <Image
@@ -66,7 +67,9 @@ export default function RaghavAvatar({
         className="object-cover w-full h-full"
         quality={95}
         priority={priority}
+        loading={priority ? 'eager' : 'lazy'}
         sizes={`(max-width: 768px) ${currentSize.imageSize}px, ${currentSize.imageSize * 2}px`}
+        style={{ objectFit: 'cover', width: '100%', height: '100%' }}
       />
     </div>
   )

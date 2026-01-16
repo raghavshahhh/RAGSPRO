@@ -33,7 +33,7 @@ export default function PaymentSuccess() {
               Back to Home
             </button>
             <a
-              href="https://wa.me/918700048490?text=Hi, I just completed my payment"
+              href="https://wa.me/918826073013?text=Hi, I just completed my payment"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full bg-green-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-600 transition-colors"

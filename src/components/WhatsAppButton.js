@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 
 export default function WhatsAppButton() {
   const [isVisible, setIsVisible] = useState(true)
-  const whatsappLink = "https://wa.me/918700048490?text=Hi, I'm interested in RAGSPRO's development services"
+  const whatsappLink = "https://wa.me/918826073013?text=Hi, I'm interested in RAGSPRO's development services"
   
   useEffect(() => {
     const handleScroll = () => {

@@ -104,23 +104,29 @@ export default function TeamSection() {
 
   return (
     <section id="team" className="pt-10 sm:pt-20 pb-16 sm:pb-32 bg-white">
-      <div className="max-w-7xl mx-auto px-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8">
         {/* Section Header */}
         <div className="text-left mb-12 -mt-8">
-          <h2 className="text-4xl md:text-6xl font-medium tracking-tight mb-8">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-medium tracking-tight mb-8"
+          >
             <span className="text-gray-500">Developing SaaS</span>
             <br />
             <span className="text-black">that solve real problems.</span>
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Team Content */}
         <div className="grid lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto">
           
           {/* Left Side - Team Info */}
-          <div className="text-left">
+          <div className="text-left max-w-full">
             {/* Avatar Centered */}
-            <div className="flex justify-center mb-12 mt-8">
+            <div className="flex justify-center lg:justify-center mb-8 lg:mb-12 mt-4 lg:mt-8">
               <RaghavAvatar
                 size="md"
                 variant="square-xl"
@@ -129,21 +135,49 @@ export default function TeamSection() {
             </div>
             
             {/* Info */}
-            <div>
-              <h3 className="text-2xl font-bold text-black mb-2">{teamMembers[0].name}</h3>
-              <p className="text-lg text-gray-600 mb-4">{teamMembers[0].role}</p>
+            <div className="px-6 sm:px-8 lg:px-0 max-w-full">
+              <motion.h3 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.05, ease: "easeOut" }}
+                className="text-lg lg:text-2xl font-bold text-black mb-2 break-words"
+              >
+                {teamMembers[0].name}
+              </motion.h3>
+              <motion.p 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.1, ease: "easeOut" }}
+                className="text-sm lg:text-lg text-gray-600 mb-4 break-words"
+              >
+                {teamMembers[0].role}
+              </motion.p>
 
               {/* Description */}
-              <p className="text-gray-600 mt-4 leading-relaxed mb-6">
+              <motion.p 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.15, ease: "easeOut" }}
+                className="text-xs lg:text-base text-gray-600 mt-4 leading-relaxed mb-6 break-words overflow-wrap-anywhere"
+              >
                 {teamMembers[0].description}
-              </p>
+              </motion.p>
               
               {/* Stats */}
-              <div className="flex flex-col gap-2 text-sm text-gray-500 mb-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: 0.2, ease: "easeOut" }}
+                className="flex flex-col gap-2 text-[10px] lg:text-sm text-gray-500 mb-6 break-words"
+              >
                 <span>• 8+ SaaS Products Launched</span>
                 <span>• 500+ Total Users</span>
                 <span>• Solo Entrepreneur</span>
-              </div>
+              </motion.div>
 
               {/* Social Media Icons */}
               <div className="flex gap-4 mt-4">
@@ -192,7 +226,7 @@ export default function TeamSection() {
                 </a>
 
                 <a 
-                  href="https://wa.me/918700048490" 
+                  href="https://wa.me/918826073013" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="w-10 h-10 bg-black rounded-full flex items-center justify-center hover:bg-gray-800 transition-colors"
@@ -206,11 +240,11 @@ export default function TeamSection() {
           </div>
 
           {/* Right Side - Lawai Project */}
-          <div className="flex flex-col items-center space-y-6 mt-16">
+          <div className="flex flex-col items-center space-y-6 mt-16 px-4 lg:px-0">
             <div
-              className="relative cursor-pointer hover:scale-105 transition-transform duration-300 bg-gray-100 rounded-xl overflow-hidden shadow-2xl"
+              className="relative cursor-pointer hover:scale-105 transition-transform duration-300 bg-gray-100 rounded-xl overflow-hidden shadow-2xl w-full max-w-[480px]"
               onClick={() => window.open('https://lawai.ragspro.com', '_blank')}
-              style={{ width: '480px', height: '270px' }}
+              style={{ aspectRatio: '16/9' }}
             >
               <img 
                 src="/images/projects/lawai.jpg" 
@@ -242,14 +276,26 @@ export default function TeamSection() {
         </div>
 
         {/* Testimonials Section */}
-        <div id="testimonials" className="mt-56">
-          <h2 className="text-4xl md:text-6xl font-medium mb-36">
+        <div id="testimonials" className="mt-40">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-4xl md:text-6xl font-medium mb-24"
+          >
             What Founders Say About RAGSPRO
-          </h2>
-          <p className="text-2xl md:text-3xl text-gray-600 mb-12">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
+            className="text-2xl md:text-3xl text-gray-600 mb-12"
+          >
             <span className="text-gray-500">Hear from what the</span><br />
             <span className="text-black">founders have to say.</span>
-          </p>
+          </motion.p>
 
           {/* Horizontal Scrollable Reviews Carousel */}
           <div 
@@ -419,14 +465,26 @@ export default function TeamSection() {
         />
 
         {/* FAQ Section */}
-        <div className="mt-72">
-          <h2 className="text-5xl md:text-6xl font-medium mb-12 ml-16">
+        <div className="mt-32">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="text-5xl md:text-6xl font-medium mb-12 ml-16"
+          >
             Frequently Asked Questions
-          </h2>
-          <p className="text-2xl md:text-3xl text-gray-600 mb-12 ml-16">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.05, ease: "easeOut" }}
+            className="text-2xl md:text-3xl text-gray-600 mb-12 ml-16"
+          >
             <span className="text-gray-500">Your questions</span><br />
             <span className="text-black">answered.</span>
-          </p>
+          </motion.p>
 
           {/* Two Column Layout */}
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 mt-8 sm:mt-12 lg:mt-16">
@@ -485,8 +543,7 @@ export default function TeamSection() {
                   {/* CTA Button */}
                   <button
                     onClick={() => {
-                      const event = new CustomEvent('openQuoteForm')
-                      window.dispatchEvent(event)
+                      window.location.href = '/get-quote'
                     }}
                     className="inline-block bg-black hover:bg-gray-800 text-white font-semibold py-2.5 px-6 rounded-full shadow-md hover:shadow-lg transition-all text-sm cursor-pointer"
                   >
