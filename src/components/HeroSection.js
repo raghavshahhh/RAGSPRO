@@ -395,8 +395,8 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Tech Stack Section - Full Width - Desktop Only */}
-      <div className="hidden md:block w-full -mt-[15rem] sm:-mt-32 md:-mt-32 lg:-mt-36 xl:-mt-40 py-2 sm:py-1 md:py-2 bg-white" style={{ overflow: 'hidden' }}>
+      {/* Tech Stack Section - Mobile: Compact, Desktop: Full Width */}
+      <div className="w-full py-4 lg:py-2 bg-white mt-8 lg:-mt-36 xl:-mt-40" style={{ overflow: 'hidden' }}>
         <div
           className="flex tech-logos-scroll gap-4 sm:gap-6 md:gap-8 lg:gap-12 items-center hover:pause-animation"
           style={{
@@ -462,7 +462,7 @@ export default function HeroSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight mt-16 sm:mt-12 md:-mt-8 lg:-mt-12 xl:mt-0 relative px-4 sm:px-4 md:px-6 lg:px-8"
+        className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-7xl font-normal text-black tracking-tight mt-8 sm:mt-12 md:-mt-8 lg:-mt-12 xl:mt-0 relative px-4 sm:px-4 md:px-6 lg:px-8"
         style={{
           zIndex: 3000,
           position: 'relative'
