@@ -472,7 +472,7 @@ export default function HeroSection() {
       </motion.h2>
 
       {/* Static Project Cards for Mobile & Tablet - Horizontal Carousel */}
-      <div className="block lg:hidden mt-6 pb-4 w-full">
+      <div className="block lg:hidden mt-6 pb-4 w-full relative" style={{ zIndex: 4000 }}>
         <div 
           id="mobile-projects-carousel"
           style={{
@@ -490,7 +490,9 @@ export default function HeroSection() {
             paddingBottom: '8px',
             width: '100vw',
             marginLeft: '-16px',
-            marginRight: '-16px'
+            marginRight: '-16px',
+            position: 'relative',
+            zIndex: 4000
           }}
         >
           {projects.map((project, index) => (
