@@ -472,52 +472,48 @@ export default function HeroSection() {
       </motion.h2>
 
       {/* Static Project Cards for Mobile - Horizontal Carousel */}
-      <div className="block sm:hidden mt-6 min-h-[200px]">
+      <div className="block md:hidden mt-6 pb-4 -mx-4 sm:mx-0">
         <div 
-          className="flex gap-4 overflow-x-auto px-4 pb-4 snap-x snap-mandatory"
+          className="overflow-x-auto overflow-y-hidden px-4"
           style={{
-            scrollbarWidth: 'thin',
-            scrollbarColor: '#d1d5db #f3f4f6',
+            display: 'flex',
+            gap: '16px',
+            scrollSnapType: 'x mandatory',
             WebkitOverflowScrolling: 'touch',
-            overflowY: 'hidden',
-            minHeight: '160px',
-            touchAction: 'pan-x',
-            scrollBehavior: 'smooth'
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
           }}
         >
           {projects.map((project, index) => (
             <div
               key={project.id}
-              onClick={() => handleProjectClick(project.url)}
-              className="flex-shrink-0 w-[70vw] h-40 rounded-xl overflow-hidden shadow-lg cursor-pointer bg-gray-100 relative group active:scale-95 transition-transform duration-200 snap-center"
+              className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-100 relative"
               style={{ 
-                minHeight: '160px', 
-                maxHeight: '160px'
+                width: '85vw',
+                height: '160px',
+                scrollSnapAlign: 'center'
               }}
+              onClick={() => handleProjectClick(project.url)}
             >
-              {/* Gray placeholder background for faster perceived load */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200"></div>
+              {/* Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
               
-              {/* Optimized image for mobile - Prioritize first 2 */}
+              {/* Image */}
               <img
                 src={project.image}
-                alt={`${project.name} - Mobile App by RAGSPRO`}
-                className="w-full h-full object-cover group-active:scale-110 transition-transform duration-200 relative z-10"
+                alt={project.name}
+                className="w-full h-full object-cover"
                 loading={index < 2 ? "eager" : "lazy"}
-                decoding="async"
-                fetchpriority={index < 2 ? "high" : "low"}
-                width="280"
-                height="160"
                 style={{
                   display: 'block',
-                  visibility: 'visible',
-                  opacity: 1,
-                  maxWidth: '100%',
-                  height: '160px',
-                  imageRendering: '-webkit-optimize-contrast'
+                  pointerEvents: 'none',
+                  userSelect: 'none'
                 }}
+                draggable="false"
               />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3 z-20">
+              
+              {/* Info */}
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3">
                 <p className="text-white text-sm font-semibold truncate">{project.name}</p>
                 {project.metrics && (
                   <div className="flex gap-2 mt-1">
@@ -530,8 +526,9 @@ export default function HeroSection() {
                   </div>
                 )}
               </div>
-              {/* Click indicator */}
-              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center opacity-0 group-active:opacity-100 transition-opacity duration-200 z-20" style={{ pointerEvents: 'none' }}>
+              
+              {/* Icon */}
+              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center">
                 <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
@@ -539,8 +536,16 @@ export default function HeroSection() {
             </div>
           ))}
         </div>
-        {/* Scroll indicator */}
-        <p className="text-center text-[10px] text-gray-400 mt-2">← Swipe to see more →</p>
+        
+        {/* Indicator */}
+        <p className="text-center text-[10px] text-gray-400 mt-3">← Swipe to see more →</p>
+        
+        {/* Hide scrollbar */}
+        <style jsx>{`
+          .overflow-x-auto::-webkit-scrollbar {
+            display: none;
+          }
+        `}</style>
       </div>
     </section >
   )
