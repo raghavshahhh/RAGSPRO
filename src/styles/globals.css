@@ -60,10 +60,17 @@ body {
 }
 
 /* Ensure mobile carousel can scroll */
-@media (max-width: 768px) {
-  .overflow-x-auto {
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pan-y;
+@media (max-width: 1024px) {
+  .overflow-x-auto,
+  #mobile-projects-carousel {
+    -webkit-overflow-scrolling: touch !important;
+    touch-action: pan-x !important;
+    overflow-x: auto !important;
+  }
+  
+  /* Prevent any parent from blocking scroll */
+  section {
+    touch-action: auto !important;
   }
 }
 

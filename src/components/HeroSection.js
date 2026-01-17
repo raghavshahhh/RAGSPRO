@@ -283,8 +283,8 @@ export default function HeroSection() {
 
           </div>
 
-          {/* Right Column - Floating Project Cards - Hidden on Mobile */}
-          <div className="relative w-full h-[200px] sm:h-[180px] md:h-[240px] lg:h-[350px] xl:h-[600px] pt-1 sm:pt-2 md:pt-4 hidden md:block" style={{ perspective: '1500px', zIndex: 1000 }}>
+          {/* Right Column - Floating Project Cards - Desktop Only */}
+          <div className="relative w-full h-[200px] sm:h-[180px] md:h-[240px] lg:h-[350px] xl:h-[600px] pt-1 sm:pt-2 md:pt-4 hidden lg:block" style={{ perspective: '1500px', zIndex: 1000 }}>
             {/* White background placeholder - matches website theme */}
             <div className="absolute inset-0 bg-white rounded-2xl" style={{ zIndex: 1 }}></div>
             {projects.map((project, index) => {
@@ -471,78 +471,148 @@ export default function HeroSection() {
         Our Latest Projects
       </motion.h2>
 
-      {/* Static Project Cards for Mobile - Horizontal Carousel */}
-      <div className="block md:hidden mt-6 pb-4 -mx-4 sm:mx-0">
+      {/* Static Project Cards for Mobile & Tablet - Horizontal Carousel */}
+      <div className="block lg:hidden mt-6 pb-4 w-full">
         <div 
-          className="overflow-x-auto overflow-y-hidden px-4"
+          id="mobile-projects-carousel"
           style={{
             display: 'flex',
             gap: '16px',
-            scrollSnapType: 'x mandatory',
+            overflowX: 'scroll',
+            overflowY: 'hidden',
             WebkitOverflowScrolling: 'touch',
+            scrollSnapType: 'x mandatory',
             scrollbarWidth: 'none',
-            msOverflowStyle: 'none'
+            msOverflowStyle: 'none',
+            touchAction: 'pan-x',
+            paddingLeft: '16px',
+            paddingRight: '16px',
+            paddingBottom: '8px',
+            width: '100vw',
+            marginLeft: '-16px',
+            marginRight: '-16px'
           }}
         >
           {projects.map((project, index) => (
-            <div
+            <a
               key={project.id}
-              className="flex-shrink-0 rounded-xl overflow-hidden shadow-lg bg-gray-100 relative"
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
               style={{ 
-                width: '85vw',
-                height: '160px',
+                flexShrink: 0,
+                width: 'calc(100vw - 80px)',
+                minWidth: 'calc(100vw - 80px)',
+                maxWidth: 'calc(100vw - 80px)',
+                height: '180px',
+                borderRadius: '12px',
+                overflow: 'hidden',
+                boxShadow: '0 4px 6px rgba(0,0,0,0.1)',
+                backgroundColor: '#f3f4f6',
+                position: 'relative',
+                display: 'block',
+                textDecoration: 'none',
                 scrollSnapAlign: 'center'
               }}
-              onClick={() => handleProjectClick(project.url)}
             >
               {/* Background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-gray-100 to-gray-200" />
+              <div style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to bottom right, #f3f4f6, #e5e7eb)'
+              }} />
               
               {/* Image */}
               <img
                 src={project.image}
                 alt={project.name}
-                className="w-full h-full object-cover"
                 loading={index < 2 ? "eager" : "lazy"}
+                draggable="false"
                 style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
                   display: 'block',
                   pointerEvents: 'none',
-                  userSelect: 'none'
+                  userSelect: 'none',
+                  WebkitUserSelect: 'none',
+                  WebkitTouchCallout: 'none'
                 }}
-                draggable="false"
               />
               
-              {/* Info */}
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-3">
-                <p className="text-white text-sm font-semibold truncate">{project.name}</p>
+              {/* Info Overlay */}
+              <div style={{
+                position: 'absolute',
+                bottom: 0,
+                left: 0,
+                right: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.9), transparent)',
+                padding: '12px',
+                pointerEvents: 'none'
+              }}>
+                <p style={{
+                  color: 'white',
+                  fontSize: '14px',
+                  fontWeight: '600',
+                  margin: 0,
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap'
+                }}>
+                  {project.name}
+                </p>
                 {project.metrics && (
-                  <div className="flex gap-2 mt-1">
+                  <div style={{ display: 'flex', gap: '8px', marginTop: '4px' }}>
                     {project.metrics.conversionRate && (
-                      <span className="text-[10px] text-green-400">{project.metrics.conversionRate}</span>
+                      <span style={{ fontSize: '10px', color: '#4ade80' }}>
+                        {project.metrics.conversionRate}
+                      </span>
                     )}
                     {project.metrics.userGrowth && (
-                      <span className="text-[10px] text-blue-400">{project.metrics.userGrowth}</span>
+                      <span style={{ fontSize: '10px', color: '#60a5fa' }}>
+                        {project.metrics.userGrowth}
+                      </span>
                     )}
                   </div>
                 )}
               </div>
               
-              {/* Icon */}
-              <div className="absolute top-2 right-2 w-6 h-6 bg-black/60 rounded-full flex items-center justify-center">
-                <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {/* External Link Icon */}
+              <div style={{
+                position: 'absolute',
+                top: '8px',
+                right: '8px',
+                width: '24px',
+                height: '24px',
+                backgroundColor: 'rgba(0,0,0,0.6)',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                pointerEvents: 'none'
+              }}>
+                <svg width="12" height="12" fill="none" stroke="white" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
-            </div>
+            </a>
           ))}
         </div>
         
-        {/* Indicator */}
-        <p className="text-center text-[10px] text-gray-400 mt-3">← Swipe to see more →</p>
+        {/* Scroll Indicator */}
+        <p style={{
+          textAlign: 'center',
+          fontSize: '10px',
+          color: '#9ca3af',
+          marginTop: '12px',
+          userSelect: 'none'
+        }}>
+          ← Swipe left or right →
+        </p>
         
-        {/* Hide scrollbar */}
+        {/* Hide Scrollbar */}
         <style jsx>{`
-          .overflow-x-auto::-webkit-scrollbar {
+          #mobile-projects-carousel::-webkit-scrollbar {
             display: none;
           }
         `}</style>
