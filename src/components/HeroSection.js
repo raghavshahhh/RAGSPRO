@@ -165,7 +165,7 @@ export default function HeroSection() {
               onClick={() => {
                 window.location.href = '/get-quote'
               }}
-              className="group inline-flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 px-4 sm:px-4 md:px-5 lg:px-6 py-2.5 sm:py-2.5 md:py-3 lg:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-2 sm:mb-6 md:mb-8 lg:mb-12 text-xs sm:text-xs md:text-sm lg:text-sm mt-2 sm:mt-4"
+              className="group inline-flex items-center gap-2 sm:gap-3 md:gap-3 lg:gap-4 px-4 sm:px-4 md:px-5 lg:px-6 py-2.5 sm:py-2.5 md:py-3 lg:py-3 bg-black text-white rounded-full font-medium hover:bg-gray-900 hover:scale-105 transition-all duration-300 shadow-lg mb-8 sm:mb-6 md:mb-8 lg:mb-12 text-xs sm:text-xs md:text-sm lg:text-sm mt-2 sm:mt-4"
             >
               <div className="flex -space-x-1 sm:-space-x-1 md:-space-x-2 relative">
                 {/* User 1 Circle - Indian Male */}
